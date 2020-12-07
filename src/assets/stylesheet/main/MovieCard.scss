@@ -1,0 +1,30 @@
+.react-multi-carousel-item  {
+    height: 200px;
+    width: 190px ;
+    padding-right: 20px;
+    
+}
+
+.title {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    padding: 5px;
+}
+.title * {
+    display: flex;
+    justify-content: center;
+}
+.title h3 {
+    font-size: 15px;
+    
+}
+.title p {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.card-container {
+    background-size: cover;
+}

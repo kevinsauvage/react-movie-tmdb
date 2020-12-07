@@ -1,0 +1,14 @@
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$green : #187142;
+$pink : #B23456;
+$lightGrey: #E4E4E6;
+
+.header {
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color:$green;
+    display: flex;
+    overflow: hidden;
+    
+}

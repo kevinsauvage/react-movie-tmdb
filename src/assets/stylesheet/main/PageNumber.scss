@@ -1,0 +1,11 @@
+.page-number {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    span {
+        padding: 3px 5px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
