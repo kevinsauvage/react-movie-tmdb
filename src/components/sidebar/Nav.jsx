@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHome, FaSearch } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 const Nav = ({ handleBackhome }) => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import "react-multi-carousel/lib/styles.css";
 
 const MovieCard = ({ movie, handleCardClickShow }) => {
-  let backgroundImage = `url(https://image.tmdb.org/t/p/w154/${movie.poster_path})`;
+  let backgroundImage = `url(https://image.tmdb.org/t/p/w342/${movie.poster_path})`;
 
   return (
     <div

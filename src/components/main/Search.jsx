@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 const Search = ({ handleSearch, handleSubmit, query }) => {
@@ -20,7 +20,7 @@ const Search = ({ handleSearch, handleSubmit, query }) => {
         onChange={handleSearch}
         className="search-input"
         type="text"
-        placeholder="Search for songs, artirts etc..."></input>
+        placeholder="Search for movies..."></input>
     </form>
   );
 };

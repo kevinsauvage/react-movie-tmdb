@@ -11,8 +11,8 @@ $lightGrey: #E4E4E6;
     background-color: $darkBlue;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 40px 0 40px 40px;
+    justify-content: space-evenly;
+    align-items: center;
     & .logo {
         display: flex;
         margin-bottom: 60px;

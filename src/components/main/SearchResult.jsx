@@ -2,7 +2,6 @@ import React from "react";
 import MovieCard from "../main/MovieCard";
 
 const SearchResult = ({ searchResult, handleCardClickShow }) => {
-  console.log(searchResult);
   if (searchResult.length === 0) {
     return (
       <div className="noResult">
