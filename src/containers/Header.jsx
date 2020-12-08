@@ -16,8 +16,8 @@ const Header = () => {
   const [categorys, setCategorys] = useState([]);
   const [categoryName, setCategoryName] = useState("");
 
-  const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";
-
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(process.env.REACT_APP_API_KEY);
   // Fetch Category
   const fetchCategorys = async (e) => {
     const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";

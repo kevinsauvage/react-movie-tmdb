@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
 const CardDetail = ({ singleMovie, closeMovieDetailHandler }) => {
