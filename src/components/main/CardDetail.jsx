@@ -6,7 +6,7 @@ const CardDetail = ({
   closeMovieDetailHandler,
   fetchSingleMovieWithMovieId,
 }) => {
-  const background = `url(https://image.tmdb.org/t/p/original/${singleMovie.backdrop_path})`;
+  const background = `url(https://image.tmdb.org/t/p/w1280/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
     backgroundPosition: "center",
@@ -24,7 +24,7 @@ const CardDetail = ({
         <div
           className="icon-movie-card-detail"
           onClick={closeMovieDetailHandler}>
-          <FaTimesCircle size="30px" />
+          <FaTimesCircle size="30px" style={{ cursor: "pointer" }} />
         </div>
         <div className="movie-detail-container">
           <img
