@@ -17,7 +17,7 @@ const Header = () => {
   const [categoryName, setCategoryName] = useState("");
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(process.env.REACT_APP_API_KEY);
+
   // Fetch Category
   const fetchCategorys = async (e) => {
     const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";
@@ -44,6 +44,7 @@ const Header = () => {
     setDisplayCategory(false);
     setQueryID(null);
     setCategoryName("");
+    setCategoryResult([]);
   };
 
   // Load more movies handler
@@ -93,6 +94,7 @@ const Header = () => {
     const data = await response.json();
     const results = data.results;
     setCategoryResult(results);
+    setSearchResult([]);
     setDisplayCategory(true);
     setDisplaySearch(true);
     setQueryID("");
@@ -102,7 +104,6 @@ const Header = () => {
   const handleCardClickShow = (e) => {
     const att = e.target.getAttribute("data-key");
     setQueryID(att);
-    fetchSingleMovieWithMovieId();
     setDisplay(true);
   };
 
@@ -138,6 +139,7 @@ const Header = () => {
           categorys={categorys}
         />
         <Main
+          fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           categoryName={categoryName}
           closeMovieDetailHandler={closeMovieDetailHandler}
           handleCardClickShow={handleCardClickShow}

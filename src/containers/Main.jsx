@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Search from "../components/main/Search";
 import Content from "../components/main/Content";
 import CardDetail from "../components/main/CardDetail";
@@ -19,6 +19,7 @@ const Main = ({
   categoryResult,
   displayCategory,
   categoryName,
+  fetchSingleMovieWithMovieId,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const Main = ({
     <div className="main">
       {display ? (
         <CardDetail
+          fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           singleMovie={singleMovie}
           closeMovieDetailHandler={closeMovieDetailHandler}
         />
@@ -50,6 +52,11 @@ const Main = ({
               handleCardClickShow={handleCardClickShow}
             />
             {searchResult.length === 0 ? null : (
+              <LoadMoreFromSearch
+                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+              />
+            )}
+            {categoryResult.length === 0 ? null : (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
               />

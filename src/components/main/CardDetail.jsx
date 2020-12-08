@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
-const CardDetail = ({ singleMovie, closeMovieDetailHandler }) => {
+const CardDetail = ({
+  singleMovie,
+  closeMovieDetailHandler,
+  fetchSingleMovieWithMovieId,
+}) => {
   const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
@@ -9,6 +13,10 @@ const CardDetail = ({ singleMovie, closeMovieDetailHandler }) => {
     backgroundSize: "cover",
     backgroundRepeat: "noRepeat",
   };
+
+  useEffect(() => {
+    fetchSingleMovieWithMovieId();
+  }, [singleMovie]);
 
   return (
     <div className="card-detail" style={style}>

@@ -51,10 +51,13 @@ const Content = ({ handleCardClickShow }) => {
       <Carusel handleCardClickShow={handleCardClickShow} movies={popMovies} />
 
       <SectionTitle title="Top Rated Movies" />
-      <Carusel movies={topMovies} />
+      <Carusel movies={topMovies} handleCardClickShow={handleCardClickShow} />
 
       <SectionTitle title="Playing now" />
-      <Carusel movies={nowPlayingMovies} />
+      <Carusel
+        movies={nowPlayingMovies}
+        handleCardClickShow={handleCardClickShow}
+      />
     </div>
   );
 };

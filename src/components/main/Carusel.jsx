@@ -5,29 +5,25 @@ import MovieCard from "./MovieCard";
 
 const Carusel = ({ movies, handleCardClickShow }) => {
   const responsive = {
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024,
-      },
-      items: 8,
-      partialVisibilityGutter: 40,
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 9,
     },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0,
-      },
-      items: 1,
-      partialVisibilityGutter: 30,
+    desktop: {
+      breakpoint: { max: 3000, min: 1601 },
+      items: 7,
+    },
+    between: {
+      breakpoint: { max: 1600, min: 1024 },
+      items: 5,
     },
     tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464,
-      },
+      breakpoint: { max: 1024, min: 600 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 599, min: 0 },
       items: 2,
-      partialVisibilityGutter: 30,
     },
   };
 

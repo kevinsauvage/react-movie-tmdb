@@ -1,8 +1,8 @@
 .react-multi-carousel-item  {
-    height: 200px;
-    width: 190px ;
-    padding-right: 20px;
-    
+    height: 300px;
+    width: 250px !important;
+    padding-right: 15px;
+    border-radius: 5px;
 }
 
 .title {
@@ -27,4 +27,6 @@
 
 .card-container {
     background-size: cover;
+    background-position: top;
+
 }
