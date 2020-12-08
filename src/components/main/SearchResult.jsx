@@ -1,12 +1,11 @@
 import React from "react";
 import MovieCard from "../main/MovieCard";
 
-const SearchResult = ({ searchResult }) => {
-  console.log(searchResult);
+const SearchResult = ({ searchResult, handleCardClickShow }) => {
   return searchResult.map((movie) => {
     return (
       <div className="search-movie-card">
-        <MovieCard movie={movie} />
+        <MovieCard movie={movie} handleCardClickShow={handleCardClickShow} />
       </div>
     );
   });

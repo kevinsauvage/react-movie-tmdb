@@ -7,12 +7,18 @@ const SideBar = ({
   handleCardClickRemove,
   handleBackhome,
   fetchByCategory,
+  resetCounterPage,
+  categorys,
 }) => {
   return (
     <div className="side-bar" onClick={handleCardClickRemove}>
       <Logo handleBackhome={handleBackhome} />
       <Nav handleBackhome={handleBackhome} />
-      <Library fetchByCategory={fetchByCategory} />
+      <Library
+        categorys={categorys}
+        fetchByCategory={fetchByCategory}
+        resetCounterPage={resetCounterPage}
+      />
     </div>
   );
 };

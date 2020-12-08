@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
 const CardDetail = ({ singleMovie, closeMovieDetailHandler }) => {
-  const background = `url(https://image.tmdb.org/t/p/original/${singleMovie.backdrop_path})`;
+  const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
     backgroundPosition: "center",
@@ -20,7 +20,7 @@ const CardDetail = ({ singleMovie, closeMovieDetailHandler }) => {
         </div>
         <div className="movie-detail-container">
           <img
-            src={`https://image.tmdb.org/t/p/original/${singleMovie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w185/${singleMovie.poster_path}`}
             alt=""
             className="poster"
           />

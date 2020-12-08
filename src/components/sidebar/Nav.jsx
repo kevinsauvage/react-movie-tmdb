@@ -10,12 +10,6 @@ const Nav = ({ handleBackhome }) => {
           <li>HOME</li>
         </a>
       </div>
-      <div className="browse-link">
-        <FaSearch />
-        <a href="/#" className="link">
-          <li>BROWSE</li>
-        </a>
-      </div>
     </ul>
   );
 };

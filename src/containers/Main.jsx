@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Search from "../components/main/Search";
 import Content from "../components/main/Content";
 import CardDetail from "../components/main/CardDetail";
 import SearchResult from "../components/main/SearchResult";
-import Page from "../components/main/Page";
+import LoadMoreFromSearch from "../components/main/LoadMoreFromSearch";
 
 const Main = ({
   display,
@@ -12,11 +12,13 @@ const Main = ({
   query,
   fetchMoviesSearch,
   handleSearch,
-  handlePageChange,
   displaySearch,
   searchResult,
-  handleLogoClicked,
   closeMovieDetailHandler,
+  loadMoreHandlerFromSearch,
+  categoryResult,
+  displayCategory,
+  categoryName,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,13 +40,20 @@ const Main = ({
         query={query}
       />
       {displaySearch ? (
-        <div className="search-result-container">
-          <SearchResult
-            searchResult={searchResult}
-            handleLogoClicked={handleLogoClicked}
-          />
-          <Page handlePageChange={handlePageChange} />
-        </div>
+        <>
+          <div className="section-title" style={{ paddingLeft: "15px" }}>
+            {categoryName}
+          </div>
+          <div className="search-result-container">
+            <SearchResult
+              searchResult={displayCategory ? categoryResult : searchResult}
+              handleCardClickShow={handleCardClickShow}
+            />
+            <LoadMoreFromSearch
+              loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+            />
+          </div>
+        </>
       ) : (
         <Content handleCardClickShow={handleCardClickShow} />
       )}
