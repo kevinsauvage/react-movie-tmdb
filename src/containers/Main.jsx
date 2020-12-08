@@ -49,9 +49,11 @@ const Main = ({
               searchResult={displayCategory ? categoryResult : searchResult}
               handleCardClickShow={handleCardClickShow}
             />
-            <LoadMoreFromSearch
-              loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-            />
+            {searchResult.length === 0 ? null : (
+              <LoadMoreFromSearch
+                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+              />
+            )}
           </div>
         </>
       ) : (

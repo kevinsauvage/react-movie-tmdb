@@ -38,7 +38,7 @@ const Header = () => {
     );
     const data = await response.json();
     const results = data.results;
-    setSearchResult((prevSearchResult) => [...prevSearchResult, ...results]);
+    setSearchResult([...results]);
     setDisplaySearch(true);
     setPage(page + 1);
     setDisplayCategory(false);
@@ -60,7 +60,17 @@ const Header = () => {
         ...results,
       ]);
     } else {
-      fetchMoviesSearch();
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
+      );
+      const data = await response.json();
+      const results = data.results;
+      setSearchResult((prevSearchResult) => [...prevSearchResult, ...results]);
+      setDisplaySearch(true);
+      setPage(page + 1);
+      setDisplayCategory(false);
+      setQueryID(null);
+      setCategoryName("");
     }
   };
 
