@@ -15,9 +15,8 @@ $lightGrey: #E4E4E6;
     align-items: center;
     position: relative;
     & .logo {
-        
+            line-height: 1px;
             color:$green;
-            cursor: pointer;
             position: absolute;
             top: -55px;
     }
