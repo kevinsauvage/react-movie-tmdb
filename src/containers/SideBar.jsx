@@ -12,7 +12,7 @@ const SideBar = ({
 }) => {
   return (
     <div className="side-bar" onClick={handleCardClickRemove}>
-      <Logo handleBackhome={handleBackhome} />
+      <Logo />
       <Nav handleBackhome={handleBackhome} />
       <Library
         categorys={categorys}
