@@ -7,17 +7,19 @@ $lightGrey: #E4E4E6;
 
 // Sidebar general styling
 .side-bar {
-    width: 15vw;
+    min-width: 200px;
     background-color: $darkBlue;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
     & .logo {
-        & h2 {
+        
             color:$green;
             cursor: pointer;
-        }
+            position: absolute;
+            top: -55px;
     }
 }
 // Category title 

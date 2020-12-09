@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Search = ({ handleSearch, handleSubmit, query }) => {
   const [active, setActive] = useState(false);
-
+  // toggle class to expend search bar to full width
   const toggleClass = (e) => {
     e.preventDefault();
     const currentState = active;
@@ -20,7 +20,8 @@ const Search = ({ handleSearch, handleSubmit, query }) => {
         onChange={handleSearch}
         className="search-input"
         type="text"
-        placeholder="Search for movies..."></input>
+        placeholder="Search for movies..."
+      />
     </form>
   );
 };

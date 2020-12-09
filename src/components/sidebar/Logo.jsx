@@ -1,10 +1,9 @@
 import React from "react";
+import LogoImg from "../../assets/images/logo.png";
 
 const Logo = ({ handleBackhome }) => {
   return (
-    <div className="logo" onClick={handleBackhome}>
-      <h2>My Movies</h2>
-    </div>
+    <img className="logo" onClick={handleBackhome} src={LogoImg} alt="Logo" />
   );
 };
 

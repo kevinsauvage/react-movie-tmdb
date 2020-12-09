@@ -6,7 +6,7 @@ const Nav = ({ handleBackhome }) => {
     <ul className="nav">
       <div className="home-link">
         <FaHome />
-        <a href="/#" className="link" onClick={handleBackhome}>
+        <a href="/" className="link" onClick={handleBackhome}>
           <li>HOME</li>
         </a>
       </div>
