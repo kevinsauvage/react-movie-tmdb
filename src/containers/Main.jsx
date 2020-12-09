@@ -43,7 +43,9 @@ const Main = ({
       />
       {displaySearch ? (
         <>
-          <div className="section-title" style={{ paddingLeft: "15px" }}>
+          <div
+            className="section-title main-section-title"
+            style={{ paddingLeft: "15px" }}>
             {categoryName}
           </div>
           <div className="search-result-container">

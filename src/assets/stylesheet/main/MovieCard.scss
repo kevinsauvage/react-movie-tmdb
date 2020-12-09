@@ -1,6 +1,6 @@
 .react-multi-carousel-item  {
     height: 300px;
-    width: 250px !important;
+    width: 214px !important;
     padding-right: 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -18,16 +18,21 @@
     justify-content: center;
 }
 .title h3 {
-    font-size: 15px;
+    font-size: 13px;
     
 }
-.title p {
+.release-date {
+    position: absolute;
+    top: 0;
     font-size: 12px;
     font-weight: 300;
+    background-color: rgba(0, 0, 0, 0.575);
+    width: 100%;
+    text-align: center;
 }
 
 .card-container {
-    background-size: cover;
-    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
 
 }
