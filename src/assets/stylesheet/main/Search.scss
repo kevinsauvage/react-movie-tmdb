@@ -1,6 +1,7 @@
 .search {
     position: relative;
-    margin-top: 20px;
+    margin-top: 45px;
+
     .icon {
         position: absolute;
         height: 20px;
@@ -16,15 +17,32 @@
         border: none;
         border-radius: 40px;
         height: 50px;
-        width: 110px;
+        width: 500px;
         background-color: $mediumBlue;
         padding-left: 50px;
+        background-color:#313e5f9d;
+
         transition: all .2s cubic-bezier(.25,.75,.5,1.25) ;
         &:focus {
             outline: none;
-            background-color:#313e5f9d;
-            width: 500px;
+         
         }
     }
     
 }
+
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .search {
+        margin-top: 75px;
+        width: 330px;
+        padding-left: 22px;
+        .search-input {
+            width: 330px;
+            &:focus {
+                width: 327px;
+            }
+        }
+        
+    }
+  }

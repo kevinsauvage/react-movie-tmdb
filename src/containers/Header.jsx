@@ -15,6 +15,7 @@ const Header = () => {
   const [genreId, setGenreId] = useState(null);
   const [categorys, setCategorys] = useState([]);
   const [categoryName, setCategoryName] = useState("");
+  const [openMenuHamb, setOpenMenuHamb] = useState(false);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -132,6 +133,8 @@ const Header = () => {
     <header className="header">
       <>
         <SideBar
+          setOpenMenuHamb={setOpenMenuHamb}
+          openMenuHamb={openMenuHamb}
           handleCardClickRemove={closeMovieDetailHandler}
           handleBackhome={handleBackhome}
           fetchByCategory={fetchByCategory}
@@ -139,6 +142,9 @@ const Header = () => {
           categorys={categorys}
         />
         <Main
+          setOpenMenuHamb={setOpenMenuHamb}
+          openMenuHamb={openMenuHamb}
+          handleBackhome={handleBackhome}
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           categoryName={categoryName}
           closeMovieDetailHandler={closeMovieDetailHandler}

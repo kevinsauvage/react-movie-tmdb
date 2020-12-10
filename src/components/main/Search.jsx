@@ -11,9 +11,9 @@ const Search = ({ handleSearch, handleSubmit, query }) => {
   };
 
   return (
-    <form className="search" onClick={toggleClass} onSubmit={handleSubmit}>
-      <div className="icon">
-        <FaSearch />
+    <form className="search" onSubmit={handleSubmit}>
+      <div className="icon" onClick={toggleClass}>
+        <FaSearch onClick={toggleClass} />
       </div>
       <input
         value={query}

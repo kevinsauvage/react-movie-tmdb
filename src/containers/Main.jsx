@@ -4,8 +4,11 @@ import Content from "../components/main/Content";
 import CardDetail from "../components/main/CardDetail";
 import SearchResult from "../components/main/SearchResult";
 import LoadMoreFromSearch from "../components/main/LoadMoreFromSearch";
+import Logo from "../components/sidebar/Logo";
+import { FaBars } from "react-icons/fa";
 
 const Main = ({
+  handleBackhome,
   display,
   handleCardClickShow,
   singleMovie,
@@ -20,6 +23,8 @@ const Main = ({
   displayCategory,
   categoryName,
   fetchSingleMovieWithMovieId,
+  openMenuHamb,
+  setOpenMenuHamb,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +33,15 @@ const Main = ({
 
   return (
     <div className="main">
+      <div
+        className="hamburger-icon"
+        onClick={() => setOpenMenuHamb(!openMenuHamb)}>
+        <FaBars />
+      </div>
+      <div className="logo" onClick={handleBackhome}>
+        <Logo />
+      </div>
+
       {display ? (
         <CardDetail
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
@@ -35,7 +49,6 @@ const Main = ({
           closeMovieDetailHandler={closeMovieDetailHandler}
         />
       ) : null}
-
       <Search
         handleSubmit={handleSubmit}
         handleSearch={handleSearch}
@@ -43,11 +56,7 @@ const Main = ({
       />
       {displaySearch ? (
         <>
-          <div
-            className="section-title main-section-title"
-            style={{ paddingLeft: "15px" }}>
-            {categoryName}
-          </div>
+          <div className="section-title main-section-title">{categoryName}</div>
           <div className="search-result-container">
             <SearchResult
               searchResult={displayCategory ? categoryResult : searchResult}
