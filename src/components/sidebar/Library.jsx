@@ -5,7 +5,6 @@ const Library = ({
   resetCounterPage,
   categorys,
   setOpenMenuHamb,
-  openMenuHamb,
 }) => {
   return (
     <div className="library">
@@ -19,7 +18,7 @@ const Library = ({
             onClick={function (e) {
               fetchByCategory(e);
               resetCounterPage();
-              setOpenMenuHamb(!openMenuHamb);
+              setOpenMenuHamb(false);
             }}>
             {category.name}
           </li>
