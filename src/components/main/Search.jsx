@@ -12,16 +12,18 @@ const Search = ({ handleSearch, handleSubmit, query }) => {
 
   return (
     <form className="search" onSubmit={handleSubmit}>
-      <div className="icon" onClick={toggleClass}>
-        <FaSearch onClick={toggleClass} />
+      <div className="wrapper-search">
+        <div className="icon" onClick={toggleClass}>
+          <FaSearch onClick={toggleClass} />
+        </div>
+        <input
+          value={query}
+          onChange={handleSearch}
+          className="search-input"
+          type="text"
+          placeholder="Search for movies..."
+        />
       </div>
-      <input
-        value={query}
-        onChange={handleSearch}
-        className="search-input"
-        type="text"
-        placeholder="Search for movies..."
-      />
     </form>
   );
 };
