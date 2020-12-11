@@ -4,6 +4,11 @@
 .react-multiple-carousel__arrow {
     z-index: 1 !important;
 }
+
+.react-multi-carousel-track {
+    height: 270px;
+}
+
 @media screen and (min-width: 300px) and (max-width: 768px) {
     .react-multiple-carousel__arrow {
         display: none;

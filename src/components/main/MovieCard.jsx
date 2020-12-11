@@ -14,9 +14,7 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
         backgroundImage: backgroundImage,
         position: "relative",
         height: "100%",
-        width: "100%",
       }}>
-      <p className="release-date">{movie.release_date}</p>
       <div className="title">
         <h3>{movie.original_title}</h3>
       </div>

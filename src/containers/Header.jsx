@@ -157,7 +157,6 @@ const Header = () => {
           categorys={categorys}
           setPage={setPage}
           setDisplaySearch={setDisplaySearch}
-          setDisplay={setDisplay}
         />
         <Main
           setDisplay={setDisplay}

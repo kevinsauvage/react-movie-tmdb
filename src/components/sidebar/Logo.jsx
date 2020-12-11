@@ -1,8 +1,11 @@
 import React from "react";
-import LogoImg from "../../assets/images/logo.png";
 
-const Logo = () => {
-  return <img className="logo" src={LogoImg} alt="Logo" />;
+const Logo = ({ setDisplaySearch }) => {
+  return (
+    <div className="logo" onClick={() => setDisplaySearch(false)}>
+      <h1>MOVIES</h1>
+    </div>
+  );
 };
 
 export default Logo;

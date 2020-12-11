@@ -1,16 +1,14 @@
 .react-multi-carousel-item  {
-    height: 300px;
-    width: 214px !important;
     padding-right: 15px;
     border-radius: 5px;
+    width: 192px !important;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .title {
     position: absolute;
     bottom: 0;
-    background-color: black;
-    width: 100%;
     padding: 5px;
 }
 .title * {
@@ -34,5 +32,4 @@
 .card-container {
     background-size: contain;
     background-repeat: no-repeat;
-
 }

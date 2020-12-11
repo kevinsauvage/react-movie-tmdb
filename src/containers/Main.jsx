@@ -26,6 +26,7 @@ const Main = ({
   setPage,
   setDisplaySearch,
   setDisplay,
+  setQueryID,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ const Main = ({
         }}>
         <Logo />
       </div>
-      {/* Display card detail if true */}
+      {/* Display card  detail if true */}
       {display ? (
         <CardDetail
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}

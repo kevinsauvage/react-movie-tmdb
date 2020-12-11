@@ -3,7 +3,7 @@ import React from "react";
 const Library = ({ fetchByCategory, categorys, setOpenMenuHamb, setPage }) => {
   return (
     <div className="library">
-      <h2 className="section-title">Category</h2>
+      <h2 className="section-title">GENRE</h2>
       <ul className="library-nav">
         {categorys.map((category) => (
           <li

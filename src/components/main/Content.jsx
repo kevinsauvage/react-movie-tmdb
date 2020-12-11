@@ -52,12 +52,6 @@ const Content = ({ handleCardClickShow }) => {
 
       <SectionTitle title="Top Rated Movies" />
       <Carusel movies={topMovies} handleCardClickShow={handleCardClickShow} />
-
-      <SectionTitle title="Playing now" />
-      <Carusel
-        movies={nowPlayingMovies}
-        handleCardClickShow={handleCardClickShow}
-      />
     </div>
   );
 };

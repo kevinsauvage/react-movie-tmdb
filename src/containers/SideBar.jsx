@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "../components/sidebar/Nav";
 import Library from "../components/sidebar/Library";
 import Logo from "../components/sidebar/Logo";
 
@@ -22,8 +21,7 @@ const SideBar = ({
       className="side-bar"
       onClick={() => setDisplay(false)}
       style={openMenuHamb ? styleOpen : null}>
-      <Logo className="logo" />
-      <Nav setPage={setPage} setDisplaySearch={setDisplaySearch} />
+      <Logo className="logo" setDisplaySearch={setDisplaySearch} />
       <Library
         setOpenMenuHamb={setOpenMenuHamb}
         openMenuHamb={openMenuHamb}
