@@ -4,13 +4,13 @@ import Library from "../components/sidebar/Library";
 import Logo from "../components/sidebar/Logo";
 
 const SideBar = ({
-  handleCardClickRemove,
-  handleBackhome,
   fetchByCategory,
-  resetCounterPage,
   categorys,
   openMenuHamb,
   setOpenMenuHamb,
+  setPage,
+  setDisplaySearch,
+  setDisplay,
 }) => {
   const styleOpen = {
     left: "0",
@@ -20,16 +20,16 @@ const SideBar = ({
   return (
     <div
       className="side-bar"
-      onClick={handleCardClickRemove}
+      onClick={() => setDisplay(false)}
       style={openMenuHamb ? styleOpen : null}>
       <Logo className="logo" />
-      <Nav handleBackhome={handleBackhome} />
+      <Nav setPage={setPage} setDisplaySearch={setDisplaySearch} />
       <Library
         setOpenMenuHamb={setOpenMenuHamb}
         openMenuHamb={openMenuHamb}
         categorys={categorys}
         fetchByCategory={fetchByCategory}
-        resetCounterPage={resetCounterPage}
+        setPage={setPage}
       />
     </div>
   );

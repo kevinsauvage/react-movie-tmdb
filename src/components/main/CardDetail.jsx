@@ -3,8 +3,8 @@ import { FaTimesCircle } from "react-icons/fa";
 
 const CardDetail = ({
   singleMovie,
-  closeMovieDetailHandler,
   fetchSingleMovieWithMovieId,
+  setDisplay,
 }) => {
   const background = `url(https://image.tmdb.org/t/p/w1280/${singleMovie.backdrop_path})`;
   const style = {
@@ -23,7 +23,9 @@ const CardDetail = ({
       <div className="gradient">
         <div
           className="icon-movie-card-detail"
-          onClick={closeMovieDetailHandler}>
+          onClick={() => {
+            setDisplay(false);
+          }}>
           <FaTimesCircle size="30px" style={{ cursor: "pointer" }} />
         </div>
         <div className="movie-detail-container">

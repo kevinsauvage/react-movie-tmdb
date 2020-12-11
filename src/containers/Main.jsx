@@ -8,16 +8,13 @@ import Logo from "../components/sidebar/Logo";
 import { FaBars } from "react-icons/fa";
 
 const Main = ({
-  handleBackhome,
   display,
   handleCardClickShow,
   singleMovie,
   query,
   fetchMoviesSearch,
-  handleSearch,
   displaySearch,
   searchResult,
-  closeMovieDetailHandler,
   loadMoreHandlerFromSearch,
   categoryResult,
   displayCategory,
@@ -25,6 +22,10 @@ const Main = ({
   fetchSingleMovieWithMovieId,
   openMenuHamb,
   setOpenMenuHamb,
+  setQuery,
+  setPage,
+  setDisplaySearch,
+  setDisplay,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +39,12 @@ const Main = ({
         onClick={() => setOpenMenuHamb(!openMenuHamb)}>
         <FaBars />
       </div>
-      <div className="logo" onClick={handleBackhome}>
+      <div
+        className="logo"
+        onClick={() => {
+          setPage(1);
+          setDisplaySearch(false);
+        }}>
         <Logo />
       </div>
 
@@ -46,14 +52,10 @@ const Main = ({
         <CardDetail
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           singleMovie={singleMovie}
-          closeMovieDetailHandler={closeMovieDetailHandler}
+          setDisplay={setDisplay}
         />
       ) : null}
-      <Search
-        handleSubmit={handleSubmit}
-        handleSearch={handleSearch}
-        query={query}
-      />
+      <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
       {displaySearch ? (
         <>
           <div className="section-title main-section-title">{categoryName}</div>

@@ -1,11 +1,6 @@
 import React from "react";
 
-const Library = ({
-  fetchByCategory,
-  resetCounterPage,
-  categorys,
-  setOpenMenuHamb,
-}) => {
+const Library = ({ fetchByCategory, categorys, setOpenMenuHamb, setPage }) => {
   return (
     <div className="library">
       <h2 className="section-title">Category</h2>
@@ -17,7 +12,7 @@ const Library = ({
             data-name={category.name}
             onClick={function (e) {
               fetchByCategory(e);
-              resetCounterPage();
+              setPage(1);
               setOpenMenuHamb(false);
             }}>
             {category.name}
