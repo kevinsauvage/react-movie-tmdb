@@ -47,7 +47,7 @@ const Main = ({
         }}>
         <Logo />
       </div>
-
+      {/* Display card detail if true */}
       {display ? (
         <CardDetail
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
@@ -55,20 +55,25 @@ const Main = ({
           setDisplay={setDisplay}
         />
       ) : null}
+      {/* Search input */}
       <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
+      {/* Display search result if true - display content if false */}
       {displaySearch ? (
         <>
           <div className="section-title main-section-title">{categoryName}</div>
           <div className="search-result-container">
             <SearchResult
+              // Display category result if true - display search result if false
               searchResult={displayCategory ? categoryResult : searchResult}
               handleCardClickShow={handleCardClickShow}
             />
+            {/* display load more btn if search result contain at least 1 item*/}
             {searchResult.length === 0 ? null : (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
               />
             )}
+            {/* display load more btn if category result contain at least 1 item*/}
             {categoryResult.length === 0 ? null : (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
