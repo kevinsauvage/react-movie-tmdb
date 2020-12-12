@@ -21,7 +21,7 @@
 
     }
     .wrapper-search {
-        width: 650px;
+        width: 500px;
         .icon {
             position: absolute;
             height: 20px;
@@ -32,6 +32,10 @@
             border: none;    
             height: 100%;
             cursor: pointer;
+            svg {
+            color:$pink;
+
+            }
         }
         .search-input {
             font-size: 18px;
