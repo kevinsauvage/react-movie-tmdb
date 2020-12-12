@@ -1,6 +1,12 @@
 import React from "react";
 
-const Library = ({ fetchByCategory, categorys, setOpenMenuHamb, setPage }) => {
+const Library = ({
+  fetchByCategory,
+  categorys,
+  setOpenMenuHamb,
+  setPage,
+  setDisplay,
+}) => {
   return (
     <div className="library">
       <h2 className="section-title">GENRE</h2>
@@ -14,6 +20,7 @@ const Library = ({ fetchByCategory, categorys, setOpenMenuHamb, setPage }) => {
               fetchByCategory(e);
               setPage(1);
               setOpenMenuHamb(false);
+              setDisplay(false);
             }}>
             {category.name}
           </li>

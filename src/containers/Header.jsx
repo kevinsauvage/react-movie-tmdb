@@ -14,7 +14,7 @@ const Header = () => {
   // handling display of the serach result
   const [displaySearch, setDisplaySearch] = useState(false);
   // handling witch search array to display (search result or category result)
-  const [displayCategory, setDisplayCategory] = useState(true);
+  const [displayCategory, setDisplayCategory] = useState(false);
   // handling witch search array to display (search result or category result)
   const [searchResult, setSearchResult] = useState([]);
   // Store movie of category clicked
@@ -29,6 +29,10 @@ const Header = () => {
   const [categoryName, setCategoryName] = useState("");
   // Toggle the opening and closing of hamburger menu
   const [openMenuHamb, setOpenMenuHamb] = useState(false);
+  // Sort by result
+  const [sortByResults, setSortByResults] = useState([]);
+  const [displaySortResults, setDisplaySortResults] = useState(false);
+  const [sortName, setSortName] = useState("");
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -41,6 +45,7 @@ const Header = () => {
     const genres = data.genres;
     // Getting each tagory and store them inside categorys
     setCategorys(genres);
+    setQuery("");
   };
   // Fetch at first render the categorys
   useEffect(() => {
@@ -55,26 +60,29 @@ const Header = () => {
     const data = await response.json();
     const results = data.results;
     // Store fetch result of search
-    setSearchResult([...results]);
+    setSearchResult(results);
     // display the search result
     setDisplaySearch(true);
-    // changing the page after first fetch
-    setPage(page + 1);
     // Removing the category search result to desplay the search result input
     setDisplayCategory(false);
     // Reinintializing the query id of movie
+    setDisplaySortResults(false);
+
     setQueryID(null);
     // reinitializing the category in order to stop display it
     setCategoryName("");
     // reinitialinzing search category result
     setCategoryResult([]);
+    setSortByResults([]);
   };
 
   // Load more movies handler
   const loadMoreHandlerFromSearch = async () => {
     // Switching between fetch depending of the category fetch or search input search
-    if (queryId !== null) {
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${page}&with_genres=${genreId}`;
+    if (displayCategory) {
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
+        page + 1
+      }&with_genres=${genreId}`;
       const response = await fetch(url);
       const data = await response.json();
       const results = data.results;
@@ -83,25 +91,28 @@ const Header = () => {
         ...prevSearchResult,
         ...results,
       ]);
-      // Switching between fetch depending of the category fetch or search input search
-    } else {
+      setPage(page + 1);
+    }
+
+    if (displaySearch) {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
+          page + 1
+        }&include_adult=false`
       );
       const data = await response.json();
       const results = data.results;
       // Storing new result of fetch with the last result
       setSearchResult((prevSearchResult) => [...prevSearchResult, ...results]);
-      // displaying the search result
-      setDisplaySearch(true);
-      // adding  page for netch fetch
       setPage(page + 1);
-      // removing category result display
-      setDisplayCategory(false);
-      // reinitializing the query id to null
-      setQueryID(null);
-      // reinitializing the category in order to stop display it
-      setCategoryName("");
+    }
+
+    if (displaySortResults) {
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${page}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      const results = data.results;
+      setSortByResults((prevResults) => [...prevResults, ...results]);
     }
   };
 
@@ -133,9 +144,35 @@ const Header = () => {
     // Displaying the category results
     setDisplayCategory(true);
     // To display the result
-    setDisplaySearch(true);
-    // Reinitialize the query id after fetching
+    setDisplaySearch(false);
+
+    setDisplaySortResults(false);
+
+    // Reinitialize query
+    setQuery("");
+    setSortByResults([]);
+  };
+
+  // Fetch by popularity asc
+  const fetchBy = async () => {
+    setDisplaySortResults(true);
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${page}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const results = data.results;
+    setCategoryResult([]);
+    setSearchResult([]);
+    setDisplayCategory(false);
+    setDisplaySearch(false);
+    setSortByResults(results);
     setQueryID("");
+    setCategoryName("");
+    setPage(page + 1);
+  };
+  // sort by click handler
+  const sortByClickHandler = (e) => {
+    setSortName(e.target.dataset.name);
+    fetchBy();
   };
 
   // Handle the display of card movie detail when click on movie card
@@ -145,6 +182,12 @@ const Header = () => {
     setQueryID(att);
     // Displaying the movie detail card show
     setDisplay(true);
+  };
+
+  const handleBackHome = () => {
+    setDisplayCategory(false);
+    setDisplaySearch(false);
+    setDisplaySortResults(false);
   };
 
   return (
@@ -157,8 +200,13 @@ const Header = () => {
           categorys={categorys}
           setPage={setPage}
           setDisplaySearch={setDisplaySearch}
+          setDisplay={setDisplay}
+          sortByClickHandler={sortByClickHandler}
+          handleBackHome={handleBackHome}
         />
         <Main
+          displaySortResults={displaySortResults}
+          sortByResults={sortByResults}
           setDisplay={setDisplay}
           setPage={setPage}
           setDisplaySearch={setDisplaySearch}

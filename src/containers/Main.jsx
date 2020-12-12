@@ -26,11 +26,25 @@ const Main = ({
   setPage,
   setDisplaySearch,
   setDisplay,
-  setQueryID,
+  sortByResults,
+  displaySortResults,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchMoviesSearch();
+  };
+
+  const displayContentHandler = () => {
+    if (
+      displayCategory === true ||
+      displaySearch === true ||
+      displayCategory === true ||
+      displaySortResults === true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -57,15 +71,29 @@ const Main = ({
         />
       ) : null}
       {/* Search input */}
-      <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
+      <Search
+        handleSubmit={handleSubmit}
+        setQuery={setQuery}
+        query={query}
+        setPage={setPage}
+      />
       {/* Display search result if true - display content if false */}
-      {displaySearch ? (
+
+      {displayContentHandler() ? (
         <>
           <div className="section-title main-section-title">{categoryName}</div>
           <div className="search-result-container">
             <SearchResult
               // Display category result if true - display search result if false
-              searchResult={displayCategory ? categoryResult : searchResult}
+              searchResult={
+                displayCategory
+                  ? categoryResult
+                  : displaySearch
+                  ? searchResult
+                  : displaySortResults
+                  ? sortByResults
+                  : []
+              }
               handleCardClickShow={handleCardClickShow}
             />
             {/* display load more btn if search result contain at least 1 item*/}
@@ -76,6 +104,11 @@ const Main = ({
             )}
             {/* display load more btn if category result contain at least 1 item*/}
             {categoryResult.length === 0 ? null : (
+              <LoadMoreFromSearch
+                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+              />
+            )}
+            {sortByResults.length === 0 ? null : (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
               />

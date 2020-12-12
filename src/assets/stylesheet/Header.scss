@@ -6,9 +6,14 @@ $lightGrey: #E4E4E6;
 
 .header {
     min-height: 100vh;
-    max-height: 100vh;
     background-color:$green;
     display: flex;
-    overflow: hidden;
-    
+        
+}
+body::-webkit-scrollbar {
+    width: 0px; 
+}
+body {
+    overflow: -moz-scrollbars-none; 
+    -ms-overflow-style: none;
 }
