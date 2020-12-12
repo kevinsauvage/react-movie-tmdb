@@ -8,7 +8,9 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
     <div
       key={movie.id}
       data-key={movie.id}
-      onClick={handleCardClickShow}
+      onClick={(e) => {
+        handleCardClickShow(e);
+      }}
       className="card-container"
       style={{
         backgroundImage: backgroundImage,

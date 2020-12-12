@@ -29,9 +29,11 @@ const Header = () => {
   const [categoryName, setCategoryName] = useState("");
   // Toggle the opening and closing of hamburger menu
   const [openMenuHamb, setOpenMenuHamb] = useState(false);
-  // Sort by result
+  // Sort by result array
   const [sortByResults, setSortByResults] = useState([]);
+  // Set the display to the sort result fetch
   const [displaySortResults, setDisplaySortResults] = useState(false);
+  // set the name of the sort by parameter using dataset
   const [sortName, setSortName] = useState("");
 
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -54,8 +56,10 @@ const Header = () => {
 
   // Handle the search for movie and display it
   const fetchMoviesSearch = async () => {
+    setDisplay(false);
+    // API CALL
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
     );
     const data = await response.json();
     const results = data.results;
@@ -67,13 +71,16 @@ const Header = () => {
     setDisplayCategory(false);
     // Reinintializing the query id of movie
     setDisplaySortResults(false);
-
+    //reset query ID
     setQueryID(null);
     // reinitializing the category in order to stop display it
     setCategoryName("");
     // reinitialinzing search category result
     setCategoryResult([]);
+    //rester the result of sorting
     setSortByResults([]);
+    // Set the page + 1 for load more btn handler
+    setPage(page + 1);
   };
 
   // Load more movies handler
@@ -127,13 +134,17 @@ const Header = () => {
 
   // Fetch by category
   const fetchByCategory = async (e) => {
-    const categoryName = e.target.dataset.name;
+    // No fetch if clicking the same category
+    if (categoryName === e.target.dataset.name) {
+      return;
+    }
+    const categorysName = e.target.dataset.name;
     // Storing category name clicked in order to display it
-    setCategoryName(categoryName);
+    setCategoryName(categorysName);
     const genre = e.target.dataset.id;
     // storing categoyr clicked id in order to fetch
     setGenreId(genre);
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${page}&with_genres=${genre}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${genre}`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
@@ -141,30 +152,30 @@ const Header = () => {
     setCategoryResult(results);
     // Reinitialize the search result input to empty array
     setSearchResult([]);
-    // Displaying the category results
+    // Reset sort by results for display btn
+    setSortByResults([]);
+    // Displaying the category results for display btn
     setDisplayCategory(true);
     // To display the result
     setDisplaySearch(false);
-
+    // Reset the display of sort result
     setDisplaySortResults(false);
-
     // Reinitialize query
     setQuery("");
-    setSortByResults([]);
   };
 
-  // Fetch by popularity asc
+  // Fetch by
   const fetchBy = async () => {
     setDisplaySortResults(true);
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${page}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
+    setSortByResults(results);
     setCategoryResult([]);
     setSearchResult([]);
     setDisplayCategory(false);
     setDisplaySearch(false);
-    setSortByResults(results);
     setQueryID("");
     setCategoryName("");
     setPage(page + 1);
@@ -177,17 +188,18 @@ const Header = () => {
 
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
+    // Displaying the movie detail card show
+    setDisplay(true);
     const att = e.target.getAttribute("data-key");
     // getting query for data attribute to fetch the right movie
     setQueryID(att);
-    // Displaying the movie detail card show
-    setDisplay(true);
   };
 
   const handleBackHome = () => {
     setDisplayCategory(false);
     setDisplaySearch(false);
     setDisplaySortResults(false);
+    setDisplay(false);
   };
 
   return (

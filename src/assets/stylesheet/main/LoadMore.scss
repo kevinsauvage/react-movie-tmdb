@@ -4,8 +4,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin: 20px;
 }
-.load-more-btn > p {
-    cursor: pointer;
+.load-more-btn { 
+    button {
+        border: none;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        font-size: 34px;
+        font-weight: 300;
+        line-height: 44px;
+        letter-spacing: 2px;
+        background: transparent;
+        transition: .4s cubic-bezier(.54,.07,.34,.98);
+        cursor: pointer;
+        &hover {
+            letter-spacing: 15px;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
 }

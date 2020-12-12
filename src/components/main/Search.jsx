@@ -9,7 +9,10 @@ const Search = ({ handleSubmit, query, setQuery }) => {
     backgroundColor: "#313e5f9d",
   };
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <form
+      className="search"
+      onSubmit={handleSubmit}
+      onMouseLeave={() => setIsOpen(false)}>
       <div className="wrapper-search">
         <div className="icon" onClick={() => setIsOpen(!isOpen)}>
           <FaSearch onClick={() => setIsOpen(!isOpen)} />
