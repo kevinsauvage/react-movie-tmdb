@@ -17,7 +17,11 @@ const Search = ({ handleSubmit, query, setQuery }) => {
         <input
           style={isOpen ? style : null}
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value !== "") {
+              setQuery(e.target.value);
+            }
+          }}
           className="search-input"
           type="text"
           placeholder="Search for movies..."
