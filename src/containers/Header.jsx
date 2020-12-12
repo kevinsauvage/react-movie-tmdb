@@ -114,7 +114,8 @@ const Header = () => {
       setPage(page + 1);
     }
 
-    if (displaySortResults) {
+    if (displaySortResults === true) {
+      setPage(page + 1);
       const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${page}`;
       const response = await fetch(url);
       const data = await response.json();

@@ -21,9 +21,8 @@ const Search = ({ handleSubmit, query, setQuery }) => {
           style={isOpen ? style : null}
           value={query}
           onChange={(e) => {
-            if (e.target.value !== "") {
-              setQuery(e.target.value);
-            }
+            let value = e.target.value;
+            setQuery(value);
           }}
           className="search-input"
           type="text"
