@@ -203,6 +203,7 @@ const Header = () => {
     setDisplaySearch(false);
     setDisplaySortResults(false);
     setDisplay(false);
+    setCategoryName("");
   };
 
   return (
