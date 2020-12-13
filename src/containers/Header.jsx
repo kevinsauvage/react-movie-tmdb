@@ -204,6 +204,7 @@ const Header = () => {
     setDisplaySortResults(false);
     setDisplay(false);
     setCategoryName("");
+    setSingleMovie([]);
   };
 
   return (
