@@ -22,8 +22,9 @@ $pink : #e94560;
 }
 
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 1030px) {
     .main {
+        overflow: hidden;
         width: 100%;
         padding: 0 0 120px 0;
         .hamburger-icon {

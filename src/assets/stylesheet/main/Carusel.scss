@@ -16,7 +16,11 @@ $pink : #e94560;
     height: 240px;
 }
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .react-multi-carousel-list {
+        padding: 20px 0 0 0 ; 
+    
+    }
     .react-multiple-carousel__arrow {
         display: none;
     }

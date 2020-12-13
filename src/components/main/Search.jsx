@@ -5,7 +5,7 @@ const Search = ({ handleSubmit, query, setQuery }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const style = {
-    width: "400px",
+    width: "300px",
     backgroundColor: "#313e5f9d",
   };
   return (
