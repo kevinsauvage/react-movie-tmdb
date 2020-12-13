@@ -7,12 +7,9 @@ const SideBar = ({
   fetchByCategory,
   categorys,
   openMenuHamb,
-  setOpenMenuHamb,
-  setPage,
-  setDisplaySearch,
   setDisplay,
-  sortByClickHandler,
   handleBackHome,
+  fetchBy,
 }) => {
   const styleOpen = {
     left: "0",
@@ -24,20 +21,9 @@ const SideBar = ({
       className="side-bar"
       onClick={() => setDisplay(false)}
       style={openMenuHamb ? styleOpen : null}>
-      <Logo
-        className="logo"
-        setDisplaySearch={setDisplaySearch}
-        handleBackHome={handleBackHome}
-      />
-      <Library
-        setOpenMenuHamb={setOpenMenuHamb}
-        openMenuHamb={openMenuHamb}
-        categorys={categorys}
-        fetchByCategory={fetchByCategory}
-        setPage={setPage}
-        setDisplay={setDisplay}
-      />
-      <SortByNav sortByClickHandler={sortByClickHandler} />
+      <Logo className="logo" handleBackHome={handleBackHome} />
+      <Library categorys={categorys} fetchByCategory={fetchByCategory} />
+      <SortByNav fetchBy={fetchBy} />
     </div>
   );
 };

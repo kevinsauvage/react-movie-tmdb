@@ -11,7 +11,7 @@ const SearchResult = ({ searchResult, handleCardClickShow }) => {
   } else {
     return searchResult.map((movie) => {
       return (
-        <div className="search-movie-card">
+        <div key={movie.id} className="search-movie-card">
           <MovieCard movie={movie} handleCardClickShow={handleCardClickShow} />
         </div>
       );

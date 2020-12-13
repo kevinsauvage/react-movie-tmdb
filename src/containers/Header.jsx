@@ -79,8 +79,8 @@ const Header = () => {
     setCategoryResult([]);
     //rester the result of sorting
     setSortByResults([]);
-    // Set the page + 1 for load more btn handler
-    setPage(page + 1);
+    // Set the page to 1 for load more btn handler
+    setPage(1);
   };
 
   // Load more movies handler
@@ -99,14 +99,14 @@ const Header = () => {
         ...results,
       ]);
       setPage(page + 1);
+      console.log(url);
     }
 
     if (displaySearch) {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
-          page + 1
-        }&include_adult=false`
-      );
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
+        page + 1
+      }&include_adult=false`;
+      const response = await fetch(url);
       const data = await response.json();
       const results = data.results;
       // Storing new result of fetch with the last result
@@ -115,12 +115,14 @@ const Header = () => {
     }
 
     if (displaySortResults === true) {
-      setPage(page + 1);
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${page}`;
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${
+        page + 1
+      }`;
       const response = await fetch(url);
       const data = await response.json();
       const results = data.results;
       setSortByResults((prevResults) => [...prevResults, ...results]);
+      setPage(page + 1);
     }
   };
 
@@ -134,24 +136,11 @@ const Header = () => {
   };
 
   // Fetch by category
-  const fetchByCategory = async (e) => {
+  const fetchByCategory = async (name, id) => {
     // No fetch if clicking the same category
-    if (categoryName === e.target.dataset.name) {
+    if (categoryName === name) {
       return;
     }
-    const categorysName = e.target.dataset.name;
-    // Storing category name clicked in order to display it
-    setCategoryName(categorysName);
-    const genre = e.target.dataset.id;
-    // storing categoyr clicked id in order to fetch
-    setGenreId(genre);
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${genre}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    const results = data.results;
-    // Storing the results of movie by category clicked
-    setCategoryResult(results);
-    // Reinitialize the search result input to empty array
     setSearchResult([]);
     // Reset sort by results for display btn
     setSortByResults([]);
@@ -161,12 +150,32 @@ const Header = () => {
     setDisplaySearch(false);
     // Reset the display of sort result
     setDisplaySortResults(false);
+    // close menu hamb when clicking a link
+    setOpenMenuHamb(false);
+    // reset page to 1
+    setPage(1);
+    // Set display of carddetail to false
+    setDisplay(false);
     // Reinitialize query
     setQuery("");
+    // Storing category name clicked in order to display it
+    setCategoryName(name);
+    // storing categoyr clicked id in order to fetch
+    setGenreId(id);
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const results = data.results;
+    // Storing the results of movie by category clicked
+    setCategoryResult(results);
+    // Reinitialize the search result input to empty array
   };
 
   // Fetct to sort by
   const fetchBy = async (att) => {
+    setDisplayCategory(false);
+    setDisplaySearch(false);
+    setSortName(att);
     setDisplaySortResults(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
@@ -175,15 +184,9 @@ const Header = () => {
     setSortByResults(results);
     setCategoryResult([]);
     setSearchResult([]);
-    setDisplayCategory(false);
-    setDisplaySearch(false);
     setQueryID("");
     setCategoryName("");
-    setPage(page + 1);
-  };
-  // sort by click handler
-  const sortByClickHandler = (e) => {
-    fetchBy(e.target.dataset.name);
+    setPage(1);
   };
 
   // Handle the display of card movie detail when click on movie card
@@ -206,15 +209,12 @@ const Header = () => {
     <header className="header">
       <>
         <SideBar
-          setOpenMenuHamb={setOpenMenuHamb}
-          openMenuHamb={openMenuHamb}
           fetchByCategory={fetchByCategory}
           categorys={categorys}
-          setPage={setPage}
-          setDisplaySearch={setDisplaySearch}
+          openMenuHamb={openMenuHamb}
           setDisplay={setDisplay}
-          sortByClickHandler={sortByClickHandler}
           handleBackHome={handleBackHome}
+          fetchBy={fetchBy}
         />
         <Main
           displaySortResults={displaySortResults}

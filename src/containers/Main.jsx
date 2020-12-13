@@ -71,14 +71,8 @@ const Main = ({
         />
       ) : null}
       {/* Search input */}
-      <Search
-        handleSubmit={handleSubmit}
-        setQuery={setQuery}
-        query={query}
-        setPage={setPage}
-      />
+      <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
       {/* Display search result if true - display content if false */}
-
       {displayContentHandler() ? (
         <>
           <div className="section-title main-section-title">{categoryName}</div>

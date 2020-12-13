@@ -32,19 +32,6 @@ const Content = ({ handleCardClickShow }) => {
     getMovies();
   }, []);
 
-  // Fetching now Playing
-  const [nowPlayingMovies, setnowPlayingMovies] = useState([]);
-  const nowPlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&${page}`;
-
-  useEffect(() => {
-    async function getMovies() {
-      const response = await fetch(nowPlayingUrl);
-      const data = await response.json();
-      setnowPlayingMovies(data.results);
-    }
-    getMovies();
-  }, []);
-
   return (
     <div className="content">
       <SectionTitle title="Popular Movies" />
