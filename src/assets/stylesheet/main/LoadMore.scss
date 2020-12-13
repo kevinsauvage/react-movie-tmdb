@@ -1,3 +1,10 @@
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
+$green : #187142;
+$pink : #e94560;
+
+
 .load-more-btn {
     width: 100%;
     height: 50px;
@@ -5,25 +12,21 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
-}
-.load-more-btn { 
-
     button {
         border: none;
         border-top: 2px solid rgba(255, 255, 255, 0.349);
         border-bottom: 2px solid rgba(255, 255, 255, 0.281);
-        font-size: 34px;
+        font-size: 28px;
         font-weight: 200;
         line-height: 44px;
         letter-spacing: 2px;
         background: transparent;
         transition: .4s cubic-bezier(.54,.07,.34,.98);
-        color:#e94560;
+        color:$pink;
         cursor: pointer;
         &:hover {
             letter-spacing: 10px;
         }
-        
         &:focus {
             outline: none;
         }

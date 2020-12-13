@@ -1,7 +1,6 @@
 @import './assets/stylesheet/Header.scss';
 @import './assets/stylesheet/sidebar/SideBar.scss';
 @import './assets/stylesheet/main/Main.scss';
-@import "./assets/stylesheet/sidebar/Button.scss";
 @import "./assets/stylesheet/main/Search.scss";
 @import './assets/stylesheet/main/Content.scss';
 @import './assets/stylesheet/main/MovieCard.scss';
@@ -26,7 +25,6 @@ $lightGrey: #E4E4E6;
      list-style-type: none;
      color: $lightGrey;
      text-decoration: none;
-
 }
 a {
     text-decoration: none;
@@ -36,4 +34,11 @@ a {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+body {
+    overflow: -moz-scrollbars-none; 
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        width: 0px; 
+    }
 }

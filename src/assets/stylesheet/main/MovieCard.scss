@@ -1,3 +1,9 @@
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
+$green : #187142;
+$pink : #e94560;
+
 .react-multi-carousel-item  {
     padding-right: 15px;
     border-radius: 5px;
@@ -9,29 +15,6 @@
     transition: transform 500ms;
 }
 
-.title {
-    position: absolute;
-    bottom: 0;
-    padding: 5px;
-}
-.title * {
-    display: flex;
-    justify-content: center;
-}
-.title h3 {
-    font-size: 13px;
-    
-}
-.release-date {
-    position: absolute;
-    top: 0;
-    font-size: 12px;
-    font-weight: 300;
-    background-color: rgba(0, 0, 0, 0.575);
-    width: 100%;
-    text-align: center;
-}
-
 .card-container {
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,36 +23,35 @@
     &:hover {
         transform: scale(1.1);
     }
-}
-
-.detail-card-hover {
-    height:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-    align-items:center;
-    background-color: rgba(0, 0, 0, 0.74);
-    opacity: 0;
-    transition: all 400ms ease-in;
-    &:hover {
-        opacity: 1;
-    }
-    
-    div {
-        width:100%;
-        text-align:center;
-        p {
-            width:100%;
-            font-size:14px;
+    .detail-card-hover {
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-evenly;
+        align-items:center;
+        background-color: rgba(0, 0, 0, 0.74);
+        opacity: 0;
+        transition: all 400ms ease-in;
+        &:hover {
+            opacity: 1;
         }
-        .title-card-hover {
+        div {
+            width:100%;
+            text-align:center;
+            p {
+                width:100%;
+                font-size:14px;
+            }
+            .title-card-hover {
+                font-size: 20px;
+            }
+        }
+        .vote-card-detail {
             font-size: 20px;
         }
     }
-    .vote-card-detail {
-        font-size: 20px;
-    }
 }
+
 
 
 

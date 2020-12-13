@@ -1,3 +1,9 @@
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
+$green : #187142;
+$pink : #e94560;
+
 .main {
     width:calc(100vw - 200px);
     background-color: $mediumBlue ;
@@ -9,10 +15,10 @@
         cursor: pointer;
         display: none;
     }
-}
-.main-section-title {
-    margin-top: 20px;
-    padding-left: 15px;
+    .main-section-title {
+        margin-top: 20px;
+        padding-left: 50px;
+    }
 }
 
 

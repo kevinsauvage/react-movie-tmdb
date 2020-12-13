@@ -1,3 +1,9 @@
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
+$green : #187142;
+$pink : #e94560;
+
 .search {
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.158);
@@ -6,14 +12,14 @@
     height: 50px;
     margin: 40px 40px 0 40px;
     h2{
-        color:#0AC2F3;
+        color:$ligthBlue;
         display: flex;
         align-items: flex-end;
         flex-grow: 2;
         padding: 7px;
     }
     p {
-        color:#0AC2F3;
+        color:$ligthBlue;
         height: 100%;
         display: flex;
         align-items: flex-end;
@@ -34,7 +40,6 @@
             cursor: pointer;
             svg {
             color:$pink;
-
             }
         }
         .search-input {

@@ -1,19 +1,11 @@
 $darkBlue :  #0A1228;
 $mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
 $green : #187142;
-$pink : #B23456;
-$lightGrey: #E4E4E6;
+$pink : #e94560;
 
 .header {
     min-height: 100vh;
-    background-color: #1a1a2e;
+    background-color: $darkBlue;
     display: flex;
-        
-}
-body::-webkit-scrollbar {
-    width: 0px; 
-}
-body {
-    overflow: -moz-scrollbars-none; 
-    -ms-overflow-style: none;
 }

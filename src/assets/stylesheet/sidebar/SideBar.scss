@@ -1,8 +1,8 @@
 $darkBlue :  #0A1228;
 $mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
 $green : #187142;
-$pink : #B23456;
-$lightGrey: #E4E4E6;
+$pink : #e94560;
 
 
 // Sidebar general styling
@@ -12,49 +12,39 @@ $lightGrey: #E4E4E6;
     position: relative;
     z-index: 5;
     padding: 30px;
+    .logo {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.288);
+        h1 {
+            padding: 20px 0 10px 0;
+            font-size: 25px;
+            color:$ligthBlue;
+            font-weight: 400;
+            cursor: pointer;
+        }
+    }
     .library {
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.171);
         .library-nav {
             li {
-                color:#0AC2F3;
+                color: $ligthBlue;
                 font-weight: 100;
                 font-size: 15px;
                 cursor: pointer;
             }
-
         }
     }
-    h2 {
+    .section-title {
         padding: 20px 0 0px 0;
         font-weight: 400;
-
     }
-
 }
 // Category title 
 .section-title {
     font-size: 18px;
     margin-bottom: 15px;
-    color:#e94560;
+    color:$pink;
     font-weight: 400;
-}
-
-// Spacing between icon and link 
-.link {
-    margin-left: 20px;
-    font-size: 16px;
-}
-.logo {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.288);
-    h1 {
-        padding: 20px 0 10px 0;
-        font-size: 25px;
-        color:#0AC2F3;
-        font-weight: 400;
-        cursor: pointer;
-
-    }
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
@@ -67,7 +57,6 @@ $lightGrey: #E4E4E6;
         transition: left 1s ease;
         .library {
             margin: 50px 0 0 10px;
-
         }
     }
   }

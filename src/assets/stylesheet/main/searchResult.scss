@@ -1,24 +1,30 @@
-.search-movie-card {
-    width: 141px;
-    height: 210px;
-    margin: 10px;
-    cursor: pointer;
+$darkBlue :  #0A1228;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
+$green : #187142;
+$pink : #e94560;
 
-}
+
 
 .search-result-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}
-
-.noResult {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    padding: 0 25px 0 25px  ;
+    .search-movie-card {
+        width: 141px;
+        height: 210px;
+        margin: 10px;
+        cursor: pointer;
+    }
+    .noResult {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         height: 80vh;
-    font-size: 25px;
+        font-size: 25px;
+    } 
 }
 
 @media screen and (min-width: 300px) and (max-width: 480px) {
