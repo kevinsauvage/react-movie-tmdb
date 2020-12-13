@@ -5,19 +5,15 @@ const SortByNav = ({ sortByClickHandler }) => {
     <div className="sort-by">
       <h2 className="section-title">SORT BY</h2>
       <ul className="sort-by-nav">
-        <li data-name="popularity.desc" onClick={sortByClickHandler}>
+        <li data-name="popularity.desc" onClick={(e) => sortByClickHandler(e)}>
           Popularity desc
         </li>
-        <li data-name="release_date.asc" onClick={sortByClickHandler}>
-          Realease date asc
-        </li>
-        <li data-name="popularity.desc" onClick={sortByClickHandler}>
-          Realease date desc
-        </li>
-        <li data-name="vote_average.desc" onClick={sortByClickHandler}>
+        <li
+          data-name="vote_average.desc"
+          onClick={(e) => sortByClickHandler(e)}>
           Vote average
         </li>
-        <li data-name="vote_count.desc" onClick={sortByClickHandler}>
+        <li data-name="vote_count.desc" onClick={(e) => sortByClickHandler(e)}>
           Vote Count
         </li>
       </ul>

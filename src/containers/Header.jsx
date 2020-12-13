@@ -165,10 +165,10 @@ const Header = () => {
     setQuery("");
   };
 
-  // Fetch by
-  const fetchBy = async () => {
+  // Fetct to sort by
+  const fetchBy = async (att) => {
     setDisplaySortResults(true);
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=1`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
@@ -183,8 +183,7 @@ const Header = () => {
   };
   // sort by click handler
   const sortByClickHandler = (e) => {
-    setSortName(e.target.dataset.name);
-    fetchBy();
+    fetchBy(e.target.dataset.name);
   };
 
   // Handle the display of card movie detail when click on movie card
