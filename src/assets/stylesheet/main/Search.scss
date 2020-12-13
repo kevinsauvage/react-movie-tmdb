@@ -23,7 +23,6 @@ $pink : #e94560;
         display: flex;
         align-items: flex-end;
         padding: 7px;
-
     }
     .wrapper-search {
         width: 0px;
@@ -55,10 +54,8 @@ $pink : #e94560;
                 
             }
         }
+    }
 }
-}
-
-
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .search {
         margin-top: 80px;
@@ -66,7 +63,7 @@ $pink : #e94560;
             position: absolute;
             top: -28px;
             right: 50%;
-            left: 50%;
+            left: 40%;
             padding: 0;
             width: 100%;
         }
