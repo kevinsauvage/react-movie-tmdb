@@ -1,6 +1,11 @@
 import React from "react";
 
 const SortByNav = ({ fetchBy, setOpenMenuHamb }) => {
+  const fetchByName = (name) => {
+    fetchBy(name);
+  };
+
+  const clickHandler = (e) => {};
   return (
     <div className="sort-by">
       <h2 className="section-title">SORT BY</h2>
@@ -15,12 +20,18 @@ const SortByNav = ({ fetchBy, setOpenMenuHamb }) => {
         </li>
         <li
           data-name="vote_average.desc"
-          onClick={(e) => fetchBy(e.target.dataset.name)}>
+          onClick={(e) => {
+            fetchBy(e.target.dataset.name);
+            setOpenMenuHamb(false);
+          }}>
           Vote average
         </li>
         <li
           data-name="vote_count.desc"
-          onClick={(e) => fetchBy(e.target.dataset.name)}>
+          onClick={(e) => {
+            fetchBy(e.target.dataset.name);
+            setOpenMenuHamb(false);
+          }}>
           Vote Count
         </li>
       </ul>
