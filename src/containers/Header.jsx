@@ -82,6 +82,8 @@ const Header = () => {
     //rester the result of sorting
     setSortByResults([]);
     // Set the page to 1 for load more btn handler
+    setSortName("");
+
     setPage(1);
   };
 
@@ -101,6 +103,8 @@ const Header = () => {
     setSortByResults([]);
     // reset display search to false
     setDisplaySearch(false);
+    setSortName("");
+    setQuery("");
 
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
@@ -183,6 +187,11 @@ const Header = () => {
     if (categoryName === name) {
       return;
     }
+    setQuery("");
+
+    setAttrSearch("");
+    setSortName("");
+
     setSearchResult([]);
     // Reset sort by results for display btn
     setSortByResults([]);
@@ -223,6 +232,7 @@ const Header = () => {
     setSearchResult([]);
     setQueryID("");
     setCategoryName("");
+    setQuery("");
 
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
@@ -250,6 +260,7 @@ const Header = () => {
     setDisplaySeeAll(false);
     setCategoryName("");
     setSingleMovie([]);
+    setSortName("");
   };
 
   return (
@@ -286,6 +297,8 @@ const Header = () => {
           categoryResult={categoryResult}
           fetchByAtt={fetchByAtt}
           displaySeeAll={displaySeeAll}
+          attrSearch={attrSearch}
+          sortName={sortName}
         />
       </>
     </header>

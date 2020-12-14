@@ -30,6 +30,8 @@ const Main = ({
   displaySortResults,
   fetchByAtt,
   displaySeeAll,
+  attrSearch,
+  sortName,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,7 +81,17 @@ const Main = ({
       {/* Display search result if true - display content if false */}
       {displayContentHandler() ? (
         <>
-          <div className="section-title main-section-title">{categoryName}</div>
+          <div className="section-title main-section-title">
+            {categoryName.toUpperCase() ||
+              attrSearch.split("_").join(" ").toUpperCase() ||
+              sortName
+                .split(".")
+                .join(" ")
+                .split("_")
+                .join(" ")
+                .toUpperCase() ||
+              query.toUpperCase()}
+          </div>
           <div className="search-result-container">
             <SearchResult
               // Display category result if true - display search result if false
