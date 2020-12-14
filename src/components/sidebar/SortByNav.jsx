@@ -1,13 +1,16 @@
 import React from "react";
 
-const SortByNav = ({ fetchBy }) => {
+const SortByNav = ({ fetchBy, setOpenMenuHamb }) => {
   return (
     <div className="sort-by">
       <h2 className="section-title">SORT BY</h2>
       <ul className="sort-by-nav">
         <li
           data-name="popularity.desc"
-          onClick={(e) => fetchBy(e.target.dataset.name)}>
+          onClick={(e) => {
+            fetchBy(e.target.dataset.name);
+            setOpenMenuHamb(false);
+          }}>
           Popularity desc
         </li>
         <li

@@ -274,6 +274,7 @@ const Header = () => {
           setDisplay={setDisplay}
           handleBackHome={handleBackHome}
           fetchBy={fetchBy}
+          setOpenMenuHamb={setOpenMenuHamb}
         />
         <Main
           handleBackHome={handleBackHome}

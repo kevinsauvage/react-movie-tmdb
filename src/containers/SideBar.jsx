@@ -10,6 +10,7 @@ const SideBar = ({
   setDisplay,
   handleBackHome,
   fetchBy,
+  setOpenMenuHamb,
 }) => {
   const styleOpen = {
     left: "0",
@@ -23,7 +24,7 @@ const SideBar = ({
       style={openMenuHamb ? styleOpen : null}>
       <Logo className="logo" handleBackHome={handleBackHome} />
       <Library categorys={categorys} fetchByCategory={fetchByCategory} />
-      <SortByNav fetchBy={fetchBy} />
+      <SortByNav fetchBy={fetchBy} setOpenMenuHamb={setOpenMenuHamb} />
     </div>
   );
 };
