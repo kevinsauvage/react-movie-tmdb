@@ -4,6 +4,8 @@ $ligthBlue :#0AC2F3;
 $green : #187142;
 $pink : #e94560;
 
+
+
 .react-multi-carousel-item  {
     padding-right: 15px;
     border-radius: 5px;
@@ -14,12 +16,18 @@ $pink : #e94560;
     padding: 5px;
     transition: transform 500ms;
 }
+@keyframes fadeIn {
+    0%   {opacity: 0; }
+    100% {opacity: 1;}
+}
 
 .card-container {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transition: transform 400ms;
     position: relative;
+    animation: fadeIn 2s;
+
     &:hover {
         transform: scale(1.1);
     }

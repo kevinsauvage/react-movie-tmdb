@@ -10,22 +10,27 @@ const CardDetail = ({
   const background = `url(https://image.tmdb.org/t/p/w1280/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "noRepeat",
   };
 
   useEffect(() => {
     fetchSingleMovieWithMovieId();
   }, [singleMovie]);
 
+  const fadeOut = (e) => {
+    const cont = e.currentTarget.parentElement.parentElement;
+    cont.style.animation = "fadeOut 600ms";
+    setTimeout(() => {
+      setDisplay(false);
+    }, 500);
+  };
+
   return (
     <div className="card-detail" style={style}>
       <div className="gradient">
         <div
           className="icon-movie-card-detail"
-          onClick={() => {
-            setDisplay(false);
+          onClick={(e) => {
+            fadeOut(e);
           }}>
           <FaTimesCircle size="30px" style={{ cursor: "pointer" }} />
         </div>

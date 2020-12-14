@@ -177,25 +177,27 @@ const Header = () => {
     setDisplaySearch(false);
     setSortName(att);
     setDisplaySortResults(true);
+    setCategoryResult([]);
+    setSearchResult([]);
+    setQueryID("");
+    setCategoryName("");
+
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     setSortByResults(results);
-    setCategoryResult([]);
-    setSearchResult([]);
-    setQueryID("");
-    setCategoryName("");
+
     setPage(1);
   };
 
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
-    // Displaying the movie detail card show
-    setDisplay(true);
     const att = e.target.getAttribute("data-key");
     // getting query for data attribute to fetch the right movie
     setQueryID(att);
+    // Displaying the movie detail card show
+    setDisplay(true);
   };
 
   const handleBackHome = () => {
