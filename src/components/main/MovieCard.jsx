@@ -25,7 +25,11 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
           handleCardClickShow(e);
         }}
         className="detail-card-hover">
-        <div>
+        <div
+          data-key={movie.id}
+          onClick={(e) => {
+            handleCardClickShow(e);
+          }}>
           <p
             data-key={movie.id}
             onClick={(e) => {
@@ -39,10 +43,17 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
             onClick={(e) => {
               handleCardClickShow(e);
             }}>
-            {movie.release_date}
+            {movie.release_date.split("-")[0]}
           </p>
         </div>
-        <div className="vote-card-detail">{movie.vote_average}</div>
+        <div
+          data-key={movie.id}
+          onClick={(e) => {
+            handleCardClickShow(e);
+          }}
+          className="vote-card-detail">
+          {movie.vote_average}
+        </div>
       </div>
     </div>
   );
