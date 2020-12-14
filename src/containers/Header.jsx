@@ -35,7 +35,9 @@ const Header = () => {
   const [displaySortResults, setDisplaySortResults] = useState(false);
   // set the name of the sort by parameter using dataset
   const [sortName, setSortName] = useState("");
+  // set the display of see all top rater or popular
   const [displaySeeAll, setDisplaySeeAll] = useState(false);
+  // Set the attribute top rated or see all in order to keep track when calling load more
   const [attrSearch, setAttrSearch] = useState("");
 
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -51,6 +53,7 @@ const Header = () => {
     setCategorys(genres);
     setQuery("");
   };
+
   // Fetch at first render the categorys
   useEffect(() => {
     fetchCategorys();
@@ -59,120 +62,86 @@ const Header = () => {
   // Handle the search for movie and display it
   const fetchMoviesSearch = async () => {
     setDisplay(false);
+    setDisplayCategory(false);
+    setDisplaySortResults(false);
+    setQueryID(null);
+    setCategoryName("");
+    setCategoryResult([]);
+    setSortByResults([]);
+    setSortName("");
     // API CALL
     const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
     );
     const data = await response.json();
     const results = data.results;
-    // Store fetch result of search
     setSearchResult(results);
-    // display the search result
     setDisplaySearch(true);
-    // Removing the category search result to desplay the search result input
-    setDisplayCategory(false);
-    // Reinintializing the query id of movie
-    setDisplaySortResults(false);
-    //reset query ID
-    setQueryID(null);
-    // reinitializing the category in order to stop display it
-    setCategoryName("");
-    // reinitialinzing search category result
-    setCategoryResult([]);
-    //rester the result of sorting
-    setSortByResults([]);
-    // Set the page to 1 for load more btn handler
-    setSortName("");
-
     setPage(1);
   };
 
   // fetch by att 'popular' or 'top rated'
   const fetchByAtt = async (att) => {
-    // Removing the category search result to desplay the search result input
+    // set state to display right component and content
     setDisplayCategory(false);
-    // Reinintializing the query id of movie
     setDisplaySortResults(false);
-    //reset query ID
     setQueryID(null);
-    // reinitializing the category in order to stop display it
     setCategoryName("");
-    // reinitialinzing search category result
     setCategoryResult([]);
-    //rester the result of sorting
     setSortByResults([]);
-    // reset display search to false
     setDisplaySearch(false);
-
     setSearchResult([]);
-
     setSortName("");
     setQuery("");
 
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     setSearchResult(data.results);
+    // Display true after fetching
     setDisplaySeeAll(true);
-
-    // Set the page to 1 for load more btn handler
     setPage(1);
     setAttrSearch(att);
   };
 
   // Load more movies handler
   const loadMoreHandlerFromSearch = async () => {
-    // Switching between fetch depending of the category fetch or search input search
-    if (displayCategory) {
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
-        page + 1
-      }&with_genres=${genreId}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const results = data.results;
-      // Storing new result of fetch with the last result
+    const url = displayCategory
+      ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
+          page + 1
+        }&with_genres=${genreId}`
+      : displaySearch
+      ? `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
+          page + 1
+        }&include_adult=false`
+      : displaySortResults
+      ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${
+          page + 1
+        }`
+      : displaySeeAll
+      ? `https://api.themoviedb.org/3/movie/${attrSearch}?api_key=${API_KEY}&language=en-US&page=${
+          page + 1
+        }`
+      : null;
+    const response = await fetch(url);
+    const data = await response.json();
+    const results = data.results;
+
+    // Storing new result of fetch with the last result
+    if (displayCategory)
       setCategoryResult((prevSearchResult) => [
         ...prevSearchResult,
         ...results,
       ]);
-      setPage(page + 1);
-      console.log(url);
-    }
 
-    if (displaySearch) {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
-        page + 1
-      }&include_adult=false`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const results = data.results;
-      // Storing new result of fetch with the last result
+    if (displaySearch)
       setSearchResult((prevSearchResult) => [...prevSearchResult, ...results]);
-      setPage(page + 1);
-    }
-
-    if (displaySortResults === true) {
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortName}&include_adult=false&include_video=false&page=${
-        page + 1
-      }`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const results = data.results;
+    if (displaySortResults)
       setSortByResults((prevResults) => [...prevResults, ...results]);
-      setPage(page + 1);
-    }
-
-    if (displaySeeAll === true) {
-      const url = `https://api.themoviedb.org/3/movie/${attrSearch}?api_key=${API_KEY}&language=en-US&page=${
-        page + 1
-      }`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const results = data.results;
+    if (displaySeeAll)
       setSearchResult((prevResults) => [...prevResults, ...results]);
-      setPage(page + 1);
-    }
+
+    setPage(page + 1);
   };
 
   // Fetch single movie by id to display movie card detail
@@ -190,31 +159,21 @@ const Header = () => {
     if (categoryName === name) {
       return;
     }
+    // Set state in order to display the right component
     setQuery("");
-
     setAttrSearch("");
     setSortName("");
-
     setSearchResult([]);
-    // Reset sort by results for display btn
     setSortByResults([]);
-    // Displaying the category results for display btn
-    setDisplayCategory(true);
-    // To display the result
     setDisplaySearch(false);
-    // Reset the display of sort result
     setDisplaySortResults(false);
-    // close menu hamb when clicking a link
     setOpenMenuHamb(false);
-    // reset page to 1
     setPage(1);
-    // Set display of carddetail to false
     setDisplay(false);
-    // Reinitialize query
-    setQuery("");
-    // Storing category name clicked in order to display it
+    setDisplayCategory(true);
+    // Set state to display the right name
     setCategoryName(name);
-    // storing categoyr clicked id in order to fetch
+
     setGenreId(id);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${id}`;
     const response = await fetch(url);
@@ -227,9 +186,9 @@ const Header = () => {
 
   // Fetct to sort by
   const fetchBy = async (att) => {
+    // Reset in order to display the right component
     setDisplayCategory(false);
     setDisplaySearch(false);
-    setSortName(att);
     setDisplaySortResults(true);
     setCategoryResult([]);
     setSearchResult([]);
@@ -237,6 +196,7 @@ const Header = () => {
     setCategoryName("");
     setQuery("");
 
+    setSortName(att);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     const data = await response.json();
@@ -248,8 +208,8 @@ const Header = () => {
 
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
-    const att = e.target.getAttribute("data-key");
     // getting query for data attribute to fetch the right movie
+    const att = e.target.getAttribute("data-key");
     setQueryID(att);
     // Displaying the movie detail card show
     setDisplay(true);
