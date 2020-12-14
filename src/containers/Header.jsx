@@ -103,6 +103,7 @@ const Header = () => {
     setSortByResults([]);
     // reset display search to false
     setDisplaySearch(false);
+
     setSearchResult([]);
 
     setSortName("");

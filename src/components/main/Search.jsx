@@ -8,13 +8,18 @@ const Search = ({ handleSubmit, query, setQuery }) => {
     width: "300px",
     backgroundColor: "#313e5f9d",
   };
+
+  const isOpenClickHandler = (e) => {
+    setIsOpen(!isOpen);
+    e.currentTarget.nextSibling.focus();
+  };
   return (
     <form
       className="search"
       onSubmit={handleSubmit}
       onMouseLeave={() => setIsOpen(false)}>
       <div className="wrapper-search">
-        <div className="icon" onClick={() => setIsOpen(!isOpen)}>
+        <div className="icon" onClick={isOpenClickHandler}>
           <FaSearch fill="#e94560" onClick={() => setIsOpen(!isOpen)} />
         </div>
         <input
