@@ -261,6 +261,7 @@ const Header = () => {
     setCategoryName("");
     setSingleMovie([]);
     setSortName("");
+    setOpenMenuHamb(false);
   };
 
   return (
@@ -275,6 +276,7 @@ const Header = () => {
           fetchBy={fetchBy}
         />
         <Main
+          handleBackHome={handleBackHome}
           displaySortResults={displaySortResults}
           sortByResults={sortByResults}
           setDisplay={setDisplay}

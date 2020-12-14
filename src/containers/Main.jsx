@@ -32,6 +32,7 @@ const Main = ({
   displaySeeAll,
   attrSearch,
   sortName,
+  handleBackHome,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,6 +65,7 @@ const Main = ({
         onClick={() => {
           setPage(1);
           setDisplaySearch(false);
+          handleBackHome();
         }}>
         <Logo />
       </div>

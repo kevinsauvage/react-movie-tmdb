@@ -27,8 +27,8 @@ $pink : #e94560;
     } 
 }
 
-@media screen and (min-width: 300px) and (max-width: 480px) {
+@media screen and (min-width: 0px) and (max-width: 800px) {
     .search-movie-card {
-        margin: 23px;
+        margin: 0px;
     }
-  }
+}
