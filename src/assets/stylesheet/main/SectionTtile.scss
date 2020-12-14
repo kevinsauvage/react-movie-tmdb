@@ -8,6 +8,8 @@ $pink : #e94560;
     margin:0px 0 0 45px;
     padding-left: 10px;
     border-left: 3px solid $ligthBlue;
+    position: absolute;
+    top: 10px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 600px) {

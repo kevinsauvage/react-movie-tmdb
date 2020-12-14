@@ -9,3 +9,10 @@ $pink : #e94560;
     width: 100%;
     position: relative;
 }
+.see-all {
+    position: absolute;
+    right: 40px;
+    bottom: 15px;
+    color: $pink;
+    cursor: pointer;
+}

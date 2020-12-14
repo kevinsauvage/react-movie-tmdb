@@ -28,6 +28,8 @@ const Main = ({
   setDisplay,
   sortByResults,
   displaySortResults,
+  fetchByAtt,
+  displaySeeAll,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +41,8 @@ const Main = ({
       displayCategory === true ||
       displaySearch === true ||
       displayCategory === true ||
-      displaySortResults === true
+      displaySortResults === true ||
+      displaySeeAll === true
     ) {
       return true;
     } else {
@@ -87,6 +90,8 @@ const Main = ({
                   ? searchResult
                   : displaySortResults
                   ? sortByResults
+                  : displaySeeAll
+                  ? searchResult
                   : []
               }
               handleCardClickShow={handleCardClickShow}
@@ -111,7 +116,10 @@ const Main = ({
           </div>
         </>
       ) : (
-        <Content handleCardClickShow={handleCardClickShow} />
+        <Content
+          handleCardClickShow={handleCardClickShow}
+          fetchByAtt={fetchByAtt}
+        />
       )}
     </div>
   );

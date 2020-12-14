@@ -35,6 +35,8 @@ const Header = () => {
   const [displaySortResults, setDisplaySortResults] = useState(false);
   // set the name of the sort by parameter using dataset
   const [sortName, setSortName] = useState("");
+  const [displaySeeAll, setDisplaySeeAll] = useState(false);
+  const [attrSearch, setAttrSearch] = useState("");
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -83,6 +85,35 @@ const Header = () => {
     setPage(1);
   };
 
+  // fetch by att 'popular' or 'top rated'
+  const fetchByAtt = async (att) => {
+    // Removing the category search result to desplay the search result input
+    setDisplayCategory(false);
+    // Reinintializing the query id of movie
+    setDisplaySortResults(false);
+    //reset query ID
+    setQueryID(null);
+    // reinitializing the category in order to stop display it
+    setCategoryName("");
+    // reinitialinzing search category result
+    setCategoryResult([]);
+    //rester the result of sorting
+    setSortByResults([]);
+    // reset display search to false
+    setDisplaySearch(false);
+
+    const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    setSearchResult(data.results);
+    setDisplaySeeAll(true);
+
+    // Set the page to 1 for load more btn handler
+    setPage(1);
+    setAttrSearch(att);
+  };
+
   // Load more movies handler
   const loadMoreHandlerFromSearch = async () => {
     // Switching between fetch depending of the category fetch or search input search
@@ -122,6 +153,17 @@ const Header = () => {
       const data = await response.json();
       const results = data.results;
       setSortByResults((prevResults) => [...prevResults, ...results]);
+      setPage(page + 1);
+    }
+
+    if (displaySeeAll === true) {
+      const url = `https://api.themoviedb.org/3/movie/${attrSearch}?api_key=${API_KEY}&language=en-US&page=${
+        page + 1
+      }`;
+      const response = await fetch(url);
+      const data = await response.json();
+      const results = data.results;
+      setSearchResult((prevResults) => [...prevResults, ...results]);
       setPage(page + 1);
     }
   };
@@ -205,6 +247,7 @@ const Header = () => {
     setDisplaySearch(false);
     setDisplaySortResults(false);
     setDisplay(false);
+    setDisplaySeeAll(false);
     setCategoryName("");
     setSingleMovie([]);
   };
@@ -241,6 +284,8 @@ const Header = () => {
           searchResult={searchResult}
           loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
           categoryResult={categoryResult}
+          fetchByAtt={fetchByAtt}
+          displaySeeAll={displaySeeAll}
         />
       </>
     </header>
