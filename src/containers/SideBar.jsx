@@ -14,6 +14,7 @@ const SideBar = ({
 }) => {
   const styleOpen = {
     left: "0",
+    opacity: "1",
     transition: "left 1s ease",
   };
 
