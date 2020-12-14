@@ -2,7 +2,7 @@ import React from "react";
 import "react-multi-carousel/lib/styles.css";
 
 const MovieCard = ({ movie, handleCardClickShow }) => {
-  let backgroundImage = `url(https://image.tmdb.org/t/p/w342/${movie.poster_path})`;
+  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.poster_path})`;
   if (backgroundImage === `url(https://image.tmdb.org/t/p/w342/null)`) {
     backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
   }

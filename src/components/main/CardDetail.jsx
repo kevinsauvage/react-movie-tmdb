@@ -7,7 +7,7 @@ const CardDetail = ({
   setDisplay,
   display,
 }) => {
-  const background = `url(https://image.tmdb.org/t/p/w1280/${singleMovie.backdrop_path})`;
+  const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
   };
