@@ -51,14 +51,12 @@ const Header = () => {
     if (query.length === 0) {
       return;
     }
-    // API CALL
     const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
     );
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-
     setDisplay(false);
     setDisplayCategory(false);
     setDisplaySortResults(false);
@@ -69,19 +67,16 @@ const Header = () => {
 
   // fetch by att 'popular' or 'top rated'
   const fetchByAtt = async (att) => {
-    // set state to display right component and content
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-
     setDisplayCategory(false);
     setDisplaySortResults(false);
     setDisplaySearch(false);
     setSectionName(att);
     setPage(1);
-    // Display true after fetching
     setDisplaySeeAll(true);
   };
 
@@ -107,8 +102,6 @@ const Header = () => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-
-    // Storing new result of fetch with the last result
     setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
     setPage(page + 1);
   };
@@ -132,17 +125,13 @@ const Header = () => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-    // Storing the results of movie by category clicked
     setMovies(results);
-    // Reinitialize the search result input to empty array
     setDisplay(false);
     setOpenMenuHamb(false);
     setDisplaySearch(false);
     setDisplaySortResults(false);
     setPage(1);
-    // Display right name
     setSectionName(name);
-    // fetch right url
     setDisplayCategory(true);
   };
 
@@ -153,7 +142,6 @@ const Header = () => {
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    // Reset in order to display the right component
     setDisplayCategory(false);
     setDisplaySearch(false);
     setSectionName(att);

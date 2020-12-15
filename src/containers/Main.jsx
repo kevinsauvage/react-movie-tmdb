@@ -71,7 +71,6 @@ const Main = ({
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           singleMovie={singleMovie}
           setDisplay={setDisplay}
-          display={display}
         />
       ) : null}
       {/* Search input */}

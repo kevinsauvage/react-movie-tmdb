@@ -1,11 +1,6 @@
 import React from "react";
 
 const SortByNav = ({ fetchBy, setOpenMenuHamb }) => {
-  const fetchByName = (name) => {
-    fetchBy(name);
-  };
-
-  const clickHandler = (e) => {};
   return (
     <div className="sort-by">
       <h2 className="section-title">SORT BY</h2>

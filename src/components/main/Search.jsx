@@ -13,6 +13,7 @@ const Search = ({ handleSubmit, query, setQuery }) => {
     setIsOpen(!isOpen);
     e.currentTarget.nextSibling.focus();
   };
+
   return (
     <form
       className="search"

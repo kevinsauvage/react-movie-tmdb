@@ -8,7 +8,10 @@ const Content = ({ handleCardClickShow, fetchByAtt }) => {
   const [topMovies, settopMovies] = useState([]);
 
   const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";
+  // Popular url
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  //top rated url
+  const topUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 
   useEffect(() => {
     async function getMovies() {
@@ -18,9 +21,6 @@ const Content = ({ handleCardClickShow, fetchByAtt }) => {
     }
     getMovies();
   }, []);
-
-  // Fetching top rated
-  const topUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 
   useEffect(() => {
     async function getMovies() {

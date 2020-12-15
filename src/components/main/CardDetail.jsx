@@ -5,7 +5,6 @@ const CardDetail = ({
   singleMovie,
   fetchSingleMovieWithMovieId,
   setDisplay,
-  display,
 }) => {
   const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
