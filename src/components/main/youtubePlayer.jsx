@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { FaTimesCircle } from "react-icons/fa";
 
-const youtubePlayer = ({ singleMovie, SetVideoIsOpen }) => {
+const YoutubePlayer = ({ singleMovie, SetVideoIsOpen }) => {
   return (
     <div className="video-player-container">
       <ReactPlayer
@@ -22,4 +22,4 @@ const youtubePlayer = ({ singleMovie, SetVideoIsOpen }) => {
   );
 };
 
-export default youtubePlayer;
+export default YoutubePlayer;

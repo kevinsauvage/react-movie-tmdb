@@ -46,13 +46,15 @@ $pink : #e94560;
                     display: flex;
                     justify-content: space-between;
                     h3 {
-                        font-weight: 400;
+                        font-weight: 600;
+                        font-size: 26px;
                     }
                     .note-container {
                         display: flex;
                         align-items: center;
                         .note {
                             padding-left: 10px;
+                            
                         }
                     }
                 }
@@ -62,7 +64,8 @@ $pink : #e94560;
                 }
                 .movie-description {
                     margin-top: 50px;
-                    font-weight: 200;
+                    font-weight: 400;
+                    font-size: 19px;
                 }
                 .fetch-similar-btn {
                     position: absolute;

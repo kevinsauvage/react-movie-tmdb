@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
-import YoutubePlayer from "../main/youtubePlayer";
+import YoutubePlayer from "../main/YoutubePlayer";
 
 const CardDetail = ({
   singleMovie,
@@ -52,6 +52,7 @@ const CardDetail = ({
             </div>
             <span className="release">{singleMovie.release_date}</span>
             <p className="movie-description">{singleMovie.overview}</p>
+
             <div className="fetch-similar-btn" onClick={fetchSimilarMovies}>
               Similar movies
             </div>
