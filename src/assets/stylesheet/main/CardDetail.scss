@@ -19,7 +19,7 @@ $pink : #e94560;
     background-size: cover;
     background-repeat:no-repeat;
     .gradient {
-        background: linear-gradient(90deg, rgba(0,0,0,0.5326505602240896) 0%, rgba(2,2,2,0.5942752100840336) 35%, rgba(4,4,4,0.8127626050420168) 69%, rgba(4,4,4,0.8995973389355743) 100%);        width: 100%;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(2, 2, 2, 0.9) 35%, rgba(4,4,4,0.9) 69%, rgba(4,4,4,0.9) 100%);        width: 100%;
         height: 100%;
         .icon-movie-card-detail {
             position: absolute;
@@ -40,7 +40,7 @@ $pink : #e94560;
                 padding: 20px;
                 width: 600px;
                 z-index: 50;
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(0, 0, 0, 0.659);
                 position: relative;
                 .title-and-note {
                     display: flex;

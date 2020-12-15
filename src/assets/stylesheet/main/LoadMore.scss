@@ -24,6 +24,8 @@ $pink : #e94560;
         cursor: pointer;
         &:hover {
             letter-spacing: 10px;
+            border-top: 2px solid $ligthBlue;
+            border-bottom: 2px solid $ligthBlue;
         }
         &:focus {
             outline: none;
