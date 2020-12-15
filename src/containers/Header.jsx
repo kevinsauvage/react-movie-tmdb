@@ -57,12 +57,12 @@ const Header = () => {
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    setDisplay(false);
     setDisplayCategory(false);
     setDisplaySortResults(false);
+    setDisplay(false);
     setSectionName(query);
-    setDisplaySearch(true);
     setPage(1);
+    setDisplaySearch(true);
   };
 
   // fetch by att 'popular' or 'top rated'

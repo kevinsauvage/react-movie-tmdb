@@ -9,10 +9,11 @@ $pink : #e94560;
 .side-bar {
     width: 200px;
     background-color: $darkBlue;
-    position: relative;
+    position: fixed;
     z-index: 5;
     padding: 30px;
     opacity: 1;
+    height: 100vh;
     .logo {
         border-bottom: 1px solid rgba(255, 255, 255, 0.288);
         h1 {

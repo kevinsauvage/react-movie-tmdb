@@ -8,6 +8,7 @@ $pink : #e94560;
     width:calc(100vw - 200px);
     background-color: $mediumBlue ;
     position: relative;
+    margin-left: 200px;
     .hamburger-icon {
         display: none;
     }
@@ -27,6 +28,7 @@ $pink : #e94560;
         overflow: hidden;
         width: 100%;
         padding: 0 0 120px 0;
+        margin-left: 0;
         .hamburger-icon {
             display: block;
             position: absolute;
