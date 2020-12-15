@@ -31,6 +31,8 @@ const Main = ({
   sectionName,
   fetchSimilarMovies,
   displaySimilar,
+  isExecuted,
+  setIsExecuted,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,10 +97,15 @@ const Main = ({
               // Display category result if true - display search result if false
               searchResult={movies}
               handleCardClickShow={handleCardClickShow}
+              isExecuted={isExecuted}
+              setIsExecuted={setIsExecuted}
+              sectionName={sectionName}
             />
-            <LoadMoreFromSearch
-              loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-            />
+            {movies.length !== 0 ? (
+              <LoadMoreFromSearch
+                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+              />
+            ) : null}
           </div>
         </>
       ) : (

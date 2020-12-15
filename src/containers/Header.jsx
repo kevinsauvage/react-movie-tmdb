@@ -23,6 +23,8 @@ const Header = () => {
   const [movies, setMovies] = useState([]);
   // Section name string
   const [sectionName, setSectionName] = useState("");
+  const [isExecuted, setIsExecuted] = useState(true);
+
   // Set the display true to use right fetch url
   const [displaySortResults, setDisplaySortResults] = useState(false);
   const [displaySeeAll, setDisplaySeeAll] = useState(false);
@@ -61,6 +63,7 @@ const Header = () => {
     setDisplayCategory(false);
     setDisplaySortResults(false);
     setDisplay(false);
+    setIsExecuted(true);
     setSectionName(query);
     setPage(1);
     setDisplaySearch(true);
@@ -76,6 +79,7 @@ const Header = () => {
     setDisplayCategory(false);
     setDisplaySortResults(false);
     setDisplaySearch(false);
+    setIsExecuted(true);
     setSectionName(att);
     setPage(1);
     setDisplaySeeAll(true);
@@ -137,6 +141,8 @@ const Header = () => {
     setOpenMenuHamb(false);
     setDisplaySearch(false);
     setDisplaySortResults(false);
+    setIsExecuted(true);
+
     setPage(1);
     setSectionName(name);
     setDisplayCategory(true);
@@ -150,6 +156,8 @@ const Header = () => {
     const results = data.results;
     setMovies(results);
     setDisplayCategory(false);
+    setIsExecuted(true);
+
     setDisplaySearch(false);
     setSectionName(att);
     setPage(1);
@@ -168,6 +176,7 @@ const Header = () => {
     setDisplay(false);
     setSectionName(`"${singleMovie.title}" Similar Movies`);
     setDisplaySearch(false);
+    setIsExecuted(true);
     setDisplaySimilar(true);
     setPage(1);
   };
@@ -181,6 +190,9 @@ const Header = () => {
 
   // Handle the back home when clicking to logo
   const handleBackHome = () => {
+    // set to true the spinner loader
+    setIsExecuted(true);
+
     setDisplayCategory(false);
     setDisplaySearch(false);
     setDisplaySortResults(false);
@@ -204,6 +216,8 @@ const Header = () => {
           setOpenMenuHamb={setOpenMenuHamb}
         />
         <Main
+          isExecuted={isExecuted}
+          setIsExecuted={setIsExecuted}
           displaySimilar={displaySimilar}
           fetchSimilarMovies={fetchSimilarMovies}
           sectionName={sectionName}

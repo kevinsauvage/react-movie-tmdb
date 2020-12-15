@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 const CardDetail = ({
   singleMovie,
   fetchSingleMovieWithMovieId,
