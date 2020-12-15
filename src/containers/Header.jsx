@@ -119,10 +119,11 @@ const Header = () => {
 
   // Fetch single movie by id to display movie card detail
   const fetchSingleMovieWithMovieId = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${queryId}?api_key=${API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${queryId}?api_key=${API_KEY}&append_to_response=videos`;
     const response = await fetch(url);
     const data = await response.json();
     setSingleMovie(data);
+    console.log(data);
   };
 
   // Fetch by category

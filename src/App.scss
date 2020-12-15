@@ -13,18 +13,18 @@
 @import "./assets/stylesheet/sidebar/SortByNav.scss";
 
 $darkBlue :  #0A1228;
-$mediumBlue :#0f3460;
+$mediumBlue :#10182D;
+$ligthBlue :#0AC2F3;
 $green : #187142;
-$pink : #B23456;
-$lightGrey: #E4E4E6;
+$pink : #e94560;
 
 * {
      padding: 0;
      margin: 0;
      box-sizing: border-box;
      list-style-type: none;
-     color: $lightGrey;
      text-decoration: none;
+     color: $ligthBlue;
 }
 a {
     text-decoration: none;
