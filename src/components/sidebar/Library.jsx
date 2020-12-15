@@ -6,6 +6,7 @@ const Library = ({ fetchByCategory, categorys, sectionName }) => {
     color: "#e94560",
     fontWeight: 600,
     fontSize: "17px",
+    paddingLeft: "5px",
   };
 
   return (

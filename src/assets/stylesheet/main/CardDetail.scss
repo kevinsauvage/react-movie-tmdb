@@ -87,6 +87,8 @@ $pink : #e94560;
                     color:$pink;
                     cursor: pointer;
                     &:hover {
+                        border-top: 2px solid $ligthBlue;
+                        border-bottom: 2px solid $ligthBlue;
                         letter-spacing: 4px;
                     }
                     &:focus {
