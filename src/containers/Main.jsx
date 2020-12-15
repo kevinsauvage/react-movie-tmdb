@@ -16,7 +16,6 @@ const Main = ({
   displaySearch,
   loadMoreHandlerFromSearch,
   displayCategory,
-  categoryName,
   fetchSingleMovieWithMovieId,
   openMenuHamb,
   setOpenMenuHamb,
@@ -27,10 +26,9 @@ const Main = ({
   displaySortResults,
   fetchByAtt,
   displaySeeAll,
-  attrSearch,
-  sortName,
   handleBackHome,
   movies,
+  sectionName,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,15 +80,12 @@ const Main = ({
       {displayContentHandler() ? (
         <>
           <div className="section-title main-section-title">
-            {categoryName.toUpperCase() ||
-              attrSearch.split("_").join(" ").toUpperCase() ||
-              sortName
-                .split(".")
-                .join(" ")
-                .split("_")
-                .join(" ")
-                .toUpperCase() ||
-              query.toUpperCase()}
+            {sectionName
+              .split(".")
+              .join(" ")
+              .split("_")
+              .join(" ")
+              .toUpperCase()}
           </div>
           <div className="search-result-container">
             <SearchResult
