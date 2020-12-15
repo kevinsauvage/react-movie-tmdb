@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
-import YoutubePlayer from "../main/YoutubePlayer";
+import YoutubePlayer from "../main/YoutubeVideoPlayer";
 
 const CardDetail = ({
   singleMovie,
