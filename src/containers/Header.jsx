@@ -123,7 +123,6 @@ const Header = () => {
     const response = await fetch(url);
     const data = await response.json();
     setSingleMovie(data);
-    console.log(data);
   };
 
   // Fetch by category
@@ -215,6 +214,7 @@ const Header = () => {
           handleBackHome={handleBackHome}
           fetchBy={fetchBy}
           setOpenMenuHamb={setOpenMenuHamb}
+          sectionName={sectionName}
         />
         <Main
           isExecuted={isExecuted}

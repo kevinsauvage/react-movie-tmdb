@@ -15,9 +15,13 @@ $pink : #e94560;
         cursor: pointer;
         display: none;
     }
-    .main-section-title {
-        margin-top: 20px;
-        padding-left: 50px;
+    .section-title-wrapper {
+        .main-section-title {
+            margin-top: 20px;
+            margin-left: 50px;
+            padding-left: 10px;
+            border-left: 3px solid $pink;
+        }
     }
 }
 

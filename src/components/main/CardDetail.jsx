@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { FaTimesCircle } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaStar, FaTimesCircle } from "react-icons/fa";
+import YoutubePlayer from "../main/youtubePlayer";
 
 const CardDetail = ({
   singleMovie,
@@ -7,6 +8,7 @@ const CardDetail = ({
   setDisplay,
   fetchSimilarMovies,
 }) => {
+  const [videoIsOpen, SetVideoIsOpen] = useState(false);
   const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
@@ -14,7 +16,7 @@ const CardDetail = ({
 
   useEffect(() => {
     fetchSingleMovieWithMovieId();
-  }, [singleMovie]);
+  }, []);
 
   const fadeOut = (e) => {
     const cont = e.currentTarget.parentElement.parentElement;
@@ -23,6 +25,7 @@ const CardDetail = ({
       setDisplay(false);
     }, 500);
   };
+  console.log(singleMovie);
 
   return (
     <div className="card-detail" style={style}>
@@ -43,16 +46,30 @@ const CardDetail = ({
           <div className="card-detail-text-wrapper">
             <div className="title-and-note">
               <h3>{singleMovie.original_title}</h3>
-              <span className="note">{singleMovie.vote_average}</span>
+              <div className="note-container">
+                <FaStar />
+                <span className="note">{singleMovie.vote_average}</span>
+              </div>
             </div>
-            <span>{singleMovie.release_date}</span>
+            <span className="release">{singleMovie.release_date}</span>
             <p className="movie-description">{singleMovie.overview}</p>
             <div className="fetch-similar-btn" onClick={fetchSimilarMovies}>
               Similar movies
             </div>
+            <div
+              onClick={() => SetVideoIsOpen(true)}
+              className="see-trailer-btn">
+              Watch trailer
+            </div>
           </div>
         </div>
       </div>
+      {videoIsOpen ? (
+        <YoutubePlayer
+          singleMovie={singleMovie}
+          SetVideoIsOpen={SetVideoIsOpen}
+        />
+      ) : null}
     </div>
   );
 };

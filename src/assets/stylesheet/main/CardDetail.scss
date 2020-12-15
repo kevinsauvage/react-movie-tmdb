@@ -41,17 +41,40 @@ $pink : #e94560;
                 width: 600px;
                 z-index: 50;
                 background-color: rgba(0, 0, 0, 0.5);
+                position: relative;
                 .title-and-note {
                     display: flex;
                     justify-content: space-between;
+                    h3 {
+                        font-weight: 400;
+                    }
+                    .note-container {
+                        display: flex;
+                        align-items: center;
+                        .note {
+                            padding-left: 10px;
+                        }
+                    }
+                }
+                .release {
+                    font-weight: 200;
+                    font-size: 16px;
                 }
                 .movie-description {
                     margin-top: 50px;
+                    font-weight: 200;
                 }
                 .fetch-similar-btn {
                     position: absolute;
                     right: 20px;
                     bottom: 20px;
+                }
+                .see-trailer-btn {
+                    position: absolute;
+                    left: 20px;
+                    bottom: 20px;
+                }
+                .fetch-similar-btn, .see-trailer-btn {
                     border: none;
                     border-top: 2px solid rgba(255, 255, 255, 0.349);
                     border-bottom: 2px solid rgba(255, 255, 255, 0.281);
@@ -64,7 +87,7 @@ $pink : #e94560;
                     color:$pink;
                     cursor: pointer;
                     &:hover {
-                        letter-spacing: 5px;
+                        letter-spacing: 4px;
                     }
                     &:focus {
                         outline: none;
@@ -73,6 +96,7 @@ $pink : #e94560;
             }
         }
     }
+   
 }
 @keyframes fadeIn {
     0%   {opacity: 0; }
