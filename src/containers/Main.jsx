@@ -14,9 +14,7 @@ const Main = ({
   query,
   fetchMoviesSearch,
   displaySearch,
-  searchResult,
   loadMoreHandlerFromSearch,
-  categoryResult,
   displayCategory,
   categoryName,
   fetchSingleMovieWithMovieId,
@@ -26,13 +24,13 @@ const Main = ({
   setPage,
   setDisplaySearch,
   setDisplay,
-  sortByResults,
   displaySortResults,
   fetchByAtt,
   displaySeeAll,
   attrSearch,
   sortName,
   handleBackHome,
+  movies,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,36 +95,12 @@ const Main = ({
           <div className="search-result-container">
             <SearchResult
               // Display category result if true - display search result if false
-              searchResult={
-                displayCategory
-                  ? categoryResult
-                  : displaySearch
-                  ? searchResult
-                  : displaySortResults
-                  ? sortByResults
-                  : displaySeeAll
-                  ? searchResult
-                  : []
-              }
+              searchResult={movies}
               handleCardClickShow={handleCardClickShow}
             />
-            {/* display load more btn if search result contain at least 1 item*/}
-            {searchResult.length === 0 ? null : (
-              <LoadMoreFromSearch
-                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-              />
-            )}
-            {/* display load more btn if category result contain at least 1 item*/}
-            {categoryResult.length === 0 ? null : (
-              <LoadMoreFromSearch
-                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-              />
-            )}
-            {sortByResults.length === 0 ? null : (
-              <LoadMoreFromSearch
-                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-              />
-            )}
+            <LoadMoreFromSearch
+              loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+            />
           </div>
         </>
       ) : (

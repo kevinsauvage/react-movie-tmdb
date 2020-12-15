@@ -15,10 +15,6 @@ const Header = () => {
   const [displaySearch, setDisplaySearch] = useState(false);
   // handling witch search array to display (search result or category result)
   const [displayCategory, setDisplayCategory] = useState(false);
-  // handling witch search array to display (search result or category result)
-  const [searchResult, setSearchResult] = useState([]);
-  // Store movie of category clicked
-  const [categoryResult, setCategoryResult] = useState([]);
   // set page to fetch
   const [page, setPage] = useState(1);
   // store genre id of movie category to fetch and store the movies
@@ -29,8 +25,6 @@ const Header = () => {
   const [categoryName, setCategoryName] = useState("");
   // Toggle the opening and closing of hamburger menu
   const [openMenuHamb, setOpenMenuHamb] = useState(false);
-  // Sort by result array
-  const [sortByResults, setSortByResults] = useState([]);
   // Set the display to the sort result fetch
   const [displaySortResults, setDisplaySortResults] = useState(false);
   // set the name of the sort by parameter using dataset
@@ -39,6 +33,8 @@ const Header = () => {
   const [displaySeeAll, setDisplaySeeAll] = useState(false);
   // Set the attribute top rated or see all in order to keep track when calling load more
   const [attrSearch, setAttrSearch] = useState("");
+
+  const [movies, setMovies] = useState([]);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -66,8 +62,6 @@ const Header = () => {
     setDisplaySortResults(false);
     setQueryID(null);
     setCategoryName("");
-    setCategoryResult([]);
-    setSortByResults([]);
     setSortName("");
     // API CALL
     const response = await fetch(
@@ -75,7 +69,7 @@ const Header = () => {
     );
     const data = await response.json();
     const results = data.results;
-    setSearchResult(results);
+    setMovies(results);
     setDisplaySearch(true);
     setPage(1);
   };
@@ -87,17 +81,15 @@ const Header = () => {
     setDisplaySortResults(false);
     setQueryID(null);
     setCategoryName("");
-    setCategoryResult([]);
-    setSortByResults([]);
     setDisplaySearch(false);
-    setSearchResult([]);
     setSortName("");
     setQuery("");
 
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
     const data = await response.json();
-    setSearchResult(data.results);
+    const results = data.results;
+    setMovies(results);
     // Display true after fetching
     setDisplaySeeAll(true);
     setPage(1);
@@ -128,18 +120,8 @@ const Header = () => {
     const results = data.results;
 
     // Storing new result of fetch with the last result
-    if (displayCategory)
-      setCategoryResult((prevSearchResult) => [
-        ...prevSearchResult,
-        ...results,
-      ]);
 
-    if (displaySearch)
-      setSearchResult((prevSearchResult) => [...prevSearchResult, ...results]);
-    if (displaySortResults)
-      setSortByResults((prevResults) => [...prevResults, ...results]);
-    if (displaySeeAll)
-      setSearchResult((prevResults) => [...prevResults, ...results]);
+    setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
 
     setPage(page + 1);
   };
@@ -163,8 +145,6 @@ const Header = () => {
     setQuery("");
     setAttrSearch("");
     setSortName("");
-    setSearchResult([]);
-    setSortByResults([]);
     setDisplaySearch(false);
     setDisplaySortResults(false);
     setOpenMenuHamb(false);
@@ -180,7 +160,7 @@ const Header = () => {
     const data = await response.json();
     const results = data.results;
     // Storing the results of movie by category clicked
-    setCategoryResult(results);
+    setMovies(results);
     // Reinitialize the search result input to empty array
   };
 
@@ -190,8 +170,6 @@ const Header = () => {
     setDisplayCategory(false);
     setDisplaySearch(false);
     setDisplaySortResults(true);
-    setCategoryResult([]);
-    setSearchResult([]);
     setQueryID("");
     setCategoryName("");
     setQuery("");
@@ -201,8 +179,7 @@ const Header = () => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-    setSortByResults(results);
-
+    setMovies(results);
     setPage(1);
   };
 
@@ -240,9 +217,9 @@ const Header = () => {
           setOpenMenuHamb={setOpenMenuHamb}
         />
         <Main
+          movies={movies}
           handleBackHome={handleBackHome}
           displaySortResults={displaySortResults}
-          sortByResults={sortByResults}
           setDisplay={setDisplay}
           setPage={setPage}
           setDisplaySearch={setDisplaySearch}
@@ -258,9 +235,7 @@ const Header = () => {
           fetchMoviesSearch={fetchMoviesSearch}
           displaySearch={displaySearch}
           displayCategory={displayCategory}
-          searchResult={searchResult}
           loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-          categoryResult={categoryResult}
           fetchByAtt={fetchByAtt}
           displaySeeAll={displaySeeAll}
           attrSearch={attrSearch}
