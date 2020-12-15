@@ -29,6 +29,8 @@ const Main = ({
   handleBackHome,
   movies,
   sectionName,
+  fetchSimilarMovies,
+  displaySimilar,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,7 +43,8 @@ const Main = ({
       displaySearch === true ||
       displayCategory === true ||
       displaySortResults === true ||
-      displaySeeAll === true
+      displaySeeAll === true ||
+      displaySimilar === true
     ) {
       return true;
     } else {
@@ -71,6 +74,7 @@ const Main = ({
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           singleMovie={singleMovie}
           setDisplay={setDisplay}
+          fetchSimilarMovies={fetchSimilarMovies}
         />
       ) : null}
       {/* Search input */}

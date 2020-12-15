@@ -28,6 +28,7 @@ const Header = () => {
   const [displaySeeAll, setDisplaySeeAll] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
   const [displayCategory, setDisplayCategory] = useState(false);
+  const [displaySimilar, setDisplaySimilar] = useState(false);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -98,7 +99,13 @@ const Header = () => {
       ? `https://api.themoviedb.org/3/movie/${sectionName}?api_key=${API_KEY}&language=en-US&page=${
           page + 1
         }`
+      : displaySimilar
+      ? `https://api.themoviedb.org/3/movie/${
+          singleMovie.id
+        }/similar?api_key=${API_KEY}&language=en-US&page=${page + 1}`
       : null;
+    console.log(singleMovie);
+    console.log(page);
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
@@ -149,6 +156,22 @@ const Header = () => {
     setDisplaySortResults(true);
   };
 
+  const fetchSimilarMovies = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${singleMovie.id}/similar?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    const data = await response.json();
+    const results = data.results;
+    setMovies(results);
+    setDisplayCategory(false);
+    setDisplaySortResults(false);
+    setDisplay(false);
+    setSectionName(`"${singleMovie.title}" Similar Movies`);
+    setDisplaySearch(false);
+    setDisplaySimilar(true);
+    setPage(1);
+  };
+
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
     const att = e.target.getAttribute("data-key");
@@ -164,6 +187,7 @@ const Header = () => {
     setDisplay(false);
     setDisplaySeeAll(false);
     setOpenMenuHamb(false);
+    setDisplaySimilar(false);
     setSectionName("");
   };
 
@@ -180,6 +204,8 @@ const Header = () => {
           setOpenMenuHamb={setOpenMenuHamb}
         />
         <Main
+          displaySimilar={displaySimilar}
+          fetchSimilarMovies={fetchSimilarMovies}
           sectionName={sectionName}
           movies={movies}
           handleBackHome={handleBackHome}

@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const CardDetail = ({
   singleMovie,
   fetchSingleMovieWithMovieId,
   setDisplay,
+  fetchSimilarMovies,
 }) => {
   const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
   const style = {
@@ -46,6 +49,9 @@ const CardDetail = ({
             </div>
             <span>{singleMovie.release_date}</span>
             <p className="movie-description">{singleMovie.overview}</p>
+            <div className="fetch-similar-btn" onClick={fetchSimilarMovies}>
+              Similar movies
+            </div>
           </div>
         </div>
       </div>
