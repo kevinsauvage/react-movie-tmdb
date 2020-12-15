@@ -25,7 +25,6 @@ const CardDetail = ({
       setDisplay(false);
     }, 500);
   };
-  console.log(singleMovie);
 
   return (
     <div className="card-detail" style={style}>
