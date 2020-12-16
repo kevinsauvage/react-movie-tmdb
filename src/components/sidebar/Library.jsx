@@ -3,7 +3,7 @@ import React from "react";
 const Library = ({ fetchByCategory, categorys, sectionName }) => {
   const style = {
     borderLeft: "3px solid  #0AC2F3",
-    color: "#e94560",
+    color: "var(--color-pink)",
     fontWeight: 600,
     fontSize: "17px",
     paddingLeft: "5px",

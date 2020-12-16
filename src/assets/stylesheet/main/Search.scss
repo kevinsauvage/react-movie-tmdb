@@ -1,19 +1,18 @@
 .search {
     position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     justify-content: space-between;
     height: 50px;
-    margin: 42px 40px 25px 40px;
-
+    margin: 25px 40px 25px 40px;
     h2{
-        color:$ligthBlue;
+        color:var(--color-light);
         display: flex;
         align-items: flex-end;
         padding: 7px;
     }
     p {
-        color:$pink;
+        color:var(--color-pink);
         height: 100%;
         display: flex;
         align-items: flex-end;
@@ -32,7 +31,7 @@
             height: 100%;
             cursor: pointer;
             svg {
-            color:$pink;
+            color:var(--color-light);
             }
         }
         .search-input {

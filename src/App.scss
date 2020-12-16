@@ -14,11 +14,13 @@
 @import "./assets/stylesheet/main/YoutubePlayer.scss";
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700;800;900&display=swap');
 
-$darkBlue :  #0A1228;
-$mediumBlue :#10182D;
-$ligthBlue :#0AC2F3;
-$green : #187142;
-$pink : #e94560;
+:root {
+    --color-dark: #030111;
+    --color-medium-dark:#0E1227;
+    --color-light: #2BCED6;
+    --color-pink: #ff0059 ;
+}
+
 
 * {
     font-family: 'Alegreya', serif;
@@ -27,7 +29,7 @@ $pink : #e94560;
      box-sizing: border-box;
      list-style-type: none;
      text-decoration: none;
-     color: $ligthBlue;
+     color: var(--color-light)
 }
 a {
     text-decoration: none;

@@ -21,7 +21,10 @@ const Search = ({ handleSubmit, query, setQuery }) => {
       onMouseLeave={() => setIsOpen(false)}>
       <div className="wrapper-search">
         <div className="icon" onClick={isOpenClickHandler}>
-          <FaSearch fill="#e94560" onClick={() => setIsOpen(!isOpen)} />
+          <FaSearch
+            fill="var(--color-pink)"
+            onClick={() => setIsOpen(!isOpen)}
+          />
         </div>
         <input
           style={isOpen ? style : null}

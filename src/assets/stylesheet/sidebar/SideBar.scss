@@ -1,35 +1,28 @@
-$darkBlue :  #0A1228;
-$mediumBlue :#10182D;
-$ligthBlue :#0AC2F3;
-$green : #187142;
-$pink : #e94560;
-
-
-// Sidebar general styling
 .side-bar {
     width: 200px;
-    background-color: $darkBlue;
+    background-color: var(--color-dark);
     position: fixed;
     z-index: 5;
     padding: 30px;
     opacity: 1;
     height: 100vh;
     .logo {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.288);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
         h1 {
-            padding: 20px 0 10px 0;
+            padding: 0px 0 10px 0;
             font-size: 25px;
-            color:$ligthBlue;
+            color:var(--color-light);
             font-weight: 400;
             cursor: pointer;
         }
     }
     .library {
         padding-bottom: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.171);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        
         .library-nav {
             li {
-                color: $ligthBlue;
+                color:var(--color-light);
                 font-weight: 500;
                 font-size: 16px;
                 cursor: pointer;
@@ -46,7 +39,7 @@ $pink : #e94560;
 .section-title {
     font-size: 18px;
     margin-bottom: 15px;
-    color:$pink;
+    color:var(--color-pink);
     font-weight: 400;
 }
 

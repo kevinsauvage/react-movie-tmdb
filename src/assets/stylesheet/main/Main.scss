@@ -1,11 +1,6 @@
-$darkBlue :  #0A1228;
-$mediumBlue :#10182D;
-$ligthBlue :#0AC2F3;
-$green : #187142;
-$pink : #e94560;
 .main {
     width:calc(100vw - 200px);
-    background-color: $mediumBlue ;
+    background-color: var(--color-medium-dark);
     position: relative;
     margin-left: 200px;
     .hamburger-icon {
@@ -20,7 +15,7 @@ $pink : #e94560;
             margin-top: 20px;
             margin-left: 40px;
             padding-left: 10px;
-            border-left: 3px solid $ligthBlue;
+            border-left: 3px solid var(--color-light);
         }
     }
 }
@@ -53,7 +48,7 @@ $pink : #e94560;
         padding-left: 23px;
     }
     .logo h1{
-        color:$ligthBlue;
+        color: var(--color-light);
     }
   }
 
