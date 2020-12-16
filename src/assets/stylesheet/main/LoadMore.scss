@@ -4,8 +4,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
-}
-.load-more-btn > p {
-    cursor: pointer;
+    margin: 20px;
+    button {
+        border: none;
+        border-top: 2px solid  var(--color-pink);
+        border-bottom: 2px solid var(--color-pink);
+        font-size: 20px;
+        font-weight: 200;
+        line-height: 44px;
+        letter-spacing: 2px;
+        background: transparent;
+        transition: .4s cubic-bezier(.54,.07,.34,.98);
+        color:var(--color-light);
+        cursor: pointer;
+        &:hover {
+            letter-spacing: 10px;
+            border-top: 2px solid var(--color-light);
+            border-bottom: 2px solid var(--color-light);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
 }

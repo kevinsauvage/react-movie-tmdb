@@ -1,71 +1,59 @@
-$darkBlue :  #0A1228;
-$mediumBlue :#10182D;
-$green : #187142;
-$pink : #B23456;
-$lightGrey: #E4E4E6;
-
-
-// Sidebar general styling
 .side-bar {
     width: 200px;
-    background-color: $darkBlue;
-    position: relative;
+    background-color: var(--color-dark);
+    position: fixed;
     z-index: 5;
     padding: 30px;
-    .library {
-        padding-bottom: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.171);
-        .library-nav {
-            li {
-                color:#0AC2F3;
-                font-weight: 100;
-                padding: 1px 0;
-                font-size: 15px;
-            }
-
+    opacity: 1;
+    height: 100vh;
+    .logo {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        h1 {
+            padding: 0px 0 10px 0;
+            font-size: 25px;
+            color:var(--color-light);
+            font-weight: 400;
+            cursor: pointer;
         }
     }
-    h2 {
+    .library {
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        
+        .library-nav {
+            li {
+                color:var(--color-light);
+                font-weight: 500;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 400ms ease;
+            }
+        }
+    }
+    .section-title {
         padding: 20px 0 0px 0;
         font-weight: 400;
-
     }
-
 }
 // Category title 
 .section-title {
     font-size: 18px;
     margin-bottom: 15px;
-    color:#0AC2F3;
+    color:var(--color-pink);
+    font-weight: 400;
 }
 
-// Spacing between icon and link 
-.link {
-    margin-left: 20px;
-    font-size: 16px;
-}
-.logo {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.288);
-    h1 {
-        padding: 20px 0 10px 0;
-        font-size: 25px;
-        color:#0AC2F3;
-        font-weight: 400;
-
-    }
-}
-
-@media screen and (min-width: 300px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 1030px) {
     .side-bar {
         display: block;
         position: absolute;
         left: -200px;
         height: 100%;
         z-index: 5;
-        transition: left 1s ease;
-        .library {
-            margin: 50px 0 0 10px;
-
+        transition: all 1s ease-in-out;
+        opacity: 0;
+        .logo {
+            display: block;
         }
     }
   }

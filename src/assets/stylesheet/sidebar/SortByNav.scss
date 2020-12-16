@@ -1,0 +1,13 @@
+.sort-by {
+    .sort-by-nav {
+        li {
+        color:var(--color-light);
+        cursor: pointer;
+        font-weight:500 ;
+        font-size: 16px;
+        margin: 2px 0;
+        transition: all 400ms ease;
+
+        }
+    }
+}

@@ -14,11 +14,8 @@ const Main = ({
   query,
   fetchMoviesSearch,
   displaySearch,
-  searchResult,
   loadMoreHandlerFromSearch,
-  categoryResult,
   displayCategory,
-  categoryName,
   fetchSingleMovieWithMovieId,
   openMenuHamb,
   setOpenMenuHamb,
@@ -26,11 +23,35 @@ const Main = ({
   setPage,
   setDisplaySearch,
   setDisplay,
-  setQueryID,
+  displaySortResults,
+  fetchByAtt,
+  displaySeeAll,
+  handleBackHome,
+  movies,
+  sectionName,
+  fetchSimilarMovies,
+  displaySimilar,
+  isExecuted,
+  setIsExecuted,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchMoviesSearch();
+  };
+
+  const displayContentHandler = () => {
+    if (
+      displayCategory === true ||
+      displaySearch === true ||
+      displayCategory === true ||
+      displaySortResults === true ||
+      displaySeeAll === true ||
+      displaySimilar === true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -45,6 +66,7 @@ const Main = ({
         onClick={() => {
           setPage(1);
           setDisplaySearch(false);
+          handleBackHome();
         }}>
         <Logo />
       </div>
@@ -54,36 +76,45 @@ const Main = ({
           fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
           singleMovie={singleMovie}
           setDisplay={setDisplay}
+          fetchSimilarMovies={fetchSimilarMovies}
         />
       ) : null}
       {/* Search input */}
       <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
       {/* Display search result if true - display content if false */}
-      {displaySearch ? (
+      {displayContentHandler() ? (
         <>
-          <div className="section-title main-section-title">{categoryName}</div>
+          <div className="section-title-wrapper">
+            <div className="section-title main-section-title">
+              {sectionName
+                .split(".")
+                .join(" ")
+                .split("_")
+                .join(" ")
+                .toUpperCase()}
+            </div>
+          </div>
           <div className="search-result-container">
             <SearchResult
               // Display category result if true - display search result if false
-              searchResult={displayCategory ? categoryResult : searchResult}
+              searchResult={movies}
               handleCardClickShow={handleCardClickShow}
+              isExecuted={isExecuted}
+              setIsExecuted={setIsExecuted}
+              sectionName={sectionName}
             />
-            {/* display load more btn if search result contain at least 1 item*/}
-            {searchResult.length === 0 ? null : (
+            {movies.length !== 0 ? (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
               />
-            )}
-            {/* display load more btn if category result contain at least 1 item*/}
-            {categoryResult.length === 0 ? null : (
-              <LoadMoreFromSearch
-                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-              />
-            )}
+            ) : null}
           </div>
         </>
       ) : (
-        <Content handleCardClickShow={handleCardClickShow} />
+        <Content
+          handleCardClickShow={handleCardClickShow}
+          fetchByAtt={fetchByAtt}
+        />
       )}
     </div>
   );

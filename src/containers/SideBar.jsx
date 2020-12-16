@@ -1,18 +1,21 @@
 import React from "react";
 import Library from "../components/sidebar/Library";
 import Logo from "../components/sidebar/Logo";
+import SortByNav from "../components/sidebar/SortByNav";
 
 const SideBar = ({
   fetchByCategory,
   categorys,
   openMenuHamb,
-  setOpenMenuHamb,
-  setPage,
-  setDisplaySearch,
   setDisplay,
+  handleBackHome,
+  fetchBy,
+  setOpenMenuHamb,
+  sectionName,
 }) => {
   const styleOpen = {
     left: "0",
+    opacity: "1",
     transition: "left 1s ease",
   };
 
@@ -21,13 +24,16 @@ const SideBar = ({
       className="side-bar"
       onClick={() => setDisplay(false)}
       style={openMenuHamb ? styleOpen : null}>
-      <Logo className="logo" setDisplaySearch={setDisplaySearch} />
+      <Logo className="logo" handleBackHome={handleBackHome} />
       <Library
-        setOpenMenuHamb={setOpenMenuHamb}
-        openMenuHamb={openMenuHamb}
         categorys={categorys}
         fetchByCategory={fetchByCategory}
-        setPage={setPage}
+        sectionName={sectionName}
+      />
+      <SortByNav
+        fetchBy={fetchBy}
+        setOpenMenuHamb={setOpenMenuHamb}
+        sectionName={sectionName}
       />
     </div>
   );
