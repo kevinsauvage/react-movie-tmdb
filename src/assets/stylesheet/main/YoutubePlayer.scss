@@ -39,16 +39,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color:$mediumBlue;
+    background-color:$darkBlue;
     z-index: 600;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-items: center;
-    .sad-icon-container{
-       
-    }
+    border: 1px solid black;
     .icon-close-video {
         position: absolute;
         top: 0;
@@ -71,5 +69,12 @@
             height: 60px;
             border-radius: 0 0 0 0;
         }
+    }
+    .no-trailer-text-container {
+        margin: 20px;
+        p {
+            font-size: 20px;
+        }
+
     }
 }
