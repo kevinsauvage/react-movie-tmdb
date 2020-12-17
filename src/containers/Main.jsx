@@ -84,16 +84,6 @@ const Main = ({
       {/* Display search result if true - display content if false */}
       {displayContentHandler() ? (
         <>
-          <div className="section-title-wrapper">
-            <div className="section-title main-section-title">
-              {sectionName
-                .split(".")
-                .join(" ")
-                .split("_")
-                .join(" ")
-                .toUpperCase()}
-            </div>
-          </div>
           <div className="search-result-container">
             <SearchResult
               // Display category result if true - display search result if false

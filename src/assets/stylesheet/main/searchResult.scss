@@ -2,12 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 0 25px 0 25px  ;
+    padding: 0 25px 0 25px;
+    z-index: 0;
     .search-movie-card {
-        width: 141px;
+        width: 180px;
         height: 210px;
-        margin: 10px;
+        margin: 5px 0;
         cursor: pointer;
+        background-size: cover;
+    z-index: 0;
+
     }
     .noResult {
         display: flex;

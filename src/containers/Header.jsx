@@ -108,8 +108,6 @@ const Header = () => {
           singleMovie.id
         }/similar?api_key=${API_KEY}&language=en-US&page=${page + 1}`
       : null;
-    console.log(singleMovie);
-    console.log(page);
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;

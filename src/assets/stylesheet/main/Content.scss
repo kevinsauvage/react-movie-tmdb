@@ -5,14 +5,11 @@
 .see-all {
     position: absolute;
     right: 40px;
-    bottom: 15px;
+    bottom: -5px;
     color:var(--color-pink);
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 400;
-    &:hover {
-      border-bottom: 1px solid var(--color-pink);
-    }
+    font-size: 17px;
+    font-weight: 500;
 }
 @media screen and (min-width: 0px) and (max-width: 700px) {
   .see-all {

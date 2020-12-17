@@ -2,11 +2,11 @@ import React from "react";
 
 const SortByNav = ({ fetchBy, setOpenMenuHamb, sectionName }) => {
   const style = {
-    borderLeft: "3px solid  #0AC2F3",
-    color: "var(--color-pink)",
-    fontWeight: 600,
-    fontSize: "17px",
-    paddingLeft: "5px",
+    background: "var(--color-pink)",
+    color: "white",
+    fontWeight: "400",
+    paddingLeft: "10px",
+    fontSize: "16px",
   };
 
   return (

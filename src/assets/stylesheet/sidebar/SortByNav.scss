@@ -1,12 +1,13 @@
 .sort-by {
     .sort-by-nav {
         li {
-        color:var(--color-light);
-        cursor: pointer;
-        font-weight:500 ;
-        font-size: 16px;
-        margin: 2px 0;
-        transition: all 400ms ease;
+            color:rgba(253, 253, 253, 0.541);
+            font-weight: 200;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 400ms ease;
+            border-radius: 4px;
+            padding: 0px 2px;
 
         }
     }

@@ -13,6 +13,19 @@ const SearchResult = ({
     setIsExecuted(false);
   }, 4000);
 
+  console.log(searchResult);
+
+  const filterByYear = () => {
+    const res = searchResult.filter((result) => {
+      if (result.vote_average > "6") {
+        return result;
+      }
+    });
+    console.log(res);
+  };
+
+  filterByYear();
+
   if (searchResult.length === 0) {
     if (isExecuted) {
       return (

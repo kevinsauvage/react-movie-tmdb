@@ -7,15 +7,15 @@ const Carusel = ({ movies, handleCardClickShow }) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 9,
+      items: 4,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1601 },
-      items: 7,
+      items: 4,
     },
     between: {
       breakpoint: { max: 1600, min: 1024 },
-      items: 5,
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 600 },

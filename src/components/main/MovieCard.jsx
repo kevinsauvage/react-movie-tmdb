@@ -39,6 +39,7 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
             {movie.title}
           </p>
           <p
+            className="release"
             data-key={movie.id}
             onClick={(e) => {
               handleCardClickShow(e);

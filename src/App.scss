@@ -12,19 +12,18 @@
 @import './assets/stylesheet/main/LoadMore.scss';
 @import "./assets/stylesheet/sidebar/SortByNav.scss";
 @import "./assets/stylesheet/main/YoutubePlayer.scss";
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700;800;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 :root {
-    --color-dark: #030111;
-    --color-medium-dark:#0E1227;
-    --color-light: #2BCED6;
-    --color-pink: #ff0059 ;
+    --color-dark:#181b21;
+    --color-medium-dark:#212630;
+    --color-light:white;
+    --color-pink: rgb(0, 255, 221) ;
 }
 
 
 * {
-    font-family: 'Alegreya', serif;
-     padding: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
      margin: 0;
      box-sizing: border-box;
      list-style-type: none;

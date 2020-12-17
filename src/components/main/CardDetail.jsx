@@ -32,7 +32,6 @@ const CardDetail = ({
     }
     setDisplay(false);
   };
-  console.log(node.current);
 
   useEffect(() => {
     fetchSingleMovieWithMovieId();
