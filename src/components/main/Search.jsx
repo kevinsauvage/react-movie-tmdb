@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 
-const Search = ({ handleSubmit, query, setQuery }) => {
+import { AppContext } from "../../Context/AppContext";
+
+const Search = () => {
+  const props = useContext(AppContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.fetchMoviesSearch();
+  };
+
   return (
     <form className="search" onSubmit={handleSubmit}>
       <div className="wrapper-search">
@@ -9,10 +18,10 @@ const Search = ({ handleSubmit, query, setQuery }) => {
           <FaSearch fill="var(--color-pink)" />
         </div>
         <input
-          value={query}
+          value={props.query}
           onChange={(e) => {
             let value = e.target.value;
-            setQuery(value);
+            props.setQuery(value);
           }}
           className="search-input"
           type="text"

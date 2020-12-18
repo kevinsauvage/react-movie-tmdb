@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../Context/AppContext";
 
-const Logo = ({ handleBackHome }) => {
+const Logo = () => {
+  const props = useContext(AppContext);
+
   return (
-    <div className="logo" onClick={handleBackHome}>
+    <div className="logo" onClick={props.handleBackHome}>
       <h1>MV</h1>
     </div>
   );

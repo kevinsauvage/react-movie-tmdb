@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
 
-const Carusel = ({ movies, handleCardClickShow }) => {
+const Carusel = (movies) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -26,7 +26,6 @@ const Carusel = ({ movies, handleCardClickShow }) => {
       items: 2,
     },
   };
-
   return (
     <Carousel
       additionalTransfrom={0}
@@ -41,15 +40,11 @@ const Carusel = ({ movies, handleCardClickShow }) => {
       showDots={false}
       slidesToSlide={4}
       swipeable>
-      {movies.map((movie) => {
-        return (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            handleCardClickShow={handleCardClickShow}
-          />
-        );
-      })}
+      {movies.movies.lenth !== 0
+        ? movies.movies.map((movie) => {
+            return <MovieCard key={movie.id} movie={movie} />;
+          })
+        : null}
     </Carousel>
   );
 };

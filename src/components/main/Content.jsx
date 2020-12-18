@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Carusel from "../main/Carusel";
 import SectionTitle from "../main/SectionTitle";
+import { AppContext } from "../../Context/AppContext";
 
-const Content = ({ handleCardClickShow, fetchByAtt }) => {
+const Content = () => {
   // Fetching top favorite movies
+  const props = useContext(AppContext);
+
   const [popMovies, setpopMovies] = useState([]);
   const [topMovies, settopMovies] = useState([]);
 
@@ -33,14 +36,14 @@ const Content = ({ handleCardClickShow, fetchByAtt }) => {
 
   const seeAllHandler = (e) => {
     const att = e.target.dataset.key;
-    fetchByAtt(att);
+    props.fetchByAtt(att);
   };
 
   return (
     <div className="content">
       <div className="carusel-wrapper">
         <SectionTitle title="Popular Movies" />
-        <Carusel handleCardClickShow={handleCardClickShow} movies={popMovies} />
+        <Carusel movies={popMovies} />
         <div data-key="popular" className="see-all" onClick={seeAllHandler}>
           See all
         </div>
@@ -48,7 +51,7 @@ const Content = ({ handleCardClickShow, fetchByAtt }) => {
 
       <div className="carusel-wrapper">
         <SectionTitle title="Top Rated Movies" />
-        <Carusel movies={topMovies} handleCardClickShow={handleCardClickShow} />
+        <Carusel movies={topMovies} />
         <div data-key="top_rated" className="see-all" onClick={seeAllHandler}>
           See all
         </div>

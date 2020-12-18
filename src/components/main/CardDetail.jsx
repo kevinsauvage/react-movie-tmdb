@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
 import YoutubePlayer from "../main/YoutubeVideoPlayer";
+import { AppContext } from "../../Context/AppContext";
 
-const CardDetail = ({
-  singleMovie,
-  fetchSingleMovieWithMovieId,
-  setDisplay,
-  fetchSimilarMovies,
-}) => {
+const CardDetail = () => {
+  const props = useContext(AppContext);
   const [videoIsOpen, SetVideoIsOpen] = useState(false);
-  const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
-
+  const background = `url(https://image.tmdb.org/t/p/w780/${props.singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
   };
 
   useEffect(() => {
-    fetchSingleMovieWithMovieId();
+    props.fetchSingleMovieWithMovieId();
   }, []);
 
   const fadeOut = (e) => {
     const cont = e.currentTarget.parentElement.parentElement;
     cont.style.animation = "fadeOut 600ms";
     setTimeout(() => {
-      setDisplay(false);
+      props.setDisplay(false);
     }, 500);
   };
 
@@ -43,22 +39,24 @@ const CardDetail = ({
         </div>
         <div className="movie-detail-container">
           <img
-            src={`https://image.tmdb.org/t/p/w185/${singleMovie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w185/${props.singleMovie.poster_path}`}
             alt=""
             className="poster"
           />
           <div className="card-detail-text-wrapper">
             <div className="title-and-note">
-              <h3>{singleMovie.original_title}</h3>
+              <h3>{props.singleMovie.original_title}</h3>
               <div className="note-container">
                 <FaStar />
-                <span className="note">{singleMovie.vote_average}</span>
+                <span className="note">{props.singleMovie.vote_average}</span>
               </div>
             </div>
-            <span className="release">{singleMovie.release_date}</span>
-            <p className="movie-description">{singleMovie.overview}</p>
+            <span className="release">{props.singleMovie.release_date}</span>
+            <p className="movie-description">{props.singleMovie.overview}</p>
 
-            <div className="fetch-similar-btn" onClick={fetchSimilarMovies}>
+            <div
+              className="fetch-similar-btn"
+              onClick={props.fetchSimilarMovies}>
               Similar movies
             </div>
             <div
@@ -71,12 +69,7 @@ const CardDetail = ({
           </div>
         </div>
       </div>
-      {videoIsOpen ? (
-        <YoutubePlayer
-          singleMovie={singleMovie}
-          SetVideoIsOpen={SetVideoIsOpen}
-        />
-      ) : null}
+      {videoIsOpen ? <YoutubePlayer SetVideoIsOpen={SetVideoIsOpen} /> : null}
     </div>
   );
 };

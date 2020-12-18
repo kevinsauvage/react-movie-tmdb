@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../Context/AppContext";
 
-const Library = ({ fetchByCategory, categorys, sectionName }) => {
+const Library = () => {
+  const props = useContext(AppContext);
+
   const style = {
     background: "var(--color-pink)",
     color: "#181b21",
@@ -13,18 +16,23 @@ const Library = ({ fetchByCategory, categorys, sectionName }) => {
     <div className="library">
       <h2 className="section-title">GENRE</h2>
       <ul className="library-nav">
-        {categorys.map((category) => (
-          <li
-            key={category.id}
-            data-id={category.id}
-            data-name={category.name}
-            style={sectionName === category.name ? style : null}
-            onClick={(e) =>
-              fetchByCategory(e.target.dataset.name, e.target.dataset.id)
-            }>
-            {category.name}
-          </li>
-        ))}
+        {props.categorys.length !== 0
+          ? props.categorys.map((category) => (
+              <li
+                key={category.id}
+                data-id={category.id}
+                data-name={category.name}
+                style={props.sectionName === category.name ? style : null}
+                onClick={(e) =>
+                  props.fetchByCategory(
+                    e.target.dataset.name,
+                    e.target.dataset.id
+                  )
+                }>
+                {category.name}
+              </li>
+            ))
+          : null}
       </ul>
     </div>
   );
