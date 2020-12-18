@@ -3,8 +3,8 @@ import React from "react";
 const Library = ({ fetchByCategory, categorys, sectionName }) => {
   const style = {
     background: "var(--color-pink)",
-    color: "black",
-    fontWeight: "800",
+    color: "#181b21",
+    fontWeight: "900",
     paddingLeft: "10px",
     fontSize: "16px",
   };
