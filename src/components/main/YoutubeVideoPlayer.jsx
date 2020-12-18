@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactPlayer from "react-player/youtube";
 import { FaSadTear, FaTimesCircle } from "react-icons/fa";
 

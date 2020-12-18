@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
 import YoutubePlayer from "../main/YoutubeVideoPlayer";
 
@@ -10,27 +10,9 @@ const CardDetail = ({
 }) => {
   const [videoIsOpen, SetVideoIsOpen] = useState(false);
   const background = `url(https://image.tmdb.org/t/p/w780/${singleMovie.backdrop_path})`;
-  const node = useRef();
 
   const style = {
     backgroundImage: background,
-  };
-
-  useEffect(() => {
-    // add when mounted
-    document.addEventListener("mousedown", handleClick);
-    // return function to be called when unmounted
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, []);
-
-  const handleClick = (e) => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    setDisplay(false);
   };
 
   useEffect(() => {
@@ -46,14 +28,18 @@ const CardDetail = ({
   };
 
   return (
-    <div className="card-detail" style={style} ref={node}>
+    <div className="card-detail" style={style}>
       <div className="gradient">
         <div
           className="icon-movie-card-detail"
           onClick={(e) => {
             fadeOut(e);
           }}>
-          <FaTimesCircle size="30px" style={{ cursor: "pointer" }} />
+          <FaTimesCircle
+            size="30px"
+            style={{ cursor: "pointer" }}
+            fill="var(--color-pink)"
+          />
         </div>
         <div className="movie-detail-container">
           <img
@@ -76,7 +62,9 @@ const CardDetail = ({
               Similar movies
             </div>
             <div
-              onClick={() => SetVideoIsOpen(true)}
+              onClick={() => {
+                SetVideoIsOpen(true);
+              }}
               className="see-trailer-btn">
               Watch trailer
             </div>

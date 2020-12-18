@@ -33,6 +33,7 @@ background-color: var(--color-dark);
                 transition: all 400ms ease;
                 border-radius: 2px;
                 padding: 0px 2px;
+                letter-spacing: 1px;
                 &:hover {
                     color: white;
                 }
@@ -64,7 +65,7 @@ background-color: var(--color-dark);
         opacity: 0;
         .logo {
             display: none;
-        }
+            }
     }
   }
 
