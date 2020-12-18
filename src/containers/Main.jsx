@@ -87,13 +87,13 @@ const Main = ({
         <>
           <div className="search-result-container">
             <SearchResult
-              // Display category result if true - display search result if false
               searchResult={movies}
               handleCardClickShow={handleCardClickShow}
               isExecuted={isExecuted}
               setIsExecuted={setIsExecuted}
               sectionName={sectionName}
             />
+            {/* Display btn load more if the api return something */}
             {movies.length !== 0 ? (
               <LoadMoreFromSearch
                 loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}

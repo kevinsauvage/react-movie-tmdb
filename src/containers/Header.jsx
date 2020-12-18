@@ -23,6 +23,7 @@ const Header = () => {
   const [movies, setMovies] = useState([]);
   // Section name string
   const [sectionName, setSectionName] = useState("");
+  // Setting the Spinner loader
   const [isExecuted, setIsExecuted] = useState(true);
 
   // Set the display true to use right fetch url
@@ -69,7 +70,7 @@ const Header = () => {
     setDisplaySearch(true);
   };
 
-  // fetch by att 'popular' or 'top rated'
+  // fetch by attribut 'popular' or 'top rated'
   const fetchByAtt = async (att) => {
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
@@ -123,7 +124,7 @@ const Header = () => {
     setSingleMovie(data);
   };
 
-  // Fetch by category
+  // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
     // No fetch if clicking the same category
     if (sectionName === name) {
@@ -140,7 +141,6 @@ const Header = () => {
     setDisplaySearch(false);
     setDisplaySortResults(false);
     setIsExecuted(true);
-
     setPage(1);
     setSectionName(name);
     setDisplayCategory(true);
@@ -155,7 +155,6 @@ const Header = () => {
     setMovies(results);
     setDisplayCategory(false);
     setIsExecuted(true);
-
     setDisplaySearch(false);
     setSectionName(att);
     setPage(1);
@@ -190,7 +189,6 @@ const Header = () => {
   const handleBackHome = () => {
     // set to true the spinner loader
     setIsExecuted(true);
-
     setDisplayCategory(false);
     setDisplaySearch(false);
     setDisplaySortResults(false);
@@ -203,45 +201,43 @@ const Header = () => {
 
   return (
     <header className="header">
-      <>
-        <SideBar
-          fetchByCategory={fetchByCategory}
-          categorys={categorys}
-          openMenuHamb={openMenuHamb}
-          setDisplay={setDisplay}
-          handleBackHome={handleBackHome}
-          fetchBy={fetchBy}
-          setOpenMenuHamb={setOpenMenuHamb}
-          sectionName={sectionName}
-        />
-        <Main
-          isExecuted={isExecuted}
-          setIsExecuted={setIsExecuted}
-          displaySimilar={displaySimilar}
-          fetchSimilarMovies={fetchSimilarMovies}
-          sectionName={sectionName}
-          movies={movies}
-          handleBackHome={handleBackHome}
-          displaySortResults={displaySortResults}
-          setDisplay={setDisplay}
-          setPage={setPage}
-          setDisplaySearch={setDisplaySearch}
-          setQuery={setQuery}
-          setOpenMenuHamb={setOpenMenuHamb}
-          openMenuHamb={openMenuHamb}
-          fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
-          handleCardClickShow={handleCardClickShow}
-          display={display}
-          singleMovie={singleMovie}
-          query={query}
-          fetchMoviesSearch={fetchMoviesSearch}
-          displaySearch={displaySearch}
-          displayCategory={displayCategory}
-          loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-          fetchByAtt={fetchByAtt}
-          displaySeeAll={displaySeeAll}
-        />
-      </>
+      <SideBar
+        fetchByCategory={fetchByCategory}
+        categorys={categorys}
+        openMenuHamb={openMenuHamb}
+        setDisplay={setDisplay}
+        handleBackHome={handleBackHome}
+        fetchBy={fetchBy}
+        setOpenMenuHamb={setOpenMenuHamb}
+        sectionName={sectionName}
+      />
+      <Main
+        isExecuted={isExecuted}
+        setIsExecuted={setIsExecuted}
+        displaySimilar={displaySimilar}
+        fetchSimilarMovies={fetchSimilarMovies}
+        sectionName={sectionName}
+        movies={movies}
+        handleBackHome={handleBackHome}
+        displaySortResults={displaySortResults}
+        setDisplay={setDisplay}
+        setPage={setPage}
+        setDisplaySearch={setDisplaySearch}
+        setQuery={setQuery}
+        setOpenMenuHamb={setOpenMenuHamb}
+        openMenuHamb={openMenuHamb}
+        fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
+        handleCardClickShow={handleCardClickShow}
+        display={display}
+        singleMovie={singleMovie}
+        query={query}
+        fetchMoviesSearch={fetchMoviesSearch}
+        displaySearch={displaySearch}
+        displayCategory={displayCategory}
+        loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
+        fetchByAtt={fetchByAtt}
+        displaySeeAll={displaySeeAll}
+      />
     </header>
   );
 };
