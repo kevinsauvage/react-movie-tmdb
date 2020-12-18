@@ -5,6 +5,7 @@ import CardDetail from "../components/main/CardDetail";
 import SearchResult from "../components/main/SearchResult";
 import LoadMoreFromSearch from "../components/main/LoadMoreFromSearch";
 import Logo from "../components/sidebar/Logo";
+
 import { FaBars } from "react-icons/fa";
 
 const Main = ({

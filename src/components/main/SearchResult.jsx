@@ -29,13 +29,18 @@ const SearchResult = ({
     }
   }
   if (searchResult.length !== 0) {
-    return searchResult.map((movie) => {
-      return (
-        <div key={movie.id} className="search-movie-card">
-          <MovieCard movie={movie} handleCardClickShow={handleCardClickShow} />
-        </div>
-      );
-    });
+    return (
+      <>
+        {searchResult.map((movie) => (
+          <div key={movie.id} className="search-movie-card">
+            <MovieCard
+              movie={movie}
+              handleCardClickShow={handleCardClickShow}
+            />
+          </div>
+        ))}
+      </>
+    );
   }
 };
 

@@ -4,6 +4,9 @@
 }
 .react-multiple-carousel__arrow {
     z-index: 1 !important;
+    &::before {
+        left: 2px;
+    }
 }
 
 .react-multi-carousel-track {

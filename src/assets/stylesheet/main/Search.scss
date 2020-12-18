@@ -3,10 +3,11 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     justify-content: space-between;
-    height: 60px;
-    margin: 0px 0px 17px 0px;
+    height: 80px;
     align-items: center;
-    padding-left: 46px;
+    padding-left: 45px;
+    z-index: 6500;
+    background-color: var(--color-medium-dark);
     p {
         color:var(--color-pink);
         height: 100%;
