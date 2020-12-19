@@ -11,6 +11,9 @@ const Library = () => {
     paddingLeft: "10px",
     fontSize: "16px",
   };
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="library">
@@ -23,12 +26,13 @@ const Library = () => {
                 data-id={category.id}
                 data-name={category.name}
                 style={props.sectionName === category.name ? style : null}
-                onClick={(e) =>
+                onClick={(e) => {
                   props.fetchByCategory(
                     e.target.dataset.name,
                     e.target.dataset.id
-                  )
-                }>
+                  );
+                  handleClick();
+                }}>
                 {category.name}
               </li>
             ))

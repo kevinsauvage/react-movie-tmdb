@@ -3,7 +3,6 @@ import Search from "../components/main/Search";
 import Content from "../components/main/Content";
 import CardDetail from "../components/main/CardDetail";
 import SearchResult from "../components/main/SearchResult";
-import LoadMoreFromSearch from "../components/main/LoadMoreFromSearch";
 import Logo from "../components/sidebar/Logo";
 import { AppContext } from "../Context/AppContext";
 
@@ -33,7 +32,6 @@ const Main = () => {
         <>
           <div className="search-result-container">
             <SearchResult />
-            {props.movies.length !== 0 ? <LoadMoreFromSearch /> : null}
           </div>
         </>
       ) : (

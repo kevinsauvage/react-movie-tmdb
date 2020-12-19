@@ -11,6 +11,9 @@ const SortByNav = () => {
     paddingLeft: "10px",
     fontSize: "16px",
   };
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="sort-by">
@@ -22,6 +25,7 @@ const SortByNav = () => {
           onClick={(e) => {
             props.fetchBy(e.target.dataset.name);
             props.setOpenMenuHamb(false);
+            handleClick();
           }}>
           Popularity desc
         </li>
@@ -31,6 +35,7 @@ const SortByNav = () => {
           onClick={(e) => {
             props.fetchBy(e.target.dataset.name);
             props.setOpenMenuHamb(false);
+            handleClick();
           }}>
           Vote average
         </li>
@@ -40,6 +45,7 @@ const SortByNav = () => {
           onClick={(e) => {
             props.fetchBy(e.target.dataset.name);
             props.setOpenMenuHamb(false);
+            handleClick();
           }}>
           Vote Count
         </li>

@@ -1,14 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MovieCard from "../main/MovieCard";
 import { AppContext } from "../../Context/AppContext";
 import Loader from "react-loader-spinner";
 
 const SearchResult = ({ handleCardClickShow }) => {
   const props = useContext(AppContext);
+  const [isBottom, setIsBottom] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
-  setTimeout(() => {
-    props.setIsExecuted(false);
-  }, 4000);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  // we use an empty array [] as the second parameter of useEffect, that tells the useEffect function to act like componentDidMount and only run onee time, when the component first mounts.
+
+  useEffect(() => {
+    if (!isFetching) return;
+    fetchMoreListItems();
+  }, [isFetching]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY + 200 >=
+      document.body.offsetHeight
+    ) {
+      setIsFetching(true);
+      console.log("Bottom of page");
+    }
+  };
+
+  const fetchMoreListItems = () => {
+    setTimeout(() => {
+      props.loadMoreHandlerFromSearch();
+      setIsFetching(false);
+    }, 1000);
+  };
 
   if (props.movies.length === 0) {
     if (props.isExecuted) {

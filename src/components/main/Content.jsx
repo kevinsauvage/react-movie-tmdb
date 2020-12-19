@@ -8,29 +8,12 @@ const Content = () => {
 
   const props = useContext(AppContext);
 
-  const [popMovies, setpopMovies] = useState([]);
-  const [topMovies, settopMovies] = useState([]);
-
   useEffect(() => {
-    async function getMovies() {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const data = await response.json();
-      setpopMovies(data.results);
-    }
-    getMovies();
+    props.getPopMovies();
   }, []);
 
   useEffect(() => {
-    async function getMovies() {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const data = await response.json();
-      settopMovies(data.results);
-    }
-    getMovies();
+    props.getTopMovies();
   }, []);
 
   const seeAllHandler = (e) => {
@@ -41,7 +24,7 @@ const Content = () => {
     <div className="content">
       <div className="carusel-wrapper">
         <SectionTitle title="Popular Movies" />
-        <Carusel movies={popMovies} />
+        <Carusel movies={props.popMovies} />
         <div data-key="popular" className="see-all" onClick={seeAllHandler}>
           See all
         </div>
@@ -49,7 +32,7 @@ const Content = () => {
 
       <div className="carusel-wrapper">
         <SectionTitle title="Top Rated Movies" />
-        <Carusel movies={topMovies} />
+        <Carusel movies={props.topMovies} />
         <div data-key="top_rated" className="see-all" onClick={seeAllHandler}>
           See all
         </div>

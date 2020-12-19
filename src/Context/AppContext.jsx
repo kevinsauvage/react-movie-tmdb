@@ -19,6 +19,34 @@ export const AppProvider = (props) => {
   const [page, setPage] = useState(1); // set page to fetch
   const [genreId, setGenreId] = useState(null); // store genre id of movie category to fetch and store the movies
   const [displayedSearchName, setDisplayedSearchName] = useState(""); // Set the name of the fetch to load more content
+  const [totalPages, setTotalPages] = useState("");
+
+  const [popMovies, setpopMovies] = useState([]);
+  const [topMovies, settopMovies] = useState([]);
+
+  const getPopMovies = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    const data = await response.json();
+    const response2 = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=2`
+    );
+    const data2 = await response2.json();
+    setpopMovies([...data.results, ...data2.results]);
+  };
+
+  const getTopMovies = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    const data = await response.json();
+    const response2 = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=2`
+    );
+    const data2 = await response2.json();
+    settopMovies([...data.results, ...data2.results]);
+  };
 
   // Get the name of categorys and display them on sidebar
   const fetchCategorys = async (e) => {
@@ -51,24 +79,28 @@ export const AppProvider = (props) => {
       );
       const data = await response.json();
       const results = data.results;
-      setMovies(results);
+
+      const response2 = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=2&include_adult=false`
+      );
+      const data2 = await response2.json();
+      const results2 = data2.results;
+      setMovies([]);
+      setMovies([...results, ...results2]);
       setSectionName(query);
       setDisplayedSearchName("search");
       setDisplaySearch(true);
-      setPage(1);
+      setPage(3);
     }
   };
   const fetchByAtt = async (att) => {
     setIsExecuted(true);
-    const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
-    const response = await fetch(url);
-    const data = await response.json();
-    const results = data.results;
-    setMovies(results);
+    if (att === "popular") setMovies([...popMovies]);
+    if (att === "top_rated") setMovies([...topMovies]);
     setDisplayedSearchName("seeAll");
     setDisplaySearch(true);
     setSectionName(att);
-    setPage(1);
+    setPage(3);
   };
 
   // Fetch by category nav link
@@ -83,12 +115,20 @@ export const AppProvider = (props) => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-    setMovies(results);
+
+    const url2 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=2&with_genres=${id}`;
+    const response2 = await fetch(url2);
+    const data2 = await response2.json();
+    const results2 = data2.results;
+
+    setMovies([]);
+    setMovies([...results, ...results2]);
     setDisplayedSearchName("category");
     setOpenMenuHamb(false);
     setDisplaySearch(true);
     setSectionName(name);
-    setPage(1);
+    setTotalPages(data.total_pages);
+    setPage(3);
   };
 
   // Fetct to sort by
@@ -98,12 +138,17 @@ export const AppProvider = (props) => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-    setMovies(results);
+    const url2 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=2`;
+    const response2 = await fetch(url2);
+    const data2 = await response2.json();
+    const results2 = data2.results;
+    setMovies([]);
+    setMovies([...results, ...results2]);
     setDisplaySearch(true);
     setSectionName(att);
     setDisplayedSearchName("sort");
     setOpenMenuHamb(false);
-    setPage(1);
+    setPage(3);
   };
 
   // Fetch siimilar movie by clicking on btn in card detail
@@ -123,12 +168,11 @@ export const AppProvider = (props) => {
   };
 
   // Load more movies handler
-  const loadMoreHandlerFromSearch = async (e) => {
+  const loadMoreHandlerFromSearch = async () => {
+    console.log(page);
     const url =
       displayedSearchName === "category"
-        ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
-            page + 1
-          }&with_genres=${genreId}`
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${page}&with_genres=${genreId}`
         : displayedSearchName === "search"
         ? `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
             page + 1
@@ -174,6 +218,10 @@ export const AppProvider = (props) => {
         sectionName,
         isExecuted,
         query,
+        topMovies,
+        popMovies,
+        getPopMovies,
+        getTopMovies,
         fetchSingleMovieWithMovieId,
         fetchMoviesSearch,
         setOpenMenuHamb,
