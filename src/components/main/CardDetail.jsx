@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
 import YoutubePlayer from "../main/YoutubeVideoPlayer";
 import { AppContext } from "../../Context/AppContext";
@@ -6,18 +6,16 @@ import { AppContext } from "../../Context/AppContext";
 const CardDetail = () => {
   const props = useContext(AppContext);
   const [videoIsOpen, SetVideoIsOpen] = useState(false);
+
   const background = `url(https://image.tmdb.org/t/p/w780/${props.singleMovie.backdrop_path})`;
   const style = {
     backgroundImage: background,
   };
 
-  useEffect(() => {
-    props.fetchSingleMovieWithMovieId();
-  }, []);
-
   const fadeOut = (e) => {
     const cont = e.currentTarget.parentElement.parentElement;
     cont.style.animation = "fadeOut 600ms";
+
     setTimeout(() => {
       props.setDisplay(false);
     }, 500);

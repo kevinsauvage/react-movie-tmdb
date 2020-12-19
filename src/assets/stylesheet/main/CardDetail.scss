@@ -33,13 +33,11 @@
              }
             .card-detail-text-wrapper {
                 height: 500px;
-
                 padding: 20px;
                 width: 600px;
                 z-index: 50;
                 background-color: rgba(0, 0, 0, 0.8);
                 position: relative;
-                
                 .title-and-note {
                     display: flex;
                     justify-content: space-between;
@@ -52,7 +50,6 @@
                         align-items: center;
                         .note {
                             padding-left: 10px;
-                            
                         }
                     }
                 }
@@ -128,7 +125,6 @@
                     .movie-description {
                         margin-top: 50px;
                     }
-                    
                 }
             }
         }

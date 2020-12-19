@@ -7,52 +7,36 @@ const { Provider } = AppContext;
 export const AppProvider = (props) => {
   const API_KEY = process.env.REACT_APP_API_KEY;
 
-  // fetch each category and store them into array to display them in sidebar
-  const [categorys, setCategorys] = useState([]);
-  // store the result of the fetch of a single movie when user click on movie card
-  const [singleMovie, setSingleMovie] = useState([]);
-  // Movie id to fetch the single movie
-  const [queryId, setQueryID] = useState("");
-  // query from user input
-  const [query, setQuery] = useState("");
-  // Array of movie that we fetch
-  const [movies, setMovies] = useState([]);
-  // Set the display true to use right fetch url
-  const [displaySortResults, setDisplaySortResults] = useState(false);
-  const [displaySeeAll, setDisplaySeeAll] = useState(false);
-  const [displaySearch, setDisplaySearch] = useState(false);
-  const [displayCategory, setDisplayCategory] = useState(false);
-  const [displaySimilar, setDisplaySimilar] = useState(false);
-  // Toggle the opening and closing of hamburger menu
-  const [openMenuHamb, setOpenMenuHamb] = useState(false);
-  // handle the display of the card detail movie show
-  const [display, setDisplay] = useState(false);
-  // Section name string
-  const [sectionName, setSectionName] = useState("");
-  // Setting the Spinner loader
-  const [isExecuted, setIsExecuted] = useState(true);
-  // set page to fetch
-  const [page, setPage] = useState(1);
-  // store genre id of movie category to fetch and store the movies
-  const [genreId, setGenreId] = useState(null);
+  const [categorys, setCategorys] = useState([]); // fetch each category and store them into array to display them in sidebar
+  const [singleMovie, setSingleMovie] = useState([]); // store the result of the fetch of a single movie when user click on movie card
+  const [query, setQuery] = useState(""); // query from user input
+  const [movies, setMovies] = useState([]); // Array of movie that we fetch
+  const [displaySearch, setDisplaySearch] = useState(false); // Set the display true to use right fetch url
+  const [openMenuHamb, setOpenMenuHamb] = useState(false); // Toggle the opening and closing of hamburger menu
+  const [display, setDisplay] = useState(false); // handle the display of the card detail movie show
+  const [sectionName, setSectionName] = useState(""); // Section name string
+  const [isExecuted, setIsExecuted] = useState(true); // Setting the Spinner loader
+  const [page, setPage] = useState(1); // set page to fetch
+  const [genreId, setGenreId] = useState(null); // store genre id of movie category to fetch and store the movies
+  const [displayedSearchName, setDisplayedSearchName] = useState(""); // Set the name of the fetch to load more content
 
-  // Fetch Categorys for navigation sidebar
+  // Get the name of categorys and display them on sidebar
   const fetchCategorys = async (e) => {
-    const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";
     const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
     const response = await fetch(url);
     const data = await response.json();
-    const genres = data.genres;
+    const genres = await data.genres;
     setCategorys(genres);
   };
+
   // Fetch at first render the categorys
   useEffect(() => {
     fetchCategorys();
   }, []);
 
   // Fetch single movie by id to display movie card detail
-  const fetchSingleMovieWithMovieId = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${queryId}?api_key=${API_KEY}&append_to_response=videos`;
+  const fetchSingleMovieWithMovieId = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
     const response = await fetch(url);
     const data = await response.json();
     setSingleMovie(data);
@@ -60,6 +44,7 @@ export const AppProvider = (props) => {
 
   // Handle the search for movie and display it
   const fetchMoviesSearch = async () => {
+    setIsExecuted(true);
     if (query.length !== 0) {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
@@ -67,58 +52,23 @@ export const AppProvider = (props) => {
       const data = await response.json();
       const results = data.results;
       setMovies(results);
-      setDisplayCategory(false);
-      setDisplaySortResults(false);
-      setDisplay(false);
-      setIsExecuted(true);
       setSectionName(query);
-      setPage(1);
+      setDisplayedSearchName("search");
       setDisplaySearch(true);
+      setPage(1);
     }
   };
   const fetchByAtt = async (att) => {
+    setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/movie/${att}?api_key=${API_KEY}&language=en-US&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    setDisplayCategory(false);
-    setDisplaySortResults(false);
-    setDisplaySearch(false);
-    setIsExecuted(true);
+    setDisplayedSearchName("seeAll");
+    setDisplaySearch(true);
     setSectionName(att);
     setPage(1);
-    setDisplaySeeAll(true);
-  };
-
-  // Load more movies handler
-  const loadMoreHandlerFromSearch = async () => {
-    const url = displayCategory
-      ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
-          page + 1
-        }&with_genres=${genreId}`
-      : displaySearch
-      ? `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
-          page + 1
-        }&include_adult=false`
-      : displaySortResults
-      ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sectionName}&include_adult=false&include_video=false&page=${
-          page + 1
-        }`
-      : displaySeeAll
-      ? `https://api.themoviedb.org/3/movie/${sectionName}?api_key=${API_KEY}&language=en-US&page=${
-          page + 1
-        }`
-      : displaySimilar
-      ? `https://api.themoviedb.org/3/movie/${
-          singleMovie.single.id
-        }/similar?api_key=${API_KEY}&language=en-US&page=${page + 1}`
-      : null;
-    const response = await fetch(url);
-    const data = await response.json();
-    const results = data.results;
-    setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
-    setPage(page + 1);
   };
 
   // Fetch by category nav link
@@ -128,64 +78,87 @@ export const AppProvider = (props) => {
       return;
     }
     setGenreId(id);
+    setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${id}`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    setDisplay(false);
+    setDisplayedSearchName("category");
     setOpenMenuHamb(false);
-    setDisplaySearch(false);
-    setDisplaySortResults(false);
-    setIsExecuted(true);
-    setPage(1);
+    setDisplaySearch(true);
     setSectionName(name);
-    setDisplayCategory(true);
+    setPage(1);
   };
 
   // Fetct to sort by
   const fetchBy = async (att) => {
+    setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    setDisplayCategory(false);
-    setIsExecuted(true);
-    setDisplaySearch(false);
+    setDisplaySearch(true);
     setSectionName(att);
+    setDisplayedSearchName("sort");
+    setOpenMenuHamb(false);
     setPage(1);
-    setDisplaySortResults(true);
   };
 
+  // Fetch siimilar movie by clicking on btn in card detail
   const fetchSimilarMovies = async () => {
+    setIsExecuted(true);
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${singleMovie.id}/similar?api_key=${API_KEY}&language=en-US&page=1`
     );
     const data = await response.json();
     const results = data.results;
     setMovies(results);
-    setDisplayCategory(false);
-    setDisplaySortResults(false);
     setDisplay(false);
     setSectionName(`"${singleMovie.title}" Similar Movies`);
-    setDisplaySearch(false);
-    setIsExecuted(true);
-    setDisplaySimilar(true);
+    setDisplaySearch(true);
     setPage(1);
+    setDisplayedSearchName("similar");
   };
 
-  // Handle the back home when clicking to logo
+  // Load more movies handler
+  const loadMoreHandlerFromSearch = async (e) => {
+    const url =
+      displayedSearchName === "category"
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${
+            page + 1
+          }&with_genres=${genreId}`
+        : displayedSearchName === "search"
+        ? `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${
+            page + 1
+          }&include_adult=false`
+        : displayedSearchName === "sort"
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sectionName}&include_adult=false&include_video=false&page=${
+            page + 1
+          }`
+        : displayedSearchName === "seeAll"
+        ? `https://api.themoviedb.org/3/movie/${sectionName}?api_key=${API_KEY}&language=en-US&page=${
+            page + 1
+          }`
+        : displayedSearchName === "similar"
+        ? `https://api.themoviedb.org/3/movie/${
+            singleMovie.single.id
+          }/similar?api_key=${API_KEY}&language=en-US&page=${page + 1}`
+        : null;
+    const response = await fetch(url);
+    const data = await response.json();
+    const results = data.results;
+    setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
+    setPage(page + 1);
+  };
+
+  // Handle the back home when clicking on logo
   const handleBackHome = () => {
-    // set to true the spinner loader
     setIsExecuted(true);
-    setDisplayCategory(false);
     setDisplaySearch(false);
-    setDisplaySortResults(false);
     setDisplay(false);
-    setDisplaySeeAll(false);
     setOpenMenuHamb(false);
-    setDisplaySimilar(false);
     setSectionName("");
   };
 
@@ -193,33 +166,28 @@ export const AppProvider = (props) => {
     <Provider
       value={{
         categorys,
-        fetchSingleMovieWithMovieId,
         singleMovie,
-        setDisplay,
-        fetchMoviesSearch,
         displaySearch,
-        displayCategory,
-        displaySortResults,
-        displaySeeAll,
-        displaySimilar,
         movies,
-        setOpenMenuHamb,
         openMenuHamb,
-        setPage,
-        setDisplaySearch,
-        handleBackHome,
         display,
         sectionName,
+        isExecuted,
         query,
+        fetchSingleMovieWithMovieId,
+        fetchMoviesSearch,
+        setOpenMenuHamb,
+        setPage,
+        setDisplaySearch,
+        setDisplay,
+        handleBackHome,
         fetchByAtt,
         setQuery,
         setIsExecuted,
-        isExecuted,
         fetchBy,
         fetchByCategory,
         loadMoreHandlerFromSearch,
         fetchSimilarMovies,
-        setQueryID,
       }}>
       {props.children}
     </Provider>

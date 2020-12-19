@@ -12,20 +12,6 @@ import { FaBars } from "react-icons/fa";
 const Main = () => {
   const props = useContext(AppContext);
 
-  const displayContentHandler = () => {
-    if (
-      props.displaySearch === true ||
-      props.displayCategory === true ||
-      props.displaySortResults === true ||
-      props.displaySeeAll === true ||
-      props.displaySimilar === true
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   return (
     <div className="main">
       <div
@@ -37,21 +23,16 @@ const Main = () => {
         className="logo"
         onClick={() => {
           props.setPage(1);
-          props.setDisplaySearch(false);
           props.handleBackHome();
         }}>
         <Logo />
       </div>
-      {/* Display card  detail if true */}
       {props.display ? <CardDetail /> : null}
-      {/* Search input */}
       <Search />
-      {/* Display search result if true - display content if false */}
-      {displayContentHandler() ? (
+      {props.displaySearch ? (
         <>
           <div className="search-result-container">
             <SearchResult />
-            {/* Display btn load more if the api return something */}
             {props.movies.length !== 0 ? <LoadMoreFromSearch /> : null}
           </div>
         </>

@@ -6,7 +6,6 @@
     right: 40px;
     animation: slideIn 500ms;
 }
-
 @keyframes slideIn {
     0%   {opacity: 0; transform: translateY(-100px); }
     100% {opacity: 1; transform: translateY(0);}

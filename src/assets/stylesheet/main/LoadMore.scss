@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
-    
     button {
         border: none;
         border-top: 2px solid  var(--color-pink);
@@ -17,7 +16,6 @@
         background: transparent;
         transition: .4s cubic-bezier(.54,.07,.34,.98);
         color:var(--color-light);
-        
         cursor: pointer;
         &:hover {
             letter-spacing: 5px;

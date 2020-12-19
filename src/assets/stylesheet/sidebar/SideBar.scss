@@ -1,6 +1,6 @@
 .side-bar {
     width: 250px;
-background-color: var(--color-dark);
+    background-color: var(--color-dark);
     position: fixed;
     z-index: 5000;
     padding: 0px 30px 0 30px;
@@ -23,7 +23,6 @@ background-color: var(--color-dark);
     .library {
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-        
         .library-nav {
             li {
                 color:rgba(253, 253, 253, 0.541);
@@ -53,7 +52,6 @@ background-color: var(--color-dark);
     color:var(--color-pink);
     font-weight: 400;
 }
-
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .side-bar {
         display: block;
@@ -65,7 +63,7 @@ background-color: var(--color-dark);
         opacity: 0;
         .logo {
             display: none;
-            }
+        }
     }
-  }
+}
 

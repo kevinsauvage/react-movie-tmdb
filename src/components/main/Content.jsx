@@ -4,21 +4,18 @@ import SectionTitle from "../main/SectionTitle";
 import { AppContext } from "../../Context/AppContext";
 
 const Content = () => {
-  // Fetching top favorite movies
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const props = useContext(AppContext);
 
   const [popMovies, setpopMovies] = useState([]);
   const [topMovies, settopMovies] = useState([]);
 
-  const API_KEY = "c78bc7b8ec55f3dd4bdc0bec579cba83";
-  // Popular url
-  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-  //top rated url
-  const topUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-
   useEffect(() => {
     async function getMovies() {
-      const response = await fetch(url);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+      );
       const data = await response.json();
       setpopMovies(data.results);
     }
@@ -27,7 +24,9 @@ const Content = () => {
 
   useEffect(() => {
     async function getMovies() {
-      const response = await fetch(topUrl);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+      );
       const data = await response.json();
       settopMovies(data.results);
     }
@@ -35,8 +34,7 @@ const Content = () => {
   }, []);
 
   const seeAllHandler = (e) => {
-    const att = e.target.dataset.key;
-    props.fetchByAtt(att);
+    props.fetchByAtt(e.target.dataset.key);
   };
 
   return (
