@@ -20,32 +20,22 @@ export const AppProvider = (props) => {
   const [genreId, setGenreId] = useState(null); // store genre id of movie category to fetch and store the movies
   const [displayedSearchName, setDisplayedSearchName] = useState(""); // Set the name of the fetch to load more content
   const [totalPages, setTotalPages] = useState(10);
-
   const [popMovies, setpopMovies] = useState([]); // Set the popular movies only first render
   const [topMovies, settopMovies] = useState([]); // Set top rated movies only first render
 
-  const getPopMovies = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-    );
+  const getCarusselMovies = async (attribute) => {
+    const url = `https://api.themoviedb.org/3/movie/${attribute}?api_key=${API_KEY}&language=en-US&page=1`;
+    const response = await fetch(url);
     const data = await response.json();
-    const response2 = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=2`
-    );
-    const data2 = await response2.json();
-    setpopMovies([...data.results, ...data2.results]);
-  };
 
-  const getTopMovies = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
-    );
-    const data = await response.json();
-    const response2 = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=2`
-    );
+    const url2 = `https://api.themoviedb.org/3/movie/${attribute}?api_key=${API_KEY}&language=en-US&page=2`;
+    const response2 = await fetch(url2);
     const data2 = await response2.json();
-    settopMovies([...data.results, ...data2.results]);
+
+    if (attribute === "popular")
+      setpopMovies([...data.results, ...data2.results]);
+    if (attribute === "top_rated")
+      settopMovies([...data.results, ...data2.results]);
   };
 
   // Get the name of categorys and display them on sidebar
@@ -72,7 +62,7 @@ export const AppProvider = (props) => {
 
   // Handle the search for movie and display it
   const fetchMoviesSearch = async () => {
-    setIsExecuted(true);
+    setMovies([]);
     if (query.length !== 0) {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
@@ -85,10 +75,11 @@ export const AppProvider = (props) => {
       );
       const data2 = await response2.json();
       const results2 = data2.results;
-      setMovies([]);
       setMovies([...results, ...results2]);
       setSectionName(query);
       setDisplayedSearchName("search");
+      setIsExecuted(false);
+
       setDisplaySearch(true);
       setTotalPages(data.total_pages);
       setPage(3);
@@ -106,6 +97,8 @@ export const AppProvider = (props) => {
 
   // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
+    setMovies([]);
+
     // No fetch if clicking the same category
     if (sectionName === name) {
       return;
@@ -122,7 +115,6 @@ export const AppProvider = (props) => {
     const data2 = await response2.json();
     const results2 = data2.results;
 
-    setMovies([]);
     setMovies([...results, ...results2]);
     setDisplayedSearchName("category");
     setOpenMenuHamb(false);
@@ -134,6 +126,7 @@ export const AppProvider = (props) => {
 
   // Fetct to sort by
   const fetchBy = async (att) => {
+    setMovies([]);
     setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${att}&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
@@ -143,7 +136,6 @@ export const AppProvider = (props) => {
     const response2 = await fetch(url2);
     const data2 = await response2.json();
     const results2 = data2.results;
-    setMovies([]);
     setMovies([...results, ...results2]);
     setDisplaySearch(true);
     setSectionName(att);
@@ -155,6 +147,8 @@ export const AppProvider = (props) => {
 
   // Fetch siimilar movie by clicking on btn in card detail
   const fetchSimilarMovies = async () => {
+    setDisplay(false);
+    setMovies([]);
     setDisplayedSearchName("similar");
     setIsExecuted(true);
     const response = await fetch(
@@ -168,12 +162,9 @@ export const AppProvider = (props) => {
     );
     const data2 = await response2.json();
     const results2 = data2.results;
-
-    setMovies([]);
-    setMovies([...results, ...results2]);
-    setDisplay(false);
-    setSectionName(`"${singleMovie.title}" Similar Movies`);
     setDisplaySearch(true);
+    setMovies([...results, ...results2]);
+    setSectionName(`"${singleMovie.title}" Similar Movies`);
     setPage();
     setIsExecuted(false);
     setPage(3);
@@ -182,8 +173,8 @@ export const AppProvider = (props) => {
 
   // Load more movies handler
   const loadMoreHandlerFromSearch = async () => {
-    if (page > totalPages) {
-      return null;
+    if (page >= totalPages) {
+      return;
     }
     const url =
       displayedSearchName === "category"
@@ -209,10 +200,8 @@ export const AppProvider = (props) => {
     const data = await response.json();
     const results = data.results;
     const newMoviesResult = [...movies, ...results];
-    const r = newMoviesResult.filter(
-      (item, index) => newMoviesResult.indexOf(item) === index
-    );
-    setMovies(r);
+
+    setMovies(newMoviesResult);
     setPage(page + 1);
     setTotalPages(data.total_pages);
   };
@@ -240,9 +229,9 @@ export const AppProvider = (props) => {
         query,
         topMovies,
         popMovies,
+        setSingleMovie,
         setMovies,
-        getPopMovies,
-        getTopMovies,
+        getCarusselMovies,
         fetchSingleMovieWithMovieId,
         fetchMoviesSearch,
         setOpenMenuHamb,

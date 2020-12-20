@@ -9,11 +9,8 @@ const Content = () => {
   const props = useContext(AppContext);
 
   useEffect(() => {
-    props.getPopMovies();
-  }, []);
-
-  useEffect(() => {
-    props.getTopMovies();
+    props.getCarusselMovies("popular");
+    props.getCarusselMovies("top_rated");
   }, []);
 
   const seeAllHandler = (e) => {

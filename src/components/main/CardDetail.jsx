@@ -14,7 +14,7 @@ const CardDetail = () => {
 
   const fadeOut = (e) => {
     const cont = e.currentTarget.parentElement.parentElement;
-    cont.style.animation = "fadeOut 600ms";
+    cont.style.animation = "fadeOut 1000ms";
 
     setTimeout(() => {
       props.setDisplay(false);

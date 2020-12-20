@@ -7,6 +7,7 @@ const MovieCard = (movie) => {
 
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
+    props.setSingleMovie([]);
     const att = e.target.getAttribute("data-key");
     props.fetchSingleMovieWithMovieId(att);
     props.setDisplay(true);
@@ -16,6 +17,7 @@ const MovieCard = (movie) => {
   if (backgroundImage === `url(https://image.tmdb.org/t/p/w185/null)`) {
     backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
   }
+
   return (
     <div
       key={movie.movie.id}
