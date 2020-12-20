@@ -28,6 +28,9 @@
             z-index: 100;
         }
         .movie-detail-container {
+            -webkit-box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
+-moz-box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
+box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
             animation: fadeIn 0.5s linear 0.5s 1 normal forwards;
             opacity: 0;
             display: flex;
@@ -64,6 +67,15 @@
                     margin-top: 50px;
                     font-weight: 100;
                     font-size: 15px;
+                }
+                .genre-container {
+                    width:100%;
+                    display: flex;
+                    margin-top: 20px;
+                      .category-card-detail {
+                          color: var(--color-pink);
+                          padding-right: 10px;
+                    }
                 }
                 .fetch-similar-btn {
                     position: absolute;

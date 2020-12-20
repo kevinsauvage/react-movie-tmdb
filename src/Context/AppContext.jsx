@@ -58,6 +58,7 @@ export const AppProvider = (props) => {
     const response = await fetch(url);
     const data = await response.json();
     setSingleMovie(data);
+    console.log(data);
   };
 
   // Handle the search for movie and display it
@@ -93,7 +94,7 @@ export const AppProvider = (props) => {
     setDisplaySearch(true);
     setSectionName(att);
     setPage(3);
-    setIsExecuted(false)
+    setIsExecuted(false);
   };
 
   // Fetch by category nav link
