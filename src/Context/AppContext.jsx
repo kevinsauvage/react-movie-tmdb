@@ -93,6 +93,7 @@ export const AppProvider = (props) => {
     setDisplaySearch(true);
     setSectionName(att);
     setPage(3);
+    setIsExecuted(false)
   };
 
   // Fetch by category nav link
@@ -121,7 +122,7 @@ export const AppProvider = (props) => {
     setDisplaySearch(true);
     setSectionName(name);
     setTotalPages(data.total_pages);
-    setIsExecuted(false)
+    setIsExecuted(false);
     setPage(3);
   };
 
@@ -143,6 +144,7 @@ export const AppProvider = (props) => {
     setDisplayedSearchName("sort");
     setOpenMenuHamb(false);
     setTotalPages(data.total_pages);
+    setIsExecuted(false);
     setPage(3);
   };
 
