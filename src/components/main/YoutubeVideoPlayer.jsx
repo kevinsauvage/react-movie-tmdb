@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import ReactPlayer from "react-player/youtube";
 import { FaSadTear, FaTimesCircle } from "react-icons/fa";
+import { AppContext } from "../../Context/AppContext";
 
-const YoutubePlayer = ({ singleMovie, SetVideoIsOpen }) => {
-  if (singleMovie.videos.results.length !== 0) {
+const YoutubePlayer = ({ SetVideoIsOpen }) => {
+  const props = useContext(AppContext);
+
+  if (props.singleMovie.videos.results.length !== 0) {
     return (
       <div className="video-player-container">
         <ReactPlayer
           url={
             "https://www.youtube.com/watch?v=" +
-            singleMovie.videos.results[0].key
+            props.singleMovie.videos.results[0].key
           }
           controls={true}
           width="100%"

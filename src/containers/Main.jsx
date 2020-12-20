@@ -1,120 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import Search from "../components/main/Search";
 import Content from "../components/main/Content";
 import CardDetail from "../components/main/CardDetail";
 import SearchResult from "../components/main/SearchResult";
-import LoadMoreFromSearch from "../components/main/LoadMoreFromSearch";
 import Logo from "../components/sidebar/Logo";
+import { AppContext } from "../Context/AppContext";
+
 import { FaBars } from "react-icons/fa";
 
-const Main = ({
-  display,
-  handleCardClickShow,
-  singleMovie,
-  query,
-  fetchMoviesSearch,
-  displaySearch,
-  loadMoreHandlerFromSearch,
-  displayCategory,
-  fetchSingleMovieWithMovieId,
-  openMenuHamb,
-  setOpenMenuHamb,
-  setQuery,
-  setPage,
-  setDisplaySearch,
-  setDisplay,
-  displaySortResults,
-  fetchByAtt,
-  displaySeeAll,
-  handleBackHome,
-  movies,
-  sectionName,
-  fetchSimilarMovies,
-  displaySimilar,
-  isExecuted,
-  setIsExecuted,
-}) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchMoviesSearch();
-  };
-
-  const displayContentHandler = () => {
-    if (
-      displayCategory === true ||
-      displaySearch === true ||
-      displayCategory === true ||
-      displaySortResults === true ||
-      displaySeeAll === true ||
-      displaySimilar === true
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+const Main = () => {
+  const props = useContext(AppContext);
 
   return (
     <div className="main">
       <div
         className="hamburger-icon"
-        onClick={() => setOpenMenuHamb(!openMenuHamb)}>
+        onClick={() => props.setOpenMenuHamb(!props.openMenuHamb)}>
         <FaBars />
       </div>
       <div
         className="logo"
         onClick={() => {
-          setPage(1);
-          setDisplaySearch(false);
-          handleBackHome();
+          props.setPage(1);
+          props.handleBackHome();
         }}>
         <Logo />
       </div>
-      {/* Display card  detail if true */}
-      {display ? (
-        <CardDetail
-          fetchSingleMovieWithMovieId={fetchSingleMovieWithMovieId}
-          singleMovie={singleMovie}
-          setDisplay={setDisplay}
-          fetchSimilarMovies={fetchSimilarMovies}
-        />
-      ) : null}
-      {/* Search input */}
-      <Search handleSubmit={handleSubmit} setQuery={setQuery} query={query} />
-      {/* Display search result if true - display content if false */}
-      {displayContentHandler() ? (
+      {props.display ? <CardDetail /> : null}
+      <Search />
+      {props.displaySearch ? (
         <>
-          <div className="section-title-wrapper">
-            <div className="section-title main-section-title">
-              {sectionName
-                .split(".")
-                .join(" ")
-                .split("_")
-                .join(" ")
-                .toUpperCase()}
-            </div>
-          </div>
           <div className="search-result-container">
-            <SearchResult
-              // Display category result if true - display search result if false
-              searchResult={movies}
-              handleCardClickShow={handleCardClickShow}
-              isExecuted={isExecuted}
-              setIsExecuted={setIsExecuted}
-              sectionName={sectionName}
-            />
-            {movies.length !== 0 ? (
-              <LoadMoreFromSearch
-                loadMoreHandlerFromSearch={loadMoreHandlerFromSearch}
-              />
-            ) : null}
+            <SearchResult />
           </div>
         </>
       ) : (
-        <Content
-          handleCardClickShow={handleCardClickShow}
-          fetchByAtt={fetchByAtt}
-        />
+        <Content />
       )}
     </div>
   );

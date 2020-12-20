@@ -3,33 +3,29 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     justify-content: space-between;
-    height: 50px;
-    margin: 25px 40px 25px 40px;
-    h2{
-        color:var(--color-light);
-        display: flex;
-        align-items: flex-end;
-        padding: 7px;
-    }
+    height: 80px;
+    align-items: center;
+    padding-left: 45px;
+    background-color: var(--color-medium-dark);
     p {
         color:var(--color-pink);
         height: 100%;
-        display: flex;
-        align-items: flex-end;
         padding: 7px;
+        padding-right: 47px;
+        display: flex;
+        align-items: center;
     }
     .wrapper-search {
-        width: 0px;
         .icon {
             position: absolute;
-            height: 20px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 50px;
             border: none;    
-            height: 100%;
             cursor: pointer;
+            left: 39px;
             svg {
             color:var(--color-light);
             }
@@ -37,15 +33,15 @@
         .search-input {
             font-size: 18px;
             border: none;
-            border-radius: 40px;
-            height: 50px;
-            width: 50px;
-            background: transparent;
-            padding-left: 50px;
+            height: 37px;
+            width: 526px;
+            color: white;
+            background: rgb(73, 70, 82);
+            border-radius: 2px;
+            padding-left: 45px;
             transition: all .2s cubic-bezier(.25,.75,.5,1.25) ;
             &:focus {
                 outline: none;
-                
             }
         }
     }

@@ -1,14 +1,17 @@
 .main {
-    width:calc(100vw - 200px);
+    width:calc(100vw - 250px);
     background-color: var(--color-medium-dark);
     position: relative;
-    margin-left: 200px;
+    margin-left: 250px;
     .hamburger-icon {
         display: none;
     }
     .logo {
         cursor: pointer;
         display: none;
+        color: var(--color-pink);
+
+       
     }
     .section-title-wrapper {
         .main-section-title {
@@ -48,7 +51,8 @@
         padding-left: 23px;
     }
     .logo h1{
-        color: var(--color-light);
+        color: var(--color-pink);
+        font-size: 21px;
     }
   }
 

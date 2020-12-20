@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import "react-multi-carousel/lib/styles.css";
+import { AppContext } from "../../Context/AppContext";
 
-const MovieCard = ({ movie, handleCardClickShow }) => {
-  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.poster_path})`;
+const MovieCard = (movie) => {
+  const props = useContext(AppContext);
+
+  // Handle the display of card movie detail when click on movie card
+  const handleCardClickShow = (e) => {
+    props.setSingleMovie([]);
+    const att = e.target.getAttribute("data-key");
+    props.fetchSingleMovieWithMovieId(att);
+    props.setDisplay(true);
+  };
+
+  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;
   if (backgroundImage === `url(https://image.tmdb.org/t/p/w185/null)`) {
     backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
   }
+
   return (
     <div
-      key={movie.id}
-      data-key={movie.id}
+      key={movie.movie.id}
+      data-key={movie.movie.id}
       onClick={(e) => {
         handleCardClickShow(e);
       }}
@@ -20,39 +32,40 @@ const MovieCard = ({ movie, handleCardClickShow }) => {
         height: "100%",
       }}>
       <div
-        data-key={movie.id}
+        data-key={movie.movie.id}
         onClick={(e) => {
           handleCardClickShow(e);
         }}
         className="detail-card-hover">
         <div
-          data-key={movie.id}
+          data-key={movie.movie.id}
           onClick={(e) => {
             handleCardClickShow(e);
           }}>
           <p
-            data-key={movie.id}
+            data-key={movie.movie.id}
             onClick={(e) => {
               handleCardClickShow(e);
             }}
             className="title-card-hover">
-            {movie.title}
+            {movie.movie.title}
           </p>
           <p
-            data-key={movie.id}
+            className="release"
+            data-key={movie.movie.id}
             onClick={(e) => {
               handleCardClickShow(e);
             }}>
-            {movie.release_date.split("-")[0]}
+            {movie.movie.release_date}
           </p>
         </div>
         <div
-          data-key={movie.id}
+          data-key={movie.movie.id}
           onClick={(e) => {
             handleCardClickShow(e);
           }}
           className="vote-card-detail">
-          {movie.vote_average}
+          {movie.movie.vote_average}
         </div>
       </div>
     </div>

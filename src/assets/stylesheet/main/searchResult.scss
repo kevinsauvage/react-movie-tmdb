@@ -2,12 +2,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 0 25px 0 25px  ;
+    z-index: 0;
+    padding: 30px 30px 30px 32px;
+    .icon-filtering {
+        position: absolute;
+        right: 40px;
+        z-index: 1001;
+        top: 85px;
+    }
     .search-movie-card {
-        width: 141px;
+        width: 161px;
         height: 210px;
-        margin: 10px;
+        margin: 10px 0;
         cursor: pointer;
+        background-size: cover;
+       z-index: 0;
     }
     .noResult {
         display: flex;
@@ -20,7 +29,6 @@
         font-weight: 200;
     } 
 }
-
 @media screen and (min-width: 0px) and (max-width: 800px) {
     .search-movie-card {
         margin: 0px;

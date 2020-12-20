@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../Context/AppContext";
 
-const Library = ({ fetchByCategory, categorys, sectionName }) => {
+const Library = () => {
+  const props = useContext(AppContext);
+
   const style = {
-    borderLeft: "3px solid  #0AC2F3",
-    color: "var(--color-pink)",
-    fontWeight: 600,
-    fontSize: "17px",
-    paddingLeft: "5px",
+    background: "var(--color-pink)",
+    color: "#181b21",
+    fontWeight: "900",
+    paddingLeft: "10px",
+    fontSize: "16px",
+  };
+  const handleClick = () => {
+    window.scrollTo(0, 0);
   };
 
   return (
     <div className="library">
       <h2 className="section-title">GENRE</h2>
       <ul className="library-nav">
-        {categorys.map((category) => (
-          <li
-            key={category.id}
-            data-id={category.id}
-            data-name={category.name}
-            style={sectionName === category.name ? style : null}
-            onClick={(e) =>
-              fetchByCategory(e.target.dataset.name, e.target.dataset.id)
-            }>
-            {category.name}
-          </li>
-        ))}
+        {props.categorys.length !== 0
+          ? props.categorys.map((category) => (
+              <li
+                key={category.id}
+                data-id={category.id}
+                data-name={category.name}
+                style={props.sectionName === category.name ? style : null}
+                onClick={(e) => {
+                  props.fetchByCategory(
+                    e.target.dataset.name,
+                    e.target.dataset.id
+                  );
+                  handleClick();
+                }}>
+                {category.name}
+              </li>
+            ))
+          : null}
       </ul>
     </div>
   );

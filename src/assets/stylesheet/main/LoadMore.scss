@@ -18,9 +18,7 @@
         color:var(--color-light);
         cursor: pointer;
         &:hover {
-            letter-spacing: 10px;
-            border-top: 2px solid var(--color-light);
-            border-bottom: 2px solid var(--color-light);
+            letter-spacing: 5px;
         }
         &:focus {
             outline: none;

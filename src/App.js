@@ -1,12 +1,13 @@
 import "./App.scss";
 import Header from "./containers/Header";
 import React from "react";
+import { AppProvider } from "./Context/AppContext";
 
 function App() {
   return (
-    <div className="App">
+    <AppProvider>
       <Header />
-    </div>
+    </AppProvider>
   );
 }
 

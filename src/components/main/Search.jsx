@@ -1,44 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 
-const Search = ({ handleSubmit, query, setQuery }) => {
-  const [isOpen, setIsOpen] = useState(false);
+import { AppContext } from "../../Context/AppContext";
 
-  const style = {
-    width: "300px",
-    backgroundColor: "#313e5f9d",
-  };
+const Search = () => {
+  const props = useContext(AppContext);
 
-  const isOpenClickHandler = (e) => {
-    setIsOpen(!isOpen);
-    e.currentTarget.nextSibling.focus();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.fetchMoviesSearch();
   };
 
   return (
-    <form
-      className="search"
-      onSubmit={handleSubmit}
-      onMouseLeave={() => setIsOpen(false)}>
+    <form className="search" onSubmit={handleSubmit}>
       <div className="wrapper-search">
-        <div className="icon" onClick={isOpenClickHandler}>
-          <FaSearch
-            fill="var(--color-pink)"
-            onClick={() => setIsOpen(!isOpen)}
-          />
+        <div className="icon">
+          <FaSearch fill="var(--color-pink)" />
         </div>
         <input
-          style={isOpen ? style : null}
-          value={query}
+          value={props.query}
           onChange={(e) => {
             let value = e.target.value;
-            setQuery(value);
+            props.setQuery(value);
           }}
           className="search-input"
           type="text"
           placeholder="Search for movies..."
         />
       </div>
-      <h2>TV ON DEMAND</h2>
       <p>Hi! Mike</p>
     </form>
   );

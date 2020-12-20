@@ -1,18 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Library from "../components/sidebar/Library";
 import Logo from "../components/sidebar/Logo";
 import SortByNav from "../components/sidebar/SortByNav";
+import { AppContext } from "../Context/AppContext";
 
-const SideBar = ({
-  fetchByCategory,
-  categorys,
-  openMenuHamb,
-  setDisplay,
-  handleBackHome,
-  fetchBy,
-  setOpenMenuHamb,
-  sectionName,
-}) => {
+const SideBar = () => {
+  const props = useContext(AppContext);
+
   const styleOpen = {
     left: "0",
     opacity: "1",
@@ -22,19 +16,11 @@ const SideBar = ({
   return (
     <div
       className="side-bar"
-      onClick={() => setDisplay(false)}
-      style={openMenuHamb ? styleOpen : null}>
-      <Logo className="logo" handleBackHome={handleBackHome} />
-      <Library
-        categorys={categorys}
-        fetchByCategory={fetchByCategory}
-        sectionName={sectionName}
-      />
-      <SortByNav
-        fetchBy={fetchBy}
-        setOpenMenuHamb={setOpenMenuHamb}
-        sectionName={sectionName}
-      />
+      onClick={() => props.setDisplay(false)}
+      style={props.openMenuHamb ? styleOpen : null}>
+      <Logo className="logo" />
+      <Library />
+      <SortByNav />
     </div>
   );
 };

@@ -1,23 +1,21 @@
 .react-multi-carousel-list {
     padding: 40px ; 
-
 }
 .react-multiple-carousel__arrow {
     z-index: 1 !important;
+    &::before {
+        left: 2px;
+    }
 }
-
 .react-multi-carousel-track {
     height: 240px;
 }
-
 .carusel-wrapper {
     position: relative;
 }
-
 @media screen and (min-width: 0px) and (max-width: 600px) {
     .react-multi-carousel-list {
         padding: 20px 0 0 0 ; 
-    
     }
     .react-multiple-carousel__arrow {
         display: none;

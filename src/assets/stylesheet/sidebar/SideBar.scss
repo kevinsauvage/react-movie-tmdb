@@ -1,38 +1,48 @@
 .side-bar {
-    width: 200px;
+    width: 250px;
     background-color: var(--color-dark);
     position: fixed;
-    z-index: 5;
-    padding: 30px;
+    z-index: 70000;
+    padding: 0px 30px 0 30px;
     opacity: 1;
     height: 100vh;
     .logo {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        height: 42px;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 25px;
         h1 {
-            padding: 0px 0 10px 0;
+            padding: 0px 0 4px 0;
             font-size: 25px;
-            color:var(--color-light);
+            color:var(--color-pink);
             font-weight: 400;
             cursor: pointer;
+            line-height: 15px;
         }
     }
     .library {
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-        
         .library-nav {
             li {
-                color:var(--color-light);
-                font-weight: 500;
-                font-size: 16px;
+                color:rgba(253, 253, 253, 0.541);
+                font-weight: 200;
+                font-size: 14px;
                 cursor: pointer;
                 transition: all 400ms ease;
+                border-radius: 2px;
+                padding: 0px 2px;
+                letter-spacing: 1px;
+                &:hover {
+                    color: white;
+                }
             }
         }
     }
     .section-title {
-        padding: 20px 0 0px 0;
-        font-weight: 400;
+        padding: 37px 0 0px 0;
+        font-weight: 600;
+        font-size: 22px;
     }
 }
 // Category title 
@@ -42,7 +52,6 @@
     color:var(--color-pink);
     font-weight: 400;
 }
-
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .side-bar {
         display: block;
@@ -53,8 +62,8 @@
         transition: all 1s ease-in-out;
         opacity: 0;
         .logo {
-            display: block;
+            display: none;
         }
     }
-  }
+}
 
