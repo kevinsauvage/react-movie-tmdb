@@ -33,20 +33,12 @@ const SearchResult = ({ handleCardClickShow }) => {
     }, 1000);
   };
 
-  if (props.movies.length === 0) {
-    if (props.isExecuted) {
-      return (
-        <div className="noResult">
-          <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="noResult">
-          Nothing was found for "{props.sectionName.split('"').join(" ")}"
-        </div>
-      );
-    }
+  if (props.isExecuted) {
+    return (
+      <div className="noResult">
+        <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
+      </div>
+    );
   }
   if (props.movies.length !== 0) {
     return (
@@ -60,6 +52,13 @@ const SearchResult = ({ handleCardClickShow }) => {
           </div>
         ))}
       </>
+    );
+  }
+  if (props.movies.length === 0) {
+    return (
+      <div className="noResult">
+        Nothing was found for "{props.sectionName.split('"').join(" ")}"
+      </div>
     );
   }
 };
