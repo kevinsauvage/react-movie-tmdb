@@ -54,7 +54,10 @@ const CardDetail = () => {
 
             <div
               className="fetch-similar-btn"
-              onClick={props.fetchSimilarMovies}>
+              onClick={() => {
+                props.fetchSimilarMovies();
+                window.scrollTo(0, 0);
+              }}>
               Similar movies
             </div>
             <div

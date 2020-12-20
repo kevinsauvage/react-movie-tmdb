@@ -54,7 +54,7 @@ const MovieCard = (movie) => {
             onClick={(e) => {
               handleCardClickShow(e);
             }}>
-            {movie.movie.release_date.split("-")[0]}
+            {movie ? movie.movie.release_date.split("-")[0] : null}
           </p>
         </div>
         <div

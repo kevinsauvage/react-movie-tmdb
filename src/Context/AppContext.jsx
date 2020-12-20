@@ -19,7 +19,7 @@ export const AppProvider = (props) => {
   const [page, setPage] = useState(1); // set page to fetch
   const [genreId, setGenreId] = useState(null); // store genre id of movie category to fetch and store the movies
   const [displayedSearchName, setDisplayedSearchName] = useState(""); // Set the name of the fetch to load more content
-  const [totalPages, setTotalPages] = useState("");
+  const [totalPages, setTotalPages] = useState(10);
 
   const [popMovies, setpopMovies] = useState([]);
   const [topMovies, settopMovies] = useState([]);
@@ -90,6 +90,7 @@ export const AppProvider = (props) => {
       setSectionName(query);
       setDisplayedSearchName("search");
       setDisplaySearch(true);
+      setTotalPages(data.total_pages);
       setPage(3);
     }
   };
@@ -148,27 +149,43 @@ export const AppProvider = (props) => {
     setSectionName(att);
     setDisplayedSearchName("sort");
     setOpenMenuHamb(false);
+    setTotalPages(data.total_pages);
     setPage(3);
   };
 
   // Fetch siimilar movie by clicking on btn in card detail
   const fetchSimilarMovies = async () => {
+    setDisplayedSearchName("similar");
     setIsExecuted(true);
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${singleMovie.id}/similar?api_key=${API_KEY}&language=en-US&page=1`
     );
     const data = await response.json();
     const results = data.results;
-    setMovies(results);
+    console.log(data.total_pages);
+
+    const response2 = await fetch(
+      `https://api.themoviedb.org/3/movie/${singleMovie.id}/similar?api_key=${API_KEY}&language=en-US&page=2`
+    );
+    const data2 = await response2.json();
+    const results2 = data2.results;
+
+    setMovies([]);
+    setMovies([...results, ...results2]);
     setDisplay(false);
     setSectionName(`"${singleMovie.title}" Similar Movies`);
     setDisplaySearch(true);
-    setPage(1);
-    setDisplayedSearchName("similar");
+    setPage();
+    setIsExecuted(false);
+    setPage(3);
+    setTotalPages(data.total_pages);
   };
 
   // Load more movies handler
   const loadMoreHandlerFromSearch = async () => {
+    if (page > totalPages) {
+      return null;
+    }
     console.log(page);
     const url =
       displayedSearchName === "category"
@@ -187,7 +204,7 @@ export const AppProvider = (props) => {
           }`
         : displayedSearchName === "similar"
         ? `https://api.themoviedb.org/3/movie/${
-            singleMovie.single.id
+            singleMovie.id
           }/similar?api_key=${API_KEY}&language=en-US&page=${page + 1}`
         : null;
     const response = await fetch(url);
@@ -195,6 +212,7 @@ export const AppProvider = (props) => {
     const results = data.results;
     setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
     setPage(page + 1);
+    setTotalPages(data.total_pages);
   };
 
   // Handle the back home when clicking on logo
