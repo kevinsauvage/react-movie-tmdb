@@ -39,7 +39,7 @@
                 padding: 20px;
                 width: 600px;
                 z-index: 50;
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color:#181b21af;
                 position: relative;
                 .title-and-note {
                     display: flex;
@@ -77,19 +77,16 @@
                 }
                 .fetch-similar-btn, .see-trailer-btn {
                     border: none;
-                    border-top: 2px solid rgba(255, 255, 255, 0.349);
-                    border-bottom: 2px solid rgba(255, 255, 255, 0.281);
+                    border-top: 1px solid var(--color-pink);
+                    border-bottom: 1px solid var(--color-pink);
                     font-size: 18px;
                     font-weight: 200;
                     line-height: 44px;
                     letter-spacing: 2px;
                     background: transparent;
                     transition: .4s cubic-bezier(.54,.07,.34,.98);
-                    color:var(--color-pink);
                     cursor: pointer;
                     &:hover {
-                        border-top: 2px solid var(--color-light);
-                        border-bottom: 2px solid var(--color-light);
                         letter-spacing: 4px;
                     }
                     &:focus {
