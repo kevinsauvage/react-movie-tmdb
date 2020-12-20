@@ -46,7 +46,7 @@ const MovieCard = (movie) => {
               handleCardClickShow(e);
             }}
             className="title-card-hover">
-            {movie.title}
+            {movie.movie.title}
           </p>
           <p
             className="release"
@@ -54,7 +54,7 @@ const MovieCard = (movie) => {
             onClick={(e) => {
               handleCardClickShow(e);
             }}>
-            {movie ? movie.movie.release_date.split("-")[0] : null}
+            {movie.movie.release_date}
           </p>
         </div>
         <div

@@ -21,6 +21,10 @@ const CardDetail = () => {
     }, 500);
   };
 
+  const handleClick = () => {
+    props.fetchSimilarMovies();
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="card-detail" style={style}>
       <div className="gradient">
@@ -51,13 +55,7 @@ const CardDetail = () => {
             </div>
             <span className="release">{props.singleMovie.release_date}</span>
             <p className="movie-description">{props.singleMovie.overview}</p>
-
-            <div
-              className="fetch-similar-btn"
-              onClick={() => {
-                props.fetchSimilarMovies();
-                window.scrollTo(0, 0);
-              }}>
+            <div className="fetch-similar-btn" onClick={handleClick}>
               Similar movies
             </div>
             <div

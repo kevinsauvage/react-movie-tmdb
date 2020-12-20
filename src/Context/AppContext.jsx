@@ -21,8 +21,8 @@ export const AppProvider = (props) => {
   const [displayedSearchName, setDisplayedSearchName] = useState(""); // Set the name of the fetch to load more content
   const [totalPages, setTotalPages] = useState(10);
 
-  const [popMovies, setpopMovies] = useState([]);
-  const [topMovies, settopMovies] = useState([]);
+  const [popMovies, setpopMovies] = useState([]); // Set the popular movies only first render
+  const [topMovies, settopMovies] = useState([]); // Set top rated movies only first render
 
   const getPopMovies = async () => {
     const response = await fetch(
@@ -162,7 +162,6 @@ export const AppProvider = (props) => {
     );
     const data = await response.json();
     const results = data.results;
-    console.log(data.total_pages);
 
     const response2 = await fetch(
       `https://api.themoviedb.org/3/movie/${singleMovie.id}/similar?api_key=${API_KEY}&language=en-US&page=2`
@@ -186,7 +185,6 @@ export const AppProvider = (props) => {
     if (page > totalPages) {
       return null;
     }
-    console.log(page);
     const url =
       displayedSearchName === "category"
         ? `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${page}&with_genres=${genreId}`
@@ -210,7 +208,11 @@ export const AppProvider = (props) => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
-    setMovies((prevSearchResult) => [...prevSearchResult, ...results]);
+    const newMoviesResult = [...movies, ...results];
+    const r = newMoviesResult.filter(
+      (item, index) => newMoviesResult.indexOf(item) === index
+    );
+    setMovies(r);
     setPage(page + 1);
     setTotalPages(data.total_pages);
   };
@@ -238,6 +240,7 @@ export const AppProvider = (props) => {
         query,
         topMovies,
         popMovies,
+        setMovies,
         getPopMovies,
         getTopMovies,
         fetchSingleMovieWithMovieId,

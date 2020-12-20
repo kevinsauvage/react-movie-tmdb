@@ -110,6 +110,7 @@
 @media screen and (min-width: 0px) and (max-width: 1040px) {
     .card-detail {
         width: 100vw;
+        
         .gradient {
             .movie-detail-container {
                 img {
@@ -117,7 +118,7 @@
                 }
                 .card-detail-text-wrapper {
                     width: 400px;
-                    height: 400px;
+                    height: 600px;
                     .title-and-note {
                         display: flex;
                         justify-content: space-between;
