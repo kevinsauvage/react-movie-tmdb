@@ -5,6 +5,10 @@ import { AppContext } from "../../Context/AppContext";
 const MovieCard = (movie) => {
   const props = useContext(AppContext);
 
+  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;
+  if (backgroundImage === `url(https://image.tmdb.org/t/p/w185/null)`) {
+    backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
+  }
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
     props.setSingleMovie([]);
@@ -16,11 +20,6 @@ const MovieCard = (movie) => {
     console.log(e.screenX, "x");
     props.setClientX(e.screenX);
   };
-
-  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;
-  if (backgroundImage === `url(https://image.tmdb.org/t/p/w185/null)`) {
-    backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
-  }
 
   return (
     <div

@@ -6,41 +6,25 @@ import { AppContext } from "../../Context/AppContext";
 const CardDetail = () => {
   const props = useContext(AppContext);
   const [videoIsOpen, SetVideoIsOpen] = useState(false);
-
+  // GET THE GENRES FROM SINGLEMOVIE TO DISPLAY IN CARD DETAIL
+  const arrGenre = props.singleMovie.genres;
+  // SET THE BACKGROUND OF THE CARD DETAIL
   const background = `url(https://image.tmdb.org/t/p/w780/${props.singleMovie.backdrop_path})`;
-
-  const top = props.pageX;
-  const left = props.pageY;
   const style = {
     backgroundImage: background,
-    top: top,
-    left: left,
   };
 
-  const fadeOut = (e) => {
-    const cont = e.currentTarget.parentElement.parentElement;
-    cont.style.animation = "fadeOut 1000ms";
-
-    setTimeout(() => {
-      props.setDisplay(false);
-    }, 500);
-  };
-
-  const handleClick = () => {
+  const handleClickFetchSimilar = () => {
     props.fetchSimilarMovies();
     window.scrollTo(0, 0);
   };
-
-  const arrGenre = props.singleMovie.genres;
 
   return (
     <div className="card-detail" style={style}>
       <div className="gradient">
         <div
           className="icon-movie-card-detail"
-          onClick={(e) => {
-            fadeOut(e);
-          }}>
+          onClick={(e) => props.setDisplay(false)}>
           <FaTimesCircle
             size="30px"
             style={{ cursor: "pointer" }}
@@ -71,7 +55,9 @@ const CardDetail = () => {
                     ))
                   : null}
               </div>
-              <div className="fetch-similar-btn" onClick={handleClick}>
+              <div
+                className="fetch-similar-btn"
+                onClick={handleClickFetchSimilar}>
                 Similar movies
               </div>
               <div
