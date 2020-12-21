@@ -1,13 +1,16 @@
 .side-bar {
-    width: 250px;
+    width: 165px;
     background-color: var(--color-dark);
     position: fixed;
     z-index: 70000;
-    padding: 0px 30px 0 30px;
+    padding: 0px 20px 0 20px;
     opacity: 1;
     height: 100vh;
+    -webkit-box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.9);
     .logo {
-        height: 42px;
+        height: 50px;
         display: flex;
         align-items: flex-end;
         margin-bottom: 25px;
@@ -21,17 +24,17 @@
         }
     }
     .library {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.09);
         .library-nav {
+            padding-bottom: 15px;
             li {
                 color:rgba(253, 253, 253, 0.541);
                 font-weight: 200;
-                font-size: 14px;
+                font-size: 10px;
                 cursor: pointer;
                 transition: all 400ms ease;
                 border-radius: 2px;
-                padding: 0px 2px;
                 letter-spacing: 1px;
                 &:hover {
                     color: white;
@@ -40,29 +43,48 @@
         }
     }
     .section-title {
-        padding: 37px 0 0px 0;
+        padding: 20px 0 0px 0;
         font-weight: 600;
-        font-size: 22px;
+        font-size: 15px;
     }
 }
 // Category title 
 .section-title {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     color:var(--color-pink);
     font-weight: 400;
 }
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .side-bar {
-        display: block;
         position: absolute;
-        left: -200px;
+        left: -100vw;
         height: 100%;
         z-index: 5;
+        width: 100%;
         transition: all 1s ease-in-out;
         opacity: 0;
+        padding: 50px 0 0 30px;
+        display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         .logo {
             display: none;
+        }
+        .library {
+            
+            text-align: center;
+            width: 200px;
+
+            .library-nav {
+
+                li {
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
         }
     }
 }

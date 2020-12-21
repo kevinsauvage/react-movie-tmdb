@@ -3,12 +3,17 @@
         li {
             color:rgba(253, 253, 253, 0.541);
             font-weight: 200;
-            font-size: 14px;
+            font-size: 10px;
             cursor: pointer;
             transition: all 400ms ease;
             border-radius: 4px;
-            padding: 0px 2px;
             letter-spacing: 1px;
         }
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 1030px) {
+    .sort-by {
+        text-align: center;
     }
 }

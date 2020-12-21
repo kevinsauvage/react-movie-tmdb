@@ -22,6 +22,8 @@ export const AppProvider = (props) => {
   const [totalPages, setTotalPages] = useState(10);
   const [popMovies, setpopMovies] = useState([]); // Set the popular movies only first render
   const [topMovies, settopMovies] = useState([]); // Set top rated movies only first render
+  const [clientX, setClientX] = useState(null);
+  const [clientY, setClientY] = useState(null);
 
   const getCarusselMovies = async (attribute) => {
     const url = `https://api.themoviedb.org/3/movie/${attribute}?api_key=${API_KEY}&language=en-US&page=1`;
@@ -62,7 +64,7 @@ export const AppProvider = (props) => {
 
   // Handle the search for movie and display it
   const fetchMoviesSearch = async () => {
-    setMovies([]);
+    setIsExecuted(true);
     if (query.length !== 0) {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
@@ -93,16 +95,17 @@ export const AppProvider = (props) => {
     setDisplaySearch(true);
     setSectionName(att);
     setPage(3);
+    setIsExecuted(false);
   };
 
   // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
-    setMovies([]);
-
+    
     // No fetch if clicking the same category
     if (sectionName === name) {
       return;
     }
+    setMovies([]);
     setGenreId(id);
     setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${id}`;
@@ -121,6 +124,7 @@ export const AppProvider = (props) => {
     setDisplaySearch(true);
     setSectionName(name);
     setTotalPages(data.total_pages);
+    setIsExecuted(false);
     setPage(3);
   };
 
@@ -142,13 +146,13 @@ export const AppProvider = (props) => {
     setDisplayedSearchName("sort");
     setOpenMenuHamb(false);
     setTotalPages(data.total_pages);
+    setIsExecuted(false);
     setPage(3);
   };
 
   // Fetch siimilar movie by clicking on btn in card detail
   const fetchSimilarMovies = async () => {
     setDisplay(false);
-    setMovies([]);
     setDisplayedSearchName("similar");
     setIsExecuted(true);
     const response = await fetch(
@@ -213,6 +217,7 @@ export const AppProvider = (props) => {
     setDisplay(false);
     setOpenMenuHamb(false);
     setSectionName("");
+    setQuery("");
   };
 
   return (
@@ -227,6 +232,10 @@ export const AppProvider = (props) => {
         sectionName,
         isExecuted,
         query,
+        setClientX,
+        setClientY,
+        clientX,
+        clientY,
         topMovies,
         popMovies,
         setSingleMovie,

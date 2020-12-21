@@ -1,9 +1,10 @@
 .search-result-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     z-index: 0;
-    padding: 30px 30px 30px 32px;
+    padding: 19px 40px 35px 36px;
+    
     .icon-filtering {
         position: absolute;
         right: 40px;
@@ -30,7 +31,11 @@
     } 
 }
 @media screen and (min-width: 0px) and (max-width: 800px) {
-    .search-movie-card {
-        margin: 0px;
+    .search-result-container {
+        padding: 0;
+        padding-top: 35px;
+        .search-movie-card {
+            margin: 10px;
+        }
     }
 }
