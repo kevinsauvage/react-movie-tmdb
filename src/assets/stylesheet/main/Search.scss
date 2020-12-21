@@ -17,6 +17,7 @@
         font-size: 11px;
     }
     .wrapper-search {
+        width: 500px;
         .icon {
             position: absolute;
             height: 35px;
@@ -35,11 +36,11 @@
             font-size: 18px;
             border: none;
             height: 35px;
-            width: 450px;
             color: white;
             background: rgb(73, 70, 82);
             border-radius: 2px;
             padding-left: 45px;
+            width: 100%;
             font-size: 13px;
             transition: all .2s cubic-bezier(.25,.75,.5,1.25) ;
             &:focus {
@@ -51,6 +52,7 @@
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .search {
         margin-top: 80px;
+        padding: 15px;
         h2 {
             position: absolute;
             top: -28px;
@@ -63,7 +65,15 @@
             display: none;
         }
         .wrapper-search {
-            width: 300px !important;
+            width: 100% !important;
+            .icon {
+                height: 56px;
+                left: 10px;
+            }
+            .search-input {
+                height: 56px;
+                width: 100%;
+            }
         }
     }  
 }

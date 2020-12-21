@@ -7,6 +7,7 @@ import Logo from "../components/sidebar/Logo";
 import { AppContext } from "../Context/AppContext";
 
 import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Main = () => {
   const props = useContext(AppContext);
@@ -16,7 +17,7 @@ const Main = () => {
       <div
         className="hamburger-icon"
         onClick={() => props.setOpenMenuHamb(!props.openMenuHamb)}>
-        <FaBars />
+        {props.openMenuHamb ? <AiOutlineClose /> : <FaBars />}
       </div>
       <div
         className="logo"
