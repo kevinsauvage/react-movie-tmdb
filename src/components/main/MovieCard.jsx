@@ -11,6 +11,10 @@ const MovieCard = (movie) => {
     const att = e.target.getAttribute("data-key");
     props.fetchSingleMovieWithMovieId(att);
     props.setDisplay(true);
+    props.setClientY(e.screenY);
+    console.log(e.screenY, "y");
+    console.log(e.screenX, "x");
+    props.setClientX(e.screenX);
   };
 
   let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;

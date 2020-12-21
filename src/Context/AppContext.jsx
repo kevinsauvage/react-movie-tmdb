@@ -22,6 +22,8 @@ export const AppProvider = (props) => {
   const [totalPages, setTotalPages] = useState(10);
   const [popMovies, setpopMovies] = useState([]); // Set the popular movies only first render
   const [topMovies, settopMovies] = useState([]); // Set top rated movies only first render
+  const [clientX, setClientX] = useState(null);
+  const [clientY, setClientY] = useState(null);
 
   const getCarusselMovies = async (attribute) => {
     const url = `https://api.themoviedb.org/3/movie/${attribute}?api_key=${API_KEY}&language=en-US&page=1`;
@@ -152,7 +154,6 @@ export const AppProvider = (props) => {
   // Fetch siimilar movie by clicking on btn in card detail
   const fetchSimilarMovies = async () => {
     setDisplay(false);
-    setMovies([]);
     setDisplayedSearchName("similar");
     setIsExecuted(true);
     const response = await fetch(
@@ -232,6 +233,10 @@ export const AppProvider = (props) => {
         sectionName,
         isExecuted,
         query,
+        setClientX,
+        setClientY,
+        clientX,
+        clientY,
         topMovies,
         popMovies,
         setSingleMovie,
