@@ -3,24 +3,4 @@
     position: relative;
     margin-top: 25px;
 }
-.see-all {
-    position: absolute;
-    right: 42px;
-    bottom: -5px;
-    color:var(--color-pink);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 300;
-}
-@media screen and (min-width: 0px) and (max-width: 700px) {
-  .see-all {
-    right: 15px;
-    bottom: -25px;
-  }
-}
-@media screen and (min-width: 701px) and (max-width: 1000px) {
-    .see-all {
-      right: 20px;
-      bottom: 10px;
-    }
-  }
+

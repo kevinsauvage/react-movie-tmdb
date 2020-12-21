@@ -1,11 +1,30 @@
 .main-title {
     margin: 0px 0 0 40px;
     border-left: 4px solid var(--color-pink);
-    position: absolute;
-    top: -12px;
     font-size: 13px;
     padding-left: 4px;
     font-weight: 400;
+    margin-right: 20px;
+}
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    .see-all {
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        color:var(--color-pink);
+        animation: fadeInTitle 1s forwards;
+        opacity: 0;
+      }
+}
+
+@keyframes fadeInTitle {
+    0%   {opacity: 0; }
+    100% {opacity: 1;}
 }
 @media screen and (min-width: 0px) and (max-width: 600px) {
     .main-title {
