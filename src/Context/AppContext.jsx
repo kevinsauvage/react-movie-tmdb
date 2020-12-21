@@ -101,12 +101,11 @@ export const AppProvider = (props) => {
 
   // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
-    setMovies([]);
-
     // No fetch if clicking the same category
     if (sectionName === name) {
       return;
     }
+    setMovies([]);
     setGenreId(id);
     setIsExecuted(true);
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=1&with_genres=${id}`;

@@ -8,8 +8,8 @@ const Library = () => {
     background: "var(--color-pink)",
     color: "#181b21",
     fontWeight: "900",
-    paddingLeft: "10px",
-    fontSize: "16px",
+    paddingLeft: "5px",
+    fontSize: "12px",
   };
   const handleClick = () => {
     window.scrollTo(0, 0);

@@ -26,7 +26,7 @@ const CardDetail = () => {
           className="icon-movie-card-detail"
           onClick={(e) => props.setDisplay(false)}>
           <FaTimesCircle
-            size="30px"
+            size="20px"
             style={{ cursor: "pointer" }}
             fill="var(--color-pink)"
           />
@@ -42,7 +42,7 @@ const CardDetail = () => {
               <div className="title-and-note">
                 <h3>{props.singleMovie.original_title}</h3>
                 <div className="note-container">
-                  <FaStar />
+                  <FaStar size="14px" fill="var(--color-pink)" />
                   <span className="note">{props.singleMovie.vote_average}</span>
                 </div>
               </div>
