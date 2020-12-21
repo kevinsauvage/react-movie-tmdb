@@ -8,14 +8,23 @@ const SectionTitle = ({ title }) => {
   const props = useContext(AppContext);
 
   const seeAllHandler = (e) => {
-    props.fetchByAtt(e.target.dataset.key);
+    let att = e.currentTarget.parentNode.parentNode.dataset.key
+    props.fetchByAtt(att)
   };
 
+  const handleArrowChange = (e) => {
+    const element = e.currentTarget;
+    element.innerHTML = "<p>See All</p>";
+  };
+
+  const handleArrowBack = (e) => {
+    const element = e.currentTarget;
+    element.innerHTML = `" "`;
+  };
   return (
     <div className="title-wrapper">
       <h3 className="section-title main-title">{title}</h3>
       <div
-        data-key="top_rated"
         className="see-all"
         onMouseOver={() => setShowSeeAll(true)}
         onMouseOut={() => setShowSeeAll(false)}
@@ -23,7 +32,7 @@ const SectionTitle = ({ title }) => {
         {showSeeAll ? (
           <p className="see-all">See All</p>
         ) : (
-          <FiArrowRight stroke="#00FFFF" size={18} />
+          <FiArrowRight stroke="#00FFFF" />
         )}
       </div>
     </div>

@@ -60,7 +60,6 @@ export const AppProvider = (props) => {
     const response = await fetch(url);
     const data = await response.json();
     setSingleMovie(data);
-    console.log(data);
   };
 
   // Handle the search for movie and display it
@@ -101,6 +100,7 @@ export const AppProvider = (props) => {
 
   // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
+    
     // No fetch if clicking the same category
     if (sectionName === name) {
       return;

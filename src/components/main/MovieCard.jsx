@@ -16,8 +16,6 @@ const MovieCard = (movie) => {
     props.fetchSingleMovieWithMovieId(att);
     props.setDisplay(true);
     props.setClientY(e.screenY);
-    console.log(e.screenY, "y");
-    console.log(e.screenX, "x");
     props.setClientX(e.screenX);
   };
 
