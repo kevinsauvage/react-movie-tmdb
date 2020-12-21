@@ -41,7 +41,7 @@
                 .card-detail-text-wrapper {
                     height:350px;
                     padding: 20px;
-                    width: 500px;
+                    max-width: 500px;
                     z-index: 50;
                     background-color:#181b21;
                     position: relative;
@@ -123,14 +123,14 @@
 
 @media screen and (min-width: 0px) and (max-width: 1040px) {
     .card-detail {
-        width: 100vw;
+        max-width: 100vw;
         .gradient {
             .movie-detail-container {
                 img {
                    display: none;
                 }
                 .card-detail-text-wrapper {
-                    width: 100vw;
+                    width: inherit;
                     height: 700px;
                     .title-and-note {
                         display: flex;
