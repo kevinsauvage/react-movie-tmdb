@@ -64,16 +64,14 @@
         width: 100%;
         transition: all 1s ease-in-out;
         opacity: 0;
-        padding: 50px 0 0 30px;
         display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         .logo {
             display: none;
         }
         .library {
-            
             text-align: center;
             width: 200px;
 

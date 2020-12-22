@@ -104,10 +104,6 @@
                     background: transparent;
                     transition: 0.4s cubic-bezier(0.54, 0.07, 0.34, 0.98);
                     cursor: pointer;
-                        cursor: pointer;
-                        &:hover {
-                            letter-spacing: 4px;
-                        }
                         &:focus {
                             outline: none;
                         }
