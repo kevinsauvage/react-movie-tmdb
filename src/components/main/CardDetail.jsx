@@ -19,6 +19,10 @@ const CardDetail = () => {
     window.scrollTo(0, 0);
   };
 
+  const handleCategoryClick = (e) => {
+    props.fetchByCategory(e.target.dataset.name, e.target.dataset.id);
+  };
+
   return (
     <div className="card-detail" style={style}>
       <div className="gradient">
@@ -51,7 +55,14 @@ const CardDetail = () => {
               <div className="genre-container">
                 {arrGenre
                   ? arrGenre.map((genre) => (
-                      <p className="category-card-detail">{genre.name} /</p>
+                      <p
+                        key={genre.id}
+                        data-id={genre.id}
+                        data-name={genre.name}
+                        onClick={handleCategoryClick}
+                        className="category-card-detail">
+                        {genre.name} /
+                      </p>
                     ))
                   : null}
               </div>

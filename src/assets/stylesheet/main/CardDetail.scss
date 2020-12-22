@@ -27,7 +27,8 @@
             z-index: 100;
         }
         .movie-detail-container {
-            opacity: 1;
+            opacity: 0;
+            animation: fadeIn 0.5s linear 0s 1 normal forwards;
             justify-content: center;
             display: flex;
             .wrapper-shadow {
@@ -80,6 +81,7 @@
                         padding-right: 10px;
                         font-size: 10px;
                         font-weight: 500;
+                        cursor: pointer;
                     }
                 }
                 .fetch-similar-btn {

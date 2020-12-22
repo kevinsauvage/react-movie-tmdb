@@ -49,7 +49,9 @@ const MovieCard = (movie) => {
               handleCardClickShow(e);
             }}
             className="title-card-hover">
-            {movie.movie.title}
+            {movie.movie.title.length < 10
+              ? movie.movie.title
+              : movie.movie.title.trim().substring(0, 20) + "..."}
           </p>
           <p
             className="release"
