@@ -4,10 +4,14 @@ import { AppContext } from "../../Context/AppContext";
 
 const MovieCard = (movie) => {
   const props = useContext(AppContext);
+  var backgroundImage = " ";
 
-  let backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;
-  if (backgroundImage === `url(https://image.tmdb.org/t/p/w185/null)`) {
-    backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
+  if (movie) {
+    if (movie.movie.poster_path === null) {
+      backgroundImage = `url(https://www.featherliteladders.com/media/1286/image-not-available.jpg)`;
+    } else {
+      backgroundImage = `url(https://image.tmdb.org/t/p/w185/${movie.movie.poster_path})`;
+    }
   }
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
@@ -49,7 +53,9 @@ const MovieCard = (movie) => {
               handleCardClickShow(e);
             }}
             className="title-card-hover">
-            {movie.movie.title}
+            {movie.movie.title.length < 10
+              ? movie.movie.title
+              : movie.movie.title.substring(0, 20).trim() + "..."}
           </p>
           <p
             className="release"

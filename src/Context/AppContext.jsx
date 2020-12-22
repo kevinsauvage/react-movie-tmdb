@@ -100,11 +100,12 @@ export const AppProvider = (props) => {
 
   // Fetch by category nav link
   const fetchByCategory = async (name, id) => {
-    
     // No fetch if clicking the same category
     if (sectionName === name) {
       return;
     }
+    setDisplay(false);
+    setDisplaySearch(true);
     setMovies([]);
     setGenreId(id);
     setIsExecuted(true);
@@ -121,7 +122,6 @@ export const AppProvider = (props) => {
     setMovies([...results, ...results2]);
     setDisplayedSearchName("category");
     setOpenMenuHamb(false);
-    setDisplaySearch(true);
     setSectionName(name);
     setTotalPages(data.total_pages);
     setIsExecuted(false);

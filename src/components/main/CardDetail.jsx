@@ -19,9 +19,19 @@ const CardDetail = () => {
     window.scrollTo(0, 0);
   };
 
+  const handleCategoryClick = (e) => {
+    props.fetchByCategory(e.target.dataset.name, e.target.dataset.id);
+  };
+
+  const handleClickOutside = (e) => {
+    if (e.target.classList.value === "gradient") {
+      props.setDisplay(false);
+    }
+  };
+
   return (
     <div className="card-detail" style={style}>
-      <div className="gradient">
+      <div className="gradient" onClick={handleClickOutside}>
         <div
           className="icon-movie-card-detail"
           onClick={(e) => props.setDisplay(false)}>
@@ -51,7 +61,14 @@ const CardDetail = () => {
               <div className="genre-container">
                 {arrGenre
                   ? arrGenre.map((genre) => (
-                      <p className="category-card-detail">{genre.name} /</p>
+                      <p
+                        key={genre.id}
+                        data-id={genre.id}
+                        data-name={genre.name}
+                        onClick={handleCategoryClick}
+                        className="category-card-detail">
+                        {genre.name} /
+                      </p>
                     ))
                   : null}
               </div>
@@ -69,8 +86,10 @@ const CardDetail = () => {
               </div>
             </div>
           </div>
+          {videoIsOpen ? (
+            <YoutubePlayer SetVideoIsOpen={SetVideoIsOpen} />
+          ) : null}
         </div>
-        {videoIsOpen ? <YoutubePlayer SetVideoIsOpen={SetVideoIsOpen} /> : null}
       </div>
     </div>
   );

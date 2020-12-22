@@ -17,7 +17,7 @@ const SearchResult = ({ handleCardClickShow }) => {
     if (!isFetching) return;
     fetchMoreListItems();
   }, [isFetching]);
-  // SET IF FETCHING TO TRUE WHEN AT BOTTOM OF PAGE
+  // SET IS FETCHING TO TRUE WHEN AT BOTTOM OF PAGE
   const handleScroll = () => {
     if (
       window.innerHeight + window.scrollY + 100 >=

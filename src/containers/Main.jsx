@@ -27,8 +27,11 @@ const Main = () => {
         }}>
         <Logo />
       </div>
+
       {props.display ? <CardDetail /> : null}
+
       <Search />
+
       {props.displaySearch ? (
         <>
           <div className="search-result-container">
