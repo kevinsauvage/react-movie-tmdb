@@ -20,12 +20,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        .icon-movie-card-detail {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            z-index: 100;
-        }
         .movie-detail-container {
             opacity: 0;
             animation: fadeIn 0.5s linear 0s 1 normal forwards;

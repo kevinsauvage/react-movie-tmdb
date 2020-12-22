@@ -32,15 +32,6 @@ const CardDetail = () => {
   return (
     <div className="card-detail" style={style}>
       <div className="gradient" onClick={handleClickOutside}>
-        <div
-          className="icon-movie-card-detail"
-          onClick={(e) => props.setDisplay(false)}>
-          <FaTimesCircle
-            size="20px"
-            style={{ cursor: "pointer" }}
-            fill="var(--color-pink)"
-          />
-        </div>
         <div className="movie-detail-container">
           <div className="wrapper-shadow">
             <img
