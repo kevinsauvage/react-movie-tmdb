@@ -1,0 +1,46 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    color: var(--color-light);
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.app {
+    max-height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    overflow: -moz-scrollbars-none;
+
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-ai-center($justify-direction) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify-direction;
+}
+
+@mixin flex-jc($justify-direction) {
+    display: flex;
+    justify-content: $justify-direction;
+}

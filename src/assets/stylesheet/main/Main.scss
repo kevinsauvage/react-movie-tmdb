@@ -1,16 +1,19 @@
 .main {
-    width:calc(100vw - 165px);
+    width: calc(100vw - 165px);
     background-color: var(--color-medium-dark);
     position: relative;
     margin-left: 165px;
+
     .hamburger-icon {
         display: none;
     }
+
     .logo {
         cursor: pointer;
         display: none;
         color: var(--color-pink);
     }
+
     .section-title-wrapper {
         .main-section-title {
             margin-top: 20px;
@@ -28,6 +31,7 @@
         width: 100%;
         padding: 0 0 120px 0;
         margin-left: 0;
+
         .hamburger-icon {
             display: block;
             position: absolute;
@@ -37,6 +41,7 @@
             width: 25px;
             z-index: 500;
         }
+
         .logo {
             display: block;
             position: absolute;
@@ -45,12 +50,13 @@
             width: 150px;
         }
     }
+
     .main-section-title {
         padding-left: 23px;
     }
-    .logo h1{
+
+    .logo h1 {
         color: var(--color-pink);
         font-size: 21px;
     }
-  }
-
+}
