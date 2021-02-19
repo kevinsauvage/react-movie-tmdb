@@ -28,7 +28,7 @@ const Main = () => {
       <div className="logo" onClick={handleClickLogo}>
         <Logo />
       </div>
-      {props.display ? <CardDetail /> : null}
+      {props.display && <CardDetail />}
       <Search />
       {props.displaySearch ? (
         <div className="search-result-container">

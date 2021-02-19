@@ -20,15 +20,13 @@ const Search = () => {
         <input
           value={props.query}
           onChange={(e) => {
-            let value = e.target.value;
-            props.setQuery(value);
+            props.setQuery(e.target.value);
           }}
           className="search-input"
           type="text"
           placeholder="Search for movies..."
         />
       </div>
-      <p>Hi! Mike</p>
     </form>
   );
 };

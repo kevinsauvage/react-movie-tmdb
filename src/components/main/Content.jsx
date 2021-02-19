@@ -17,7 +17,6 @@ const Content = () => {
         <SectionTitle title="Popular Movies" />
         <Carusel movies={props.popMovies} />
       </div>
-
       <div className="carusel-wrapper" data-key="popular">
         <SectionTitle title="Top Rated Movies" />
         <Carusel movies={props.topMovies} />
