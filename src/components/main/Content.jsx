@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Carusel from "../main/Carusel";
 import SectionTitle from "../main/SectionTitle";
 import { AppContext } from "../../Context/AppContext";
+import Loader from "react-loader-spinner";
 
 const Content = () => {
   const props = useContext(AppContext);
@@ -15,11 +16,23 @@ const Content = () => {
     <div className="content">
       <div className="carusel-wrapper" data-key="top_rated">
         <SectionTitle title="Popular Movies" />
-        <Carusel movies={props.popMovies} />
+        {props.popMovies.length !== 0 ? (
+          <Carusel movies={props.popMovies} />
+        ) : (
+          <div className="loader">
+            <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
+          </div>
+        )}
       </div>
       <div className="carusel-wrapper" data-key="popular">
         <SectionTitle title="Top Rated Movies" />
-        <Carusel movies={props.topMovies} />
+        {props.topMovies.length !== 0 ? (
+          <Carusel movies={props.topMovies} />
+        ) : (
+          <div className="loader">
+            <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
+          </div>
+        )}
       </div>
     </div>
   );

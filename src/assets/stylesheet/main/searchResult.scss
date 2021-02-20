@@ -4,7 +4,7 @@
     @include flex-jc(space-between);
     flex-wrap: wrap;
     z-index: 0;
-    padding: 19px 40px 35px 36px;
+    padding: 1.5rem;
 
     .icon-filtering {
         position: absolute;
@@ -14,9 +14,9 @@
     }
 
     .search-movie-card {
-        width: 128px;
-        height: 192px;
-        margin: 10px 0;
+        width: 181px;
+        height: 278px;
+        margin: 20px 0;
         cursor: pointer;
         z-index: 0;
     }

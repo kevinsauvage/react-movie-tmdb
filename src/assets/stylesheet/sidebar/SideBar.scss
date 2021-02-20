@@ -5,7 +5,8 @@
     background-color: var(--color-dark);
     position: fixed;
     z-index: 70000;
-    padding: 0px 20px 0 20px;
+    padding: 1.5rem;
+    padding-top: 4.5rem;
     opacity: 1;
     height: 100vh;
     -webkit-box-shadow: 0px 0px 17px 7px rgba(0, 0, 0, 0.9);
@@ -13,10 +14,12 @@
     box-shadow: 0px 0px 17px 7px rgba(0, 0, 0, 0.9);
 
     .logo {
-        height: 50px;
-        display: flex;
-        align-items: flex-end;
-        margin-bottom: 25px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        padding: 1.5rem;
+        background: rgb(38, 38, 49);
 
         h1 {
             padding: 0px 0 4px 0;
@@ -38,7 +41,7 @@
             li {
                 color: rgba(253, 253, 253, 0.541);
                 font-weight: 200;
-                font-size: 10px;
+                font-size: 11px;
                 cursor: pointer;
                 transition: all 400ms ease;
                 border-radius: 2px;

@@ -1,5 +1,12 @@
 .content {
     width: 100%;
     position: relative;
-    margin-top: 25px;
+    margin-top: 1rem;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 285px;
 }

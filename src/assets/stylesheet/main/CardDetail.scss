@@ -1,19 +1,22 @@
 @import "../global";
 
 .card-detail {
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    position: fixed;
+
+    position: absolute;
     opacity: 0;
     left: 0;
     top: 0;
     z-index: 1500;
-    transform: scale(0);
+    transform: scaleY(0);
     @include flex-ai-center(space-evenly);
-    animation: fadeIn 0.5s linear 0s 1 normal forwards;
+    animation: fadeIn 0.5s linear normal forwards;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    transform-origin: top;
+
 
     .gradient {
         background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(2, 2, 2, 0.8) 35%, rgba(4, 4, 4, 0.8) 69%, rgba(4, 4, 4, 0.8) 100%);
@@ -23,15 +26,16 @@
 
         .movie-detail-container {
             @include flex-jc(center);
-            opacity: 0;
-            animation: fadeIn 0.5s linear 0s 1 normal forwards;
-
+            animation: fadeIn 0.5s linear normal forwards;
+            transform: scaleY(0);
+            min-width: 350px;
 
             .wrapper-shadow {
                 display: flex;
                 -webkit-box-shadow: 0px 0px 17px 7px rgba(0, 0, 0, 0.9);
                 -moz-box-shadow: 0px 0px 17px 7px rgba(0, 0, 0, 0.9);
                 box-shadow: 0px 0px 17px 7px rgba(0, 0, 0, 0.9);
+                min-width: 350px;
 
                 img {
                     height: 350px;
@@ -126,12 +130,12 @@
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: scale(0.1);
+        transform: scaleY(0.1);
     }
 
     100% {
         opacity: 1;
-        transform: scale(1);
+        transform: scaleY(1);
     }
 }
 

@@ -13,11 +13,8 @@ a {
     text-decoration: none;
 }
 
-.app {
-    max-height: 100vh;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+#root {
+    background-color: #0c0d0f;
 }
 
 body {
