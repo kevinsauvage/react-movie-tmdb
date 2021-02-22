@@ -4,7 +4,7 @@ import Main from "./Main";
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="container">
       <SideBar />
       <Main />
     </header>

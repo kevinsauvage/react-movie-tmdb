@@ -12,11 +12,14 @@ const SearchResult = ({ handleCardClickShow }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   // CALL FUNCTION FETCH MORE WHEN ISFETCHIN IS TRUE (BOTTOM OF THE PAGE)
+
   useEffect(() => {
     if (!isFetching) return;
     fetchMoreListItems();
   }, [isFetching]);
+
   // SET IS FETCHING TO TRUE WHEN AT BOTTOM OF PAGE
   const handleScroll = () => {
     if (
@@ -26,6 +29,7 @@ const SearchResult = ({ handleCardClickShow }) => {
       setIsFetching(true);
     }
   };
+
   // CALL FETCH FUNCTION TO DISPLAY MORE ITEMS
   const fetchMoreListItems = () => {
     setTimeout(() => {

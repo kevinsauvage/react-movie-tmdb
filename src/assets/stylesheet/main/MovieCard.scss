@@ -1,12 +1,14 @@
-.react-multi-carousel-item  {
+.react-multi-carousel-item {
     width: 148px !important;
     cursor: pointer;
     transition: transform 500ms;
     margin: 8px;
+
     &:hover {
         transform: scale(1.05);
     }
 }
+
 .card-container {
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,54 +17,65 @@
     animation: fadeInOp 2s;
     box-shadow: 0px 0px 12px 0px #000000;
     z-index: 100;
+
     .detail-card-hover {
         height: 100%;
         width: 101%;
-        display: flex;
+        @include flex-ai-center(space-evenly);
         flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        border:0px;
+        border: 0px;
         opacity: 0;
         transition: all 400ms ease-in;
         background-color: rgba(0, 0, 0, 0.726);
         -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);    
+        backdrop-filter: blur(5px);
+
         &:hover {
             opacity: 1;
         }
+
         div {
-            width:100%;
-            text-align:center;
+            width: 100%;
+            text-align: center;
+
             .release {
-                width:100%;
-                font-size:9px;
+                width: 100%;
+                font-size: 9px;
                 font-weight: 100;
             }
+
             .title-card-hover {
                 font-size: 15px;
             }
         }
+
         .vote-card-detail {
             font-size: 16px;
         }
     }
 }
+
 .react-multi-carousel-track:focus-within .react-multi-carousel-item,
 .react-multi-carousel-track:hover .react-multi-carousel-item {
     transform: translateX(-25%);
 }
-.react-multi-carousel-item:focus ~ .react-multi-carousel-item,
-.react-multi-carousel-item:hover ~ .react-multi-carousel-item {
+
+.react-multi-carousel-item:focus~.react-multi-carousel-item,
+.react-multi-carousel-item:hover~.react-multi-carousel-item {
     transform: translateX(25%);
 }
 
-.react-multi-carousel-track  .react-multi-carousel-item:focus,
-.react-multi-carousel-track  .react-multi-carousel-item:hover {
+.react-multi-carousel-track .react-multi-carousel-item:focus,
+.react-multi-carousel-track .react-multi-carousel-item:hover {
     transform: scale(1.1);
 }
 
 @keyframes fadeInOp {
-    0%   {opacity: 0; }
-    100% {opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

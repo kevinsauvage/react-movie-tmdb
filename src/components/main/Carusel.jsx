@@ -5,10 +5,6 @@ import MovieCard from "./MovieCard";
 
 const Carusel = (movies) => {
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 4,
-    },
     desktop: {
       breakpoint: { max: 3000, min: 1601 },
       items: 4,
@@ -40,11 +36,10 @@ const Carusel = (movies) => {
       showDots={false}
       slidesToSlide={4}
       swipeable>
-      {movies.movies.lenth !== 0
-        ? movies.movies.map((movie) => {
-            return <MovieCard key={movie.id} movie={movie} />;
-          })
-        : null}
+      {movies.movies.lenth !== 0 &&
+        movies.movies.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
+        })}
     </Carousel>
   );
 };

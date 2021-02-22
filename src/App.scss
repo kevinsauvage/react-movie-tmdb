@@ -12,36 +12,11 @@
 @import "./assets/stylesheet/sidebar/SortByNav.scss";
 @import "./assets/stylesheet/main/YoutubePlayer.scss";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "./assets/stylesheet/global";
+
 :root {
-    --color-dark:#181b21;
-    --color-medium-dark:#212630;
-    --color-light:white;
-    --color-pink: rgb(0, 252, 218) ;
-}
-* {
-    font-family: 'Poppins', sans-serif;
-    padding: 0;
-     margin: 0;
-     box-sizing: border-box;
-     list-style-type: none;
-     text-decoration: none;
-     color: var(--color-light);
-     letter-spacing: 2px;
-     
-}
-a {
-    text-decoration: none;
-}
-.app {
-    max-height: 100vh;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-body {
-    overflow: -moz-scrollbars-none; 
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        width: 0px; 
-    }
+    --color-dark: #181b21;
+    --color-medium-dark: #212630;
+    --color-light: white;
+    --color-pink: rgb(0, 252, 218);
 }
