@@ -5,7 +5,7 @@
     position: fixed;
     opacity: 0;
     width: inherit;
-    z-index: 1500;
+    z-index: 6000;
     transform: scaleY(0);
     @include flex-ai-center(space-evenly);
     animation: fadeIn 0.5s linear normal forwards;
