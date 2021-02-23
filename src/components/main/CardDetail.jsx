@@ -14,11 +14,13 @@ const CardDetail = () => {
   };
 
   const handleClickFetchSimilar = () => {
+    document.querySelector("body").classList.remove("overflow");
     props.fetchSimilarMovies();
     window.scrollTo(0, 0);
   };
 
   const handleCategoryClick = (e) => {
+    document.querySelector("body").classList.remove("overflow");
     const name = e.target.dataset.name;
     const id = e.target.dataset.id;
     props.fetchByCategory(name, id);

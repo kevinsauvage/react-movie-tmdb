@@ -8,6 +8,8 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.setDisplay(false);
+    document.querySelector("body").classList.remove("overflow");
     props.fetchMoviesSearch();
   };
 
