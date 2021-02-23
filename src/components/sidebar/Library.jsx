@@ -5,7 +5,7 @@ const Library = () => {
   const props = useContext(AppContext);
 
   const style = {
-    background: "var(--color-pink)",
+    background: "var(--color-primary)",
     color: "#181b21",
     fontWeight: "900",
     paddingLeft: "5px",

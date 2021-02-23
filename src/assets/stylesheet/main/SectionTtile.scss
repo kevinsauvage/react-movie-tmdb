@@ -18,7 +18,7 @@
         font-size: 12px;
         font-weight: 300;
         @include flex-ai-center(unset);
-        color: var(--color-pink);
+        color: var(--color-primary);
         animation: fadeInTitle 1s forwards;
         opacity: 0;
     }

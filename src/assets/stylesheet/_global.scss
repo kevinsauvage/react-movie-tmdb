@@ -1,3 +1,12 @@
+:root {
+    --color-base: #121212;
+    --color-dark: #232323;
+    --color-medium-dark: #292929;
+    --color-medium-light: #2E2E2E;
+    --color-light: white;
+    --color-primary: #a06ae2;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
     padding: 0;
@@ -5,7 +14,7 @@
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
-    color: var(--color-light);
+    color: var(--color-primary);
     letter-spacing: 2px;
 }
 
@@ -14,7 +23,7 @@ a {
 }
 
 #root {
-    background-color: #0c0d0f;
+    background-color: var(--color-base);
 }
 
 body {
@@ -23,6 +32,10 @@ body {
     &::-webkit-scrollbar {
         width: 0px;
     }
+}
+
+.overflow {
+    overflow: hidden;
 }
 
 @mixin flex-center {

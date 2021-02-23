@@ -23,7 +23,11 @@ const Main = () => {
   return (
     <div className="main">
       <div className="hamburger-icon" onClick={handleClickHamb}>
-        {props.openMenuHamb ? <AiOutlineClose size={20} /> : <FaBars />}
+        {props.openMenuHamb ? (
+          <AiOutlineClose size={30} />
+        ) : (
+          <FaBars size={30} />
+        )}
       </div>
       <div className="logo" onClick={handleClickLogo}>
         <Logo />

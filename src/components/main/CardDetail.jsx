@@ -25,6 +25,7 @@ const CardDetail = () => {
   };
 
   const handleClickOutside = (e) => {
+    document.querySelector("body").classList.remove("overflow");
     if (e.target.classList.value === "gradient") {
       props.setDisplay(false);
     }
@@ -44,7 +45,7 @@ const CardDetail = () => {
               <div className="title-and-note">
                 <h3>{props.singleMovie.original_title}</h3>
                 <div className="note-container">
-                  <FaStar size="14px" fill="var(--color-pink)" />
+                  <FaStar size="14px" fill="var(--color-primary)" />
                   <span className="note">{props.singleMovie.vote_average}</span>
                 </div>
               </div>

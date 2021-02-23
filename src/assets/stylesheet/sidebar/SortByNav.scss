@@ -15,5 +15,9 @@
 @media screen and (min-width: 0px) and (max-width: 1030px) {
     .sort-by {
         text-align: center;
+        background-color: var(--color-dark);
+        width: 300px;
+        height: 50vh;
+        padding-top: 50px;
     }
 }
