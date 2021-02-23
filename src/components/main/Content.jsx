@@ -20,7 +20,12 @@ const Content = () => {
           <Carusel movies={props.popMovies} />
         ) : (
           <div className="loader">
-            <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
+            <Loader
+              type="TailSpin"
+              color="var(--color-primary)"
+              height={50}
+              width={50}
+            />
           </div>
         )}
       </div>
@@ -30,7 +35,12 @@ const Content = () => {
           <Carusel movies={props.topMovies} />
         ) : (
           <div className="loader">
-            <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
+            <Loader
+              type="TailSpin"
+              color="var(--color-primary)"
+              height={50}
+              width={50}
+            />
           </div>
         )}
       </div>
