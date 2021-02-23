@@ -12,10 +12,13 @@ const Main = () => {
   const props = useContext(AppContext);
 
   const handleClickHamb = () => {
+    document.querySelector("body").classList.toggle("overflow");
     props.setOpenMenuHamb(!props.openMenuHamb);
   };
 
   const handleClickLogo = () => {
+    document.querySelector("body").classList.remove("overflow");
+
     props.setPage(1);
     props.handleBackHome();
   };

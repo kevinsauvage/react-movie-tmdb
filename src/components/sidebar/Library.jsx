@@ -11,8 +11,14 @@ const Library = () => {
     paddingLeft: "5px",
     fontSize: "12px",
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
+    props.setOpenMenuHamb(false);
     window.scrollTo(0, 0);
+    document.querySelector("body").classList.remove("overflow");
+    props.fetchByCategory(
+      e.currentTarget.dataset.name,
+      e.currentTarget.dataset.id
+    );
   };
 
   return (
@@ -26,13 +32,7 @@ const Library = () => {
                 data-id={category.id}
                 data-name={category.name}
                 style={props.sectionName === category.name ? style : null}
-                onClick={(e) => {
-                  props.fetchByCategory(
-                    e.target.dataset.name,
-                    e.target.dataset.id
-                  );
-                  handleClick();
-                }}>
+                onClick={handleClick}>
                 {category.name}
               </li>
             ))

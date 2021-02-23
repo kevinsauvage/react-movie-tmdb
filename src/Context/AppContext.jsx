@@ -121,7 +121,6 @@ export const AppProvider = (props) => {
 
     setMovies([...results, ...results2]);
     setDisplayedSearchName("category");
-    setOpenMenuHamb(false);
     setSectionName(name);
     setTotalPages(data.total_pages);
     setIsExecuted(false);
