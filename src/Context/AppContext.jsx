@@ -218,6 +218,7 @@ export const AppProvider = (props) => {
     setOpenMenuHamb(false);
     setSectionName("");
     setQuery("");
+    document.querySelector("body").classList.remove("overflow");
   };
 
   return (

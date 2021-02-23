@@ -11,8 +11,12 @@ const SortByNav = () => {
     paddingLeft: "5px",
     fontSize: "12px",
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     window.scrollTo(0, 0);
+    props.setDisplay(false);
+    document.querySelector("body").classList.remove("overflow");
+    props.fetchBy(e.currentTarget.dataset.name);
+    props.setOpenMenuHamb(false);
   };
 
   return (
@@ -22,31 +26,19 @@ const SortByNav = () => {
         <li
           style={props.sectionName === "popularity.desc" ? style : null}
           data-name="popularity.desc"
-          onClick={(e) => {
-            props.fetchBy(e.target.dataset.name);
-            props.setOpenMenuHamb(false);
-            handleClick();
-          }}>
+          onClick={handleClick}>
           Popularity desc
         </li>
         <li
           style={props.sectionName === "vote_average.desc" ? style : null}
           data-name="vote_average.desc"
-          onClick={(e) => {
-            props.fetchBy(e.target.dataset.name);
-            props.setOpenMenuHamb(false);
-            handleClick();
-          }}>
+          onClick={handleClick}>
           Vote average
         </li>
         <li
           style={props.sectionName === "vote_count.desc" ? style : null}
           data-name="vote_count.desc"
-          onClick={(e) => {
-            props.fetchBy(e.target.dataset.name);
-            props.setOpenMenuHamb(false);
-            handleClick();
-          }}>
+          onClick={handleClick}>
           Vote Count
         </li>
       </ul>

@@ -14,10 +14,7 @@ const SideBar = () => {
   };
 
   return (
-    <div
-      className="side-bar"
-      onClick={() => props.setDisplay(false)}
-      style={props.openMenuHamb ? styleOpen : null}>
+    <div className="side-bar" style={props.openMenuHamb ? styleOpen : null}>
       <Logo className="logo" />
       <Library />
       <SortByNav />
