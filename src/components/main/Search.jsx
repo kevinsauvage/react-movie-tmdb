@@ -15,7 +15,7 @@ const Search = () => {
     <form className="search" onSubmit={handleSubmit}>
       <div className="wrapper-search">
         <div className="icon">
-          <FaSearch fill="var(--color-pink)" size={20} />
+          <FaSearch fill="var(--color-primary)" size={20} />
         </div>
         <input
           value={props.query}

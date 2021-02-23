@@ -15,6 +15,7 @@ const MovieCard = (movie) => {
   }
   // Handle the display of card movie detail when click on movie card
   const handleCardClickShow = (e) => {
+    document.querySelector("body").classList.add("overflow");
     props.setSingleMovie([]);
     const att = e.target.getAttribute("data-key");
     props.fetchSingleMovieWithMovieId(att);

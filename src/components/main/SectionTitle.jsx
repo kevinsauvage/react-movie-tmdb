@@ -23,7 +23,7 @@ const SectionTitle = ({ title }) => {
         {showSeeAll ? (
           <p className="see-all">See All</p>
         ) : (
-          <FiArrowRight stroke="#00FFFF" />
+          <FiArrowRight stroke="var(--color-primary)" />
         )}
       </div>
     </div>
