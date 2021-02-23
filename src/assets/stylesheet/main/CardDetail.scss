@@ -40,9 +40,13 @@
                 }
 
                 .card-detail-text-wrapper {
-                    height: 350px;
+                    height: fit-content;
                     padding: 20px;
+                    padding-bottom: 81px;
                     max-width: 500px;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: space-between;
                     z-index: 50;
                     background-color: var(--color-medium-light);
                     position: relative;
