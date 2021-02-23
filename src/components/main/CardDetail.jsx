@@ -25,8 +25,8 @@ const CardDetail = () => {
   };
 
   const handleClickOutside = (e) => {
-    document.querySelector("body").classList.remove("overflow");
     if (e.target.classList.value === "gradient") {
+      document.querySelector("body").classList.remove("overflow");
       props.setDisplay(false);
     }
   };

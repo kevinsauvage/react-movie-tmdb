@@ -36,12 +36,11 @@
                 min-width: 350px;
 
                 img {
-                    height: 350px;
+                    height: 300px;
                 }
 
                 .card-detail-text-wrapper {
-                    height: fit-content;
-                    min-height: 350px;
+                    height: 300px;
                     padding: 20px;
                     padding-bottom: 81px;
                     max-width: 500px;
@@ -78,9 +77,21 @@
                     .movie-description {
                         margin-top: 20px;
                         font-weight: 200;
+                        overflow-y: scroll;
+                        max-height: 120px;
                         font-size: 11px;
                         color: var(--color-light);
+
+                        &::-webkit-scrollbar {
+                            width: 1px;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: var(--color-primary);
+                            outline: 1px solid var(--color-primary);
+                        }
                     }
+
 
                     .genre-container {
                         display: flex;
