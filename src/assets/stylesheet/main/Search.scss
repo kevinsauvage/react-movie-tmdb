@@ -9,15 +9,6 @@
     z-index: 4000;
     position: relative;
 
-    &::after {
-        content: '';
-        height: 100%;
-        width: 2px;
-        background-color: var(--color-base);
-        position: absolute;
-        right: 0;
-    }
-
     p {
         color: var(--color-primary);
         height: 100%;
@@ -30,7 +21,6 @@
     .wrapper-search {
         width: 350px;
         position: relative;
-        padding: 1rem 1.5rem;
         height: 67px;
 
         .icon {
