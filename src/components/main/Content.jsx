@@ -6,12 +6,10 @@ import Loader from "react-loader-spinner";
 
 const Content = () => {
   const props = useContext(AppContext);
-
   useEffect(() => {
     props.getCarusselMovies("popular");
     props.getCarusselMovies("top_rated");
   }, []);
-
   return (
     <div className="content">
       <div className="carusel-wrapper" data-key="popular">
