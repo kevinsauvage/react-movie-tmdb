@@ -14,7 +14,7 @@ const Content = () => {
 
   return (
     <div className="content">
-      <div className="carusel-wrapper" data-key="top_rated">
+      <div className="carusel-wrapper" data-key="popular">
         <SectionTitle title="Popular Movies" />
         {props.popMovies.length !== 0 ? (
           <Carusel movies={props.popMovies} />
@@ -29,7 +29,7 @@ const Content = () => {
           </div>
         )}
       </div>
-      <div className="carusel-wrapper" data-key="popular">
+      <div className="carusel-wrapper" data-key="top_rated">
         <SectionTitle title="Top Rated Movies" />
         {props.topMovies.length !== 0 ? (
           <Carusel movies={props.topMovies} />
