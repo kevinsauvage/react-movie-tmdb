@@ -5,7 +5,7 @@
     position: fixed;
     opacity: 0;
     width: inherit;
-    z-index: 1500;
+    z-index: 6000;
     transform: scaleY(0);
     @include flex-ai-center(space-evenly);
     animation: fadeIn 0.5s linear normal forwards;
@@ -13,7 +13,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     transform-origin: top;
-
 
     .gradient {
         background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(2, 2, 2, 0.8) 35%, rgba(4, 4, 4, 0.8) 69%, rgba(4, 4, 4, 0.8) 100%);
