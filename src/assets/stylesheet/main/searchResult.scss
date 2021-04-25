@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     z-index: 0;
     padding: 1.5rem;
+    gap: 20px;
 
     .icon-filtering {
         position: absolute;
@@ -16,7 +17,6 @@
     .search-movie-card {
         width: 181px;
         height: 278px;
-        margin: 20px 0;
         cursor: pointer;
         z-index: 0;
     }
