@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
-
 import { AppContext } from "../../Context/AppContext";
 
 const Search = () => {
@@ -8,6 +7,7 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (props.query === "") return;
     props.setDisplay(false);
     document.querySelector("body").classList.remove("overflow");
     props.fetchMoviesSearch();
